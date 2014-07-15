@@ -1,0 +1,1050 @@
+﻿@-ms-viewport {
+    width: device-width;
+}
+
+html {
+    min-height: 100%;
+    position: relative;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+    color: #333;
+}
+
+body, input, button, select, textarea {
+    font: 100%/1.5 "Segoe UI",Arial,sans-serif;
+}
+
+pre, code {
+    font: 100% consolas,"courier new",monospace;
+}
+
+h1, h2 {
+    font-weight: 100;
+}
+
+h3 {
+    font-weight: normal;
+}
+
+h3, h4 {
+    font-size: 120%;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    border: none;
+}
+
+a {
+    text-decoration: none;
+    color: #26a;
+}
+
+    a:hover, a:focus {
+        color: #69c;
+    }
+
+:-ms-input-placeholder {
+    color: #aaa;
+}
+
+::-moz-placeholder {
+    color: #aaa;
+}
+
+::-webkit-input-placeholder {
+    color: #aaa;
+}
+
+.dismiss, .invisible-dismiss {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    position: fixed !important;
+    position: absolute;
+}
+
+/* The invisible dismiss UI control */
+.invisible-dismiss {
+    background: url(about:blank);
+    display: none;
+}
+
+.ui-on .invisible-dismiss {
+    display: block;
+}
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+/* UL resets, poster included */
+ul {
+    list-style: disc;
+}
+
+.nav ul, .slist, .hotposts, .notice-list, .poster ul, .featured, .people, .news ul, .footer ul,
+.tool-menu, .replies, .otherposts, .list-2cols {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* .page class */
+.page {
+    position: relative;
+    z-index: 0;
+}
+
+.nav {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    line-height: 2.5;
+    visibility: hidden;
+    z-index: 1;
+}
+
+    .nav ul {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 15em;
+        max-width: 80%;
+        min-height: 100%;
+        overflow: hidden;
+        background: #666;
+        transition: .3s;
+        -webkit-transform: translateZ(0px) translateX(-100%);
+        transform: translateZ(0px) translateX(-100%);
+    }
+
+    .nav.ui-on {
+        visibility: visible;
+    }
+
+        .nav.ui-on ul {
+            -webkit-transform: translateZ(0px);
+            transform: translateZ(0px);
+        }
+
+    .nav li {
+        margin: .5em 0;
+        padding: 0 1em;
+    }
+
+    .nav a {
+        display: block;
+        color: #fff;
+        padding: 0 1em;
+        width: 100%;
+        margin: 0 -1em;
+        transition: .5s;
+    }
+
+        .nav a:hover {
+            padding-left: 1.5em;
+            padding-right: .5em;
+            background: #48c;
+        }
+
+.dismiss {
+    background: #fff;
+    transition: .5s;
+    opacity: 0;
+}
+
+.nav.ui-on .dismiss {
+    opacity: .6;
+}
+
+.header {
+    background: #7ad;
+    line-height: 3em;
+    width: 100%;
+    /* Test */
+    position: relative;
+    z-index: 1;
+}
+
+    .header, .header a {
+        color: #fff;
+    }
+
+        .header a:hover, .header a:focus {
+            background-color: #48c;
+        }
+
+        .header h1, .menu-expander {
+            float: left;
+        }
+
+        .header:after, .content:after {
+            content: "\a0";
+            clear: both;
+            visibility: hidden;
+            display: block;
+            height: 0;
+            overflow: hidden;
+        }
+
+        .header h1 {
+            margin: .4em 0 0 .9em;
+            font-size: 1.25em;
+            font-weight: 400;
+        }
+
+        .header a {
+            transition: .5s;
+        }
+
+.menu-expander {
+    text-indent: -99em;
+    width: 4em;
+    height: 4em;
+    overflow: hidden;
+}
+
+    .menu-expander:before {
+        font: 2.5em/1.6 "Lucida Sans Unicode",sans-serif;
+        width: 1.6em;
+        text-indent: 0;
+        display: block;
+        content: "\2261";
+        text-align: center;
+    }
+
+/* Notice area begins */
+.notice {
+    float: right;
+    line-height: 1.5;
+}
+
+    .notice .count {
+        font-size: 125%;
+        padding: .6em;
+        text-align: center;
+        display: inline-block;
+    }
+
+        .notice .count span {
+            width: 1.5em;
+            padding: .25em;
+            transition: .5s;
+            background: #fff;
+            color: #666;
+            display: block;
+        }
+
+    .notice .hot span {
+        background: #c00;
+        color: #fff;
+    }
+
+.notice-list {
+    position: absolute;
+    width: 100%;
+    top: 4em;
+    right: 0;
+    background: #eee;
+    outline: 1px solid #ccc;
+    z-index: 1;
+    -webkit-transform: translateY(-2em) translateZ(0);
+    transform: translateY(-2em) translateZ(0);
+    opacity: 0;
+    transition: .5s;
+    visibility: hidden;
+}
+
+    .notice-list, .notice-list a {
+        color: #000;
+    }
+
+        .notice-list li {
+            margin: 1em;
+        }
+
+.notice-item a {
+    padding: 1em;
+    background: #fff;
+    display: block;
+    border-left: 2px solid #fff;
+}
+
+    .notice-item a:hover, .notice-item a:focus {
+        background: #fff;
+        border-left-color: #26a;
+    }
+
+.notice.ui-on, .user.ui-on {
+    z-index: 2;
+}
+
+    .notice.ui-on .count {
+        background: #69c;
+    }
+
+    .notice.ui-on .notice-list {
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+        opacity: 1;
+        visibility: visible;
+    }
+
+/* User area begins */
+.user, .user ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.user {
+    float: right;
+}
+
+    .user a {
+        display: block;
+        padding: .5em 1em;
+    }
+
+.username {
+    float: left;
+    display: none;
+}
+
+.avatar {
+    float: left;
+}
+
+    .avatar a {
+        padding: .5em;
+    }
+
+    .avatar img {
+        width: 2.5em;
+        height: 2.5em;
+        display: block;
+        margin: .25em;
+    }
+
+.submenu {
+    position: absolute;
+    float: none;
+    width: 100%;
+    min-width: 10em;
+    left: 0;
+    top: 4em;
+    visibility: hidden;
+    opacity: 0;
+    transform: translateZ(0px) translateY(-2em);
+    -webkit-transform: translateZ(0px) translateY(-2em);
+    transition: .5s;
+    line-height: 2;
+    z-index: 1;
+}
+
+    .submenu ul {
+        background: #69c;
+    }
+
+    .submenu li {
+        float: none;
+        margin: 0;
+    }
+
+    .submenu a:hover, .submenu a:focus {
+        background: #26a;
+        padding-left: 1.5em;
+    }
+
+.user.ui-on .avatar a {
+    background: #69c;
+}
+
+.user.ui-on .submenu {
+    visibility: visible;
+    opacity: 1;
+    transform: translateZ(0px);
+    -webkit-transform: translateZ(0px);
+}
+
+/* Search area begins */
+.search {
+    clear: both;
+    padding: .75em 1em 1em;
+}
+
+    .search form {
+        width: 100%;
+        overflow: hidden;
+    }
+
+
+
+.extra {
+    float: left;
+    width: 100%;
+}
+
+    .extra input, .submit {
+        float: left;
+        height: 2em;
+        line-height: 2;
+        border: 0;
+        margin: 0;
+        padding: 0;
+    }
+
+    .extra label {
+        margin-right: 2.5em;
+        display: block;
+    }
+
+    .extra input {
+        width: 100%;
+        padding-left: .5em;
+    }
+
+.submit {
+    width: 2em;
+    text-indent: -99em;
+    overflow: hidden;
+    background: #48c url("search.png") 50% 50% no-repeat;
+    margin-left: -2em;
+    transition: .5s;
+}
+
+    .submit:hover, .submit:focus {
+        background-color: #26a;
+    }
+/* Content begins */
+.content {
+    width: 100%;
+    max-width: 64em;
+    padding: 1px 0;
+    margin: 1em auto 0;
+}
+
+.sidebar {
+    margin: 0 1em 1em;
+}
+
+/* Button effects */
+.btn {
+    background: #ddd;
+    transition: .5s;
+    border: none;
+    padding: .4em .75em;
+    display: inline-block;
+    text-align: center;
+    color: #000;
+}
+
+    .btn:hover, .btn:focus {
+        background: #ccc;
+        color: #000;
+    }
+
+    .btn:disabled, .btn.disabled {
+        opacity: .5;
+        color: #888;
+    }
+
+.btn-mini {
+    padding: 0 .6em;
+}
+
+.btn-main.btn {
+    background: #48c;
+    color: #fff;
+}
+
+.btn-main:hover, .btn-main:focus {
+    background: #26a;
+}
+
+.btn.btn-error {
+    background: #d44;
+    color: #fff;
+}
+
+.btn-error:hover, .btn-error:focus {
+    background: #c33;
+}
+
+.block-btn {
+    display: block;
+    width: 100%;
+    padding: .5em 0;
+}
+
+/* Button grouping. */
+.btngroup {
+    border-right: none;
+    display: inline-block;
+}
+
+    .btngroup .btn {
+        float: left;
+        margin-right: 1px;
+    }
+
+.btngroup-v {
+    border-bottom: none;
+    margin: 1em 0;
+}
+
+    .btngroup-v .btn {
+        display: block;
+        margin-bottom: 1px;
+        width: 100%;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+/* Buttons inside h1s */
+.h-btn.btn {
+    font-size: 50%;
+    margin: .6em 0 0 .5em;
+    font-weight: 400;
+    float: right;
+}
+
+.h-btn.add-btn:before {
+    font-size: 60%; /* IE 8 hack */
+    font-size: 1.2rem;
+}
+/* Button effects end */
+
+.additem {
+    font-size: 125%;
+}
+
+    .additem:before, .add-btn:before {
+        content: "+";
+        font-size: 120%;
+        line-height: 1;
+        display: inline-block;
+        margin-right: .25em;
+    }
+
+.slist {
+    background: #eee;
+    overflow: hidden;
+    width: 100%;
+    margin-bottom: 2em;
+}
+
+    .slist li {
+        margin: .5em 0 0;
+    }
+
+    .slist a {
+        display: block;
+        transition: .5s;
+        padding: .5em 1em;
+    }
+
+        .slist a:hover, .slist a:focus {
+            color: #000;
+            background: #ddd;
+            padding-left: 1.5em;
+            padding-right: .5em;
+        }
+
+.list-alone {
+    padding-bottom: .5em;
+}
+
+/* People begins */
+.people {
+    overflow: hidden;
+    width: 100%;
+}
+
+    .people li {
+        margin: .5em 0 1em;
+        overflow: hidden;
+        width: 100%;
+    }
+
+.pavatar {
+    float: left;
+}
+
+    .pavatar img {
+        display: block;
+        width: 40px;
+    }
+
+    .pavatar:hover img, .pavatar:focus img {
+        opacity: .8;
+    }
+
+.details {
+    margin-left: 40px;
+    padding-left: .75em;
+}
+
+    .details span {
+        color: #666;
+    }
+
+/* Main content begins */
+.main {
+    margin: 0 1em;
+}
+
+    .main h1 {
+        margin: 0 0 .4em;
+    }
+
+/* featured products */
+.featured, .list-2cols {
+    overflow: hidden;
+    margin-bottom: 2em;
+}
+
+.featured {
+    text-align: center;
+}
+
+    .featured li, .list-2cols li {
+        margin-top: 1em;
+    }
+
+    .featured a {
+        display: inline-block;
+        position: relative;
+        overflow: hidden;
+        max-width: 100%;
+        z-index: 0;
+    }
+
+    .featured img {
+        display: block;
+    }
+
+    .featured .caption {
+        position: absolute;
+        width: 100%;
+        padding: 1em 0;
+        font-size: 125%;
+        bottom: 0;
+        left: 0;
+        opacity: 0;
+        transition: .5s;
+        background: #48c;
+        color: #fff;
+        -webkit-transform: translateY(100%) translateZ(0);
+        transform: translateY(100%) translateZ(0);
+    }
+
+    .featured a:hover .caption, .featured a:focus .caption {
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+        opacity: 1;
+    }
+
+/* hotposts. */
+.hotposts li {
+    margin-bottom: 1em;
+    width: 100%;
+    overflow: hidden;
+}
+
+.replycount {
+    display: block;
+    margin: 0 0 .5em;
+}
+
+.post-intro h4 {
+    margin: 0;
+}
+
+.post-intro p {
+    margin: .5em 0 0;
+}
+
+.postinfo {
+    color: #888;
+}
+
+/* News area begins */
+.news .content, .footer .content {
+    margin-top: 0;
+}
+
+.news li, .footer li {
+    margin-bottom: .5em;
+}
+
+.news {
+    overflow: hidden;
+    width: 100%;
+    padding: 2em 0;
+    margin-top: 2em;
+    background: #69c;
+}
+
+    .news, .news a, .news a:hover {
+        color: #fff;
+    }
+
+        .news h1 {
+            margin: 0 0 .5em;
+            font-size: 180%;
+        }
+
+        .news li a:hover, .news li a:focus {
+            text-decoration: underline;
+        }
+
+.newsitem {
+    background: #37b;
+    transition: .5s;
+    display: block;
+    padding: 1.5em 2em;
+    overflow: hidden;
+}
+
+    .newsitem:hover, .newsitem:focus {
+        background: #26a;
+    }
+
+    .newsitem img {
+        margin: 0 0 1em;
+    }
+
+    .newsitem span {
+        overflow: hidden;
+        display: block;
+    }
+
+/* Footer begins */
+.footer {
+    background: #eee;
+    padding: 2em 0;
+}
+
+    .footer h2 {
+        margin: 0 0 .5em;
+    }
+
+.copyright {
+    clear: both;
+    margin: 0 1em;
+    color: #666;
+}
+
+/* Form controls */
+.fine, .selectbox {
+    display: block;
+    margin: 0 0 .5em;
+}
+
+.fine {
+    padding: 0 20px 0 0;
+}
+
+    .fine input, .fine textarea, .selectbox select {
+        display: block;
+        border: 2px solid #d6d6d6;
+        padding: .25em 8px;
+        width: 100%;
+        margin: .4em -20px 0 0;
+        overflow: auto;
+        transition: .5s;
+    }
+
+        .fine:hover input, .fine:hover textarea, .fine input:focus, .fine textarea:focus, .selectbox:hover select, .selectbox select:focus {
+            border-color: #7ad;
+        }
+
+    .fine input {
+        height: 1.5em;
+    }
+
+.selectbox select {
+    margin: .4em 0 0;
+}
+
+.selectbox ::-ms-expand {
+    border: none;
+    background: transparent;
+}
+
+.fine-mini {
+    display: inline-block;
+    margin: 0 .5em;
+    vertical-align: middle;
+}
+
+    .fine-mini select, .fine-mini input {
+        margin: 0;
+    }
+
+/* In alignment with .fine inputs */
+.finecheck {
+    display: inline-block;
+    margin-right: .5em;
+    padding: 2px .5em;
+    margin: .4em 0 .5em;
+    transition: .5s;
+    line-height: 2;
+}
+
+    .finecheck:hover {
+        background: #ccc;
+    }
+
+.blockcheck {
+    display: block;
+    padding: 2px 0;
+}
+
+    .blockcheck input {
+        margin-left: .75em;
+    }
+
+/* Tables. */
+table {
+    max-width: 100%;
+}
+
+.finetable {
+    width: 100%;
+    border-top: 1px solid #ccc;
+    border-collapse: collapse;
+    margin: 1em 0;
+}
+
+    .finetable thead, .finetable tfoot {
+        background: #eee;
+    }
+
+    .finetable th, .finetable td {
+        border-bottom: 1px solid #ccc;
+        padding: .5em;
+    }
+
+.stripetable tbody tr:nth-of-type(2n) {
+    background: #f8f8f8;
+}
+
+.hovertable tbody tr:hover {
+    background: #eee;
+}
+
+.edit-table {
+    table-layout: fixed;
+}
+
+    .edit-table input {
+        background: transparent;
+        border: none;
+        padding: .5em;
+        margin: -.5em;
+        width: 100%;
+        display: block;
+        transition: .5s;
+        outline: 0 solid transparent;
+    }
+
+        .edit-table input:focus, .edit-table input:hover {
+            outline: 2px solid #7ad;
+            background: #fff;
+        }
+
+    /* So fucking hack */
+    .edit-table ::-ms-clear {
+        margin-left: -1.35em;
+    }
+
+td.selectbox {
+    padding: 0;
+    display: table-cell;
+}
+
+    td.selectbox select {
+        border-color: transparent;
+        padding: .4em;
+        background: transparent;
+        margin: 0;
+    }
+
+        td.selectbox select:hover, td.selectbox select:focus {
+            background: #fff;
+        }
+
+.center {
+    text-align: center;
+}
+
+    .edit-table.center input, .center .selectbox select {
+        text-align: center;
+    }
+
+/* Media queries. */
+@media screen and (min-width:0) {
+    .invisible-dismiss {
+        background: rgba(0,0,0,0);
+    }
+
+    .featured img {
+        width: 100%;
+    }
+}
+
+@media screen and (min-width:24em) {
+    .replycount {
+        float: left;
+        text-align: center;
+        width: 5em;
+        padding: .75em 0 .5em;
+        background: #eee;
+    }
+
+        .replycount span {
+            display: block;
+            font-size: 1.8em;
+            line-height: 1.25;
+        }
+
+    .post-intro {
+        margin-left: 6em;
+        overflow: hidden;
+    }
+
+    .copyright {
+        text-align: right;
+    }
+}
+
+@media screen and (min-width:36em) {
+    .header {
+        position: static;
+    }
+
+        .header h1 {
+            margin: .33em 0 0 .75em;
+            font-size: 1.5em;
+            font-weight: 100;
+        }
+
+    .notice, .user {
+        position: relative;
+    }
+
+    .notice-list {
+        width: 18em;
+    }
+
+    .username {
+        display: inline;
+    }
+
+    .submenu {
+        right: 0;
+    }
+
+    .featured, .list-2cols {
+        padding-left: 1em;
+    }
+
+        .featured li, .list-2cols li {
+            float: left;
+            width: 50%;
+            margin: .5em 0 0 1em;
+        }
+
+        .list-2cols li {
+            margin-top: 1em;
+        }
+
+            .featured li:nth-child(1), .list-2cols li:nth-child(2n+1) {
+                margin-left: -1em;
+                clear: both;
+            }
+
+        .featured a {
+            display: block;
+        }
+
+    .newsitem img {
+        float: left;
+        margin: 0 1.5em 0 0;
+    }
+}
+
+@media screen and (min-width:50em) {
+    .content {
+        margin-top: 2.4em;
+    }
+
+    .sidebar {
+        float: left;
+        width: 14.5em;
+    }
+
+    /* Container means what contains main before .sidebar */
+    .container {
+        width: 100%;
+        float: left;
+    }
+
+    /* Drop means the sidebar after container */
+    .drop {
+        margin-left: -100%;
+        padding-left: 1em;
+    }
+
+    .main {
+        margin-left: 17em;
+    }
+
+    .news .sidebar {
+        margin-bottom: 0;
+    }
+
+    .h-top {
+        margin-top: 0;
+    }
+}
+
+@media screen and (min-width:54em) {
+    .search {
+        clear: none;
+        float: right;
+        width: 15em;
+        padding: 1em;
+    }
+}
+
+/* Print styles. */
+@media print {
+    .header, .news {
+        background: transparent;
+        color: #000;
+    }
+
+    .nav, .menu-expander, .notice, .user, .search, .poster {
+        display: none;
+    }
+
+    .news a {
+        color: #26a;
+    }
+}
