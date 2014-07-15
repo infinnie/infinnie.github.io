@@ -19,83 +19,103 @@
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="content">
-            <h1>Demos</h1>
-            <h2>Basic</h2>
-            <p>A paragraph has default margins. <a href="#">Hyperlinks are like this.</a></p>
-            <p>Another paragraph.</p>
-            <h1>Header 1</h1>
-            <h2>Header 2</h2>
-            <h3>Header 3</h3>
-            <h4>Header 4</h4>
-            <h2>Buttons</h2>
-            <p>Buttons have no margins by default - but they do have paddings.</p>
-            <p>
-                <input type="button" value="Button" class="btn" />
-                <input type="button" value="Main button" class="btn btn-main" />
-                <input type="button" value="Mini button" class="btn btn-mini" />
-                Some text.
-            </p>
-            <p><input type="button" value="Block button" class="btn block-btn" /></p>
-            <p>
-                <a href="layout.html" class="btn">Link button</a>
-                <a href="#" class="btn btn-main">Main button</a>
-                <a href="#" class="btn btn-mini">Mini button</a>
-                Some text.
-            </p>
-            <p><a href="#" class="block-btn btn">Block link button</a></p>
-            <div class="btngroup">
-                <a class="btn btn-main" href="#">Link</a>
-                <a class="btn btn-main" href="#">buttons</a>
-                <a class="btn" href="#">inside</a>
-                <a class="btn" href="#">a</a>
-                <a class="btn" href="#">group.</a>
-            </div>
-            <br />
-            <div class="btngroup">
-                <a class="btn btn-mini" href="#">Mini-sized</a>
-                <a class="btn btn-mini" href="#">link</a>
-                <a class="btn btn-mini" href="#">buttons</a>
-                <a class="btn btn-mini" href="#">inside</a>
-                <a class="btn btn-mini" href="#">a</a>
-                <a class="btn btn-mini" href="#">group.</a>
-            </div>
-            <div class="btngroup-v">
-                <a class="btn" href="#">Vertical</a>
-                <a class="btn" href="#">link</a>
-                <a class="btn" href="#">buttons</a>
-                <a class="btn btn-mini" href="#">and</a>
-                <a class="btn btn-mini" href="#">mini</a>
-                <a class="btn btn-mini" href="#">buttons</a>
-                <a class="btn" href="#">inside</a>
-                <a class="btn" href="#">a</a>
-                <a class="btn" href="#">group.</a>
-            </div>
-            <h2>Form elements</h2>
-            <p><input placeholder="Styleless input" /><button class="btn">Button</button></p>
-            <div style="background:#666;display:inline-block;width:100%">
-                <div class="search">
-                    <form>
-                        <div class="extra">
-                            <label>
-                                <input placeholder="Search form" />
-                            </label>
-                        </div>
-                        <input type="submit" class="submit" />
-                    </form>
-                </div>
-            </div>
-            <h2>Layout</h2>
-            <div class="sidebar demo"><p>I am sidebar: <code class="prettycode">.sidebar</code></p></div>
-            <div class="maincontent demo">
-                <p>I am main content: <code class="prettycode">.maincontent</code></p>
+    <div class="content">
+        <div class="container">
+            <div class="main">
+                <h1>Demos</h1>
+                <p>Not done yet.</p>
+                <h2 id="basic">Basic</h2>
+                <p>A paragraph has default margins. <a href="#">Hyperlinks are like this.</a></p>
+                <p>Another paragraph.</p>
+                <h1>Header 1</h1>
+                <h2>Header 2</h2>
+                <h3>Header 3</h3>
+                <h4>Header 4</h4>
+                <h2 id="buttons">Buttons</h2>
+                <p>Buttons have no margins by default - but they do have paddings.</p>
                 <p>
-                    <code class="prettycode">.maincontent</code>,
-                    like a normal div, will cause margins collapse and will not clear floats. <button class="btn">Even another button</button>
+                    <input type="button" value="Button" class="btn" />
+                    <input type="button" value="Main button" class="btn btn-main" />
+                    <input type="button" value="Mini button" class="btn btn-mini" />
+                    Some text.
                 </p>
+                <p><input type="button" value="Block button" class="btn block-btn" /></p>
+                <p>
+                    <a href="layout.html" class="btn">Link button</a>
+                    <a href="#" class="btn btn-main">Main button</a>
+                    <a href="#" class="btn btn-mini">Mini button</a>
+                    Some text.
+                </p>
+                <p><a href="#" class="block-btn btn">Block link button</a></p>
+                <div class="btngroup">
+                    <a class="btn btn-main" href="#">Link</a>
+                    <a class="btn btn-main" href="#">buttons</a>
+                    <a class="btn" href="#">inside</a>
+                    <a class="btn" href="#">a</a>
+                    <a class="btn" href="#">group.</a>
+                </div>
+                <br />
+                <div class="btngroup">
+                    <a class="btn btn-mini" href="#">Mini-sized</a>
+                    <a class="btn btn-mini" href="#">link</a>
+                    <a class="btn btn-mini" href="#">buttons</a>
+                    <a class="btn btn-mini" href="#">inside</a>
+                    <a class="btn btn-mini" href="#">a</a>
+                    <a class="btn btn-mini" href="#">group.</a>
+                </div>
+                <div class="btngroup-v">
+                    <a class="btn" href="#">Vertical</a>
+                    <a class="btn" href="#">link</a>
+                    <a class="btn" href="#">buttons</a>
+                    <a class="btn btn-mini" href="#">and</a>
+                    <a class="btn btn-mini" href="#">mini</a>
+                    <a class="btn btn-mini" href="#">buttons</a>
+                    <a class="btn" href="#">inside</a>
+                    <a class="btn" href="#">a</a>
+                    <a class="btn" href="#">group.</a>
+                </div>
+                <h2 id="formelements">Form elements</h2>
+                <p><input placeholder="Styleless input" /><button class="btn">Button</button></p>
+                <div style="background:#666;display:inline-block;width:100%">
+                    <div class="search">
+                        <form>
+                            <div class="extra">
+                                <label>
+                                    <input placeholder="Search form" />
+                                </label>
+                            </div>
+                            <input type="submit" class="submit" />
+                        </form>
+                    </div>
+                </div>
+                <h2 id="layout">Layout</h2>
+                <div class="sidebar demo"><p>I am sidebar: <code class="prettycode">.sidebar</code></p></div>
+                <div class="main demo">
+                    <p>I am main content: <code class="prettycode">.main</code></p>
+                    <p>
+                        <code class="prettycode">.main</code>,
+                        like a normal div, will cause margins collapse and will not clear floats. <button class="btn">Even another button</button>
+                    </p>
+                </div>
+                <p><code class="prettycode">Hello world</code> is the universal language among programmers.</p>
             </div>
-            <p><code class="prettycode">Hello world</code> is the universal language among programmers.</p>
+            <div class="sidebar">
+                <a href="https://github.com/infinnie" class="btn block-btn btn-main">Follow me me on GitHub</a>
+                <ul class="slist">
+                    <li>
+                        <a href="#basic">Basic</a>
+                    </li>
+                    <li>
+                        <a href="#buttons">Buttons</a>
+                    </li>
+                    <li>
+                        <a href="#formelements">Form elements</a>
+                    </li>
+                    <li>
+                        <a href="#layout">Layout</a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
     <script src="/js/jquery-1.8.0.min.js"></script>
