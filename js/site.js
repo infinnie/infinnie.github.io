@@ -6,8 +6,8 @@
         var temp = $($(this).attr("data-turnon")).addClass("ui-on").trigger("turnon.ui").get(0);
         temp && temp.focus();
         e.preventDefault();
-    }).on("click", "[data-role=dismiss]", function (e) {
-        $(this).parents(".ui-on").first().removeClass("ui-on").trigger("turnoff.ui");
+    }).on("click", "[data-dismiss]", function (e) {
+        $($(this).attr("data-dismiss")).removeClass("ui-on").trigger("turnoff.ui");
         e.preventDefault();
     }).on("keyup", function (e) {
         if (27 === e.keyCode) {

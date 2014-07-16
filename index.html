@@ -23,6 +23,23 @@
 <body>
     <div class="content">
         <div class="container">
+            <div class="sidebar">
+                <a href="https://github.com/infinnie" class="btn block-btn btn-main">Follow me on GitHub</a>
+                <ul class="slist">
+                    <li>
+                        <a href="#basic">Basic</a>
+                    </li>
+                    <li>
+                        <a href="#buttons">Buttons</a>
+                    </li>
+                    <li>
+                        <a href="#formelements">Form elements</a>
+                    </li>
+                    <li>
+                        <a href="#layout">Layout</a>
+                    </li>
+                </ul>
+            </div>
             <div class="main">
                 <h1>Demos</h1>
                 <p>This is an abandoned project and will probably <em>never</em> be maintained.</p>
@@ -110,24 +127,18 @@
                     </p>
                 </div>
                 <p><code class="prettycode">Hello world</code> is the universal language among programmers.</p>
+                <h2 id="dialogs">Dialogs</h2>
+                <a class="btn btn-main" href="#" data-turnon="#mydialog">Toggle dialog</a>
             </div>
         </div>
-        <div class="sidebar drop">
-            <a href="https://github.com/infinnie" class="btn block-btn btn-main">Follow me on GitHub</a>
-            <ul class="slist">
-                <li>
-                    <a href="#basic">Basic</a>
-                </li>
-                <li>
-                    <a href="#buttons">Buttons</a>
-                </li>
-                <li>
-                    <a href="#formelements">Form elements</a>
-                </li>
-                <li>
-                    <a href="#layout">Layout</a>
-                </li>
-            </ul>
+
+    </div>
+    <div class="dialog-container" id="mydialog">
+        <div class="dialog">
+            <h2><button type="button" class="close" data-dismiss="#mydialog">&times;</button>Dialog header</h2>
+            <div class="dialog-body">
+                <p>Say hello to the world!</p>
+            </div>
         </div>
     </div>
     <script src="/js/jquery-1.8.0.min.js"></script>
