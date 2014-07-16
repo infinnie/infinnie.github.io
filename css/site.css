@@ -900,16 +900,16 @@ td.selectbox {
 /* Dialogs */
 .dialog-container {
     background: rgba(50,50,50,.6);
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    min-height: 100vh;
     visibility: hidden;
     transition: .5s;
     opacity: 0;
     z-index: 1;
+    overflow: auto;
 }
 
     .dialog-container.ui-on {
@@ -949,7 +949,7 @@ td.selectbox {
     z-index: 1;
 }
 
-.dialog .close {
+.close {
     border: none;
     background: transparent;
     width: 1.2em;
@@ -963,12 +963,13 @@ td.selectbox {
     color: #fff;
 }
 
-    .close-dialog:hover, .close-dialog:focus {
+    .close:hover, .close:focus {
         background: #d33;
     }
 
 .dialog-body {
-    margin: 4em 1.25em;
+    margin: 3em 0 0;
+    padding: 1.25em;
 }
 
 /* Media queries. */
