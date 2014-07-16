@@ -15,7 +15,7 @@ body {
 }
 
 body, input, button, select, textarea {
-    font: 100%/1.5 "Segoe UI",Arial,sans-serif;
+    font: 100%/1.5 "Segoe WP","Segoe UI",Arial,sans-serif;
 }
 
 pre, code {
