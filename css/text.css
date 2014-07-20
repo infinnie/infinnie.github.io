@@ -1,0 +1,201 @@
+﻿@-ms-viewport {
+    width: device-width;
+}
+
+/* #region Font sizes */
+html {
+    font-size: 125%;
+}
+
+.source, .caption, .credits, .menu-btn, .menulist {
+    font-size: 80%;
+}
+
+blockquote {
+    font-size: 100%;
+}
+
+body, input, button, select {
+    font: 100%/1.5 "Segoe UI","Open Sans","Droid Sans",Arial,sans-serif;
+}
+/*#endregion*/
+/*#region basic*/
+html, body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    color: #333;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: #26a;
+}
+
+    a:hover, a:focus {
+        text-decoration: underline;
+    }
+
+img, video {
+    border: none;
+    max-width: 100%;
+    height: auto;
+}
+/*#endregion*/
+
+.header {
+    margin-top: 1.5em;
+}
+
+    .header h1 {
+        font-size: 160%;
+        line-height: 1.4;
+        margin: .1em 0;
+    }
+
+    .header h2 {
+        font-size: 140%;
+        margin: 0 0 .5em;
+        font-weight: normal;
+        color: #888;
+        font-family: "Segoe UI Light","Segoe WP","Segoe UI","Open Sans",Arial,sans-serif;
+        font-weight: 100;
+    }
+
+.container {
+    width: 90%;
+    max-width: 35em;
+    margin: 0 auto;
+}
+
+.contentbox {
+    position: relative;
+}
+
+    .contentbox h2 {
+        margin: 1.5em 0 0;
+    }
+
+    .contentbox ul {
+        list-style: disc;
+    }
+
+    .contentbox ::-moz-list-bullet {
+        font-size: 70%;
+        margin-right: 3px;
+    }
+
+    .contentbox table {
+        width: 100%;
+        border-collapse: collapse;
+        border-bottom: hidden;
+    }
+
+    .contentbox td, .contentbox th {
+        text-align: left;
+        border-bottom: 1px solid #ccc;
+        padding: .2em .5em;
+    }
+
+.deftable th {
+    color: #888;
+    font-weight: normal;
+}
+
+blockquote {
+    margin: 1.5em 0 .5em;
+    border-left: .2em solid #7ad;
+    padding-left: 1.5em;
+    color: #666;
+}
+
+.source {
+    color: #666;
+    margin: 0 0 2em;
+    text-align: right;
+}
+
+    .source:before {
+        content: "— ";
+        color: #aaa;
+    }
+
+.sec:before, .sec:after, .figure:before, .figure:after {
+    content: "\a0";
+    display: block;
+    visibility: hidden;
+    overflow: hidden;
+    height: 0;
+}
+
+.sec:after {
+    border-bottom: 1px solid #ddd;
+    visibility: visible;
+    width: 3em;
+    margin-top: 2.5em;
+}
+
+.figure {
+    margin: 2em 0;
+    overflow-x: auto;
+}
+
+    .figure img {
+        display: block;
+    }
+
+.caption, .textcomment {
+    color: #888;
+}
+
+.credits {
+    color: #999;
+    text-align: right;
+    margin: 2em 3em;
+}
+
+@media screen and (min-width:50em) {
+    .header h1 {
+        font-size: 250%;
+    }
+
+    .header h2 {
+        font-size: 150%;
+    }
+
+    blockquote {
+        margin-left: -1.7em;
+    }
+}
+
+@media screen and (min-width:75em) {
+    .figure {
+        position: relative;
+        overflow-x: visible;
+    }
+
+    .caption {
+        position: absolute;
+        width: 12em;
+        right: 100%;
+        top: 0;
+        margin-right: 2em;
+        text-align: right;
+    }
+
+        .caption:before {
+            border-top: 1px solid #ddd;
+            display: block;
+            content: "";
+            width: 4em;
+            margin: 0 0 1em auto;
+        }
+}
