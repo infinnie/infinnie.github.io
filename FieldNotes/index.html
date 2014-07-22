@@ -101,9 +101,10 @@
             var videos = $("video");
             function f(cnt) {
                 if (cnt >= videos.length) return;
-                videos.eq(cnt).on("canplay abort", function () {
+                videos.eq(cnt).on("loadedmetadata abort", function () {
                     // alert(1);
                     f(cnt + 1);
+                    $(this).off("loadedmetadata abort");
                 }).prop("src", function () {
                     return $(this).attr("data-src");
                 });
