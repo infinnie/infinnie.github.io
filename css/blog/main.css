@@ -1,0 +1,330 @@
+﻿/* fonts */
+@font-face {
+    font-family: "_Segoe";
+    src: local("Segoe UI");
+}
+
+@font-face {
+    font-family: "_Segoe";
+    src: local("Segoe UI Italic"),local("Segoe UI");
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "_Segoe";
+    src: local("Segoe UI Light"),local("Segoe WP Light"),local("Segoe UI Semilight"),local("Segoe UI");
+    font-weight: 100;
+}
+
+@font-face {
+    font-family: "_Segoe";
+    src: local("Segoe UI Light Italic"),local("Segoe UI Italic"),local("Segoe UI Light");
+    font-weight: 100;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "_Segoe";
+    src: local("Segoe UI Semilight"),local("Segoe WP Semilight"),local("Segoe UI");
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: "_Segoe";
+    src: local("Segoe UI Semilight Italic"),local("Segoe UI Italic"),local("Segoe UI Semilight"),local("Segoe UI");
+    font-weight: 300;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "_Segoe";
+    src: local("Segoe UI Semibold"),local("Segoe WP Semibold"),local("Segoe UI");
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: "_Segoe";
+    src: local("Segoe UI Semibold Italic"),local("Segoe UI Bold Italic"),local("Segoe UI Semibold"),local("Segoe UI");
+    font-weight: 600;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "_Segoe";
+    src: local("Segoe UI Bold"),local("Segoe UI");
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: "_Segoe";
+    src: local("Segoe UI Bold Italic"),local("Segoe UI");
+    font-weight: 700;
+    font-style: italic;
+}
+
+@-ms-viewport {
+    width: device-width;
+}
+
+body, input, button, select {
+    font: 100%/1.5 "_Segoe","Segoe UI","Avenir next",Arial,sans-serif;
+    color: #333;
+    -webkit-font-feature-settings: "dlig" 1,"kern" 1;
+    font-feature-settings: "dlig" 1,"kern" 1;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: #369;
+}
+
+img {
+    border: none;
+    height: auto;
+}
+
+pre, code {
+    font-family: Consolas,"Source Code Pro",Menlo,"Lucida Console",monospace;
+    background: #f3f3f3;
+    -webkit-font-feature-settings: normal;
+    font-feature-settings: normal;
+    letter-spacing: 0;
+}
+
+code {
+    padding: 0 .25em;
+}
+
+pre {
+    padding: 1em 1.25em;
+    line-height: 1.5;
+    overflow-x: auto;
+}
+
+.image-overlay {
+    position: fixed;
+    z-index: -1;
+    width: 100%;
+    height: 15em;
+    top: 0;
+    left: 0;
+    background: url("/images/background.jpg") top center no-repeat;
+    background-size: cover;
+}
+
+.page-content {
+    position: relative;
+    z-index: 0;
+    background: rgba(30,30,30,.25);
+}
+
+.container {
+    max-width: 45em;
+    padding: 0 1em;
+    margin: 0 auto;
+}
+
+    .container:before, .content:before, .container:after {
+        content: "";
+        display: block;
+        height: 0;
+        overflow: hidden;
+        visibility: hidden;
+        clear: both;
+    }
+
+.header {
+    padding-top: 2em;
+}
+
+    .header, .header a {
+        color: #fff;
+    }
+
+.menu-btn {
+    float: right;
+    padding-left: 1em;
+    opacity: .7;
+    display: none;
+}
+
+    .menu-btn:before {
+        content: "\2261";
+        font-family: "Lucida Sans Unicode",sans-serif;
+        font-size: 2em;
+    }
+
+    .menu-btn:hover, .menu-btn:focus {
+        opacity: 1;
+    }
+
+.has-matchmedia .menu-btn {
+    display: block;
+}
+
+.page-title {
+    margin: 0 0 .25em;
+    padding: .32em 0;
+    font: 300 160%/1.25 "_Segoe","Segoe UI Semilight","Segoe WP Semilight","Segoe UI Light","Avenir Next","Segoe UI",Arial,sans-serif;
+    opacity: .7;
+    transition: opacity .3s;
+    overflow: hidden;
+}
+
+    .page-title:hover {
+        opacity: 1;
+    }
+
+.menu-list {
+    margin: 0 0 0 -1em;
+    padding: 0;
+    list-style: none;
+    line-height: 2.5;
+    clear: right;
+}
+
+    .menu-list li {
+        margin: 0;
+    }
+
+    .menu-list a {
+        padding: 0 .45em 0 1em;
+        transition: border .3s, padding-left .3s;
+        display: block;
+        border-left: 0 solid #fff;
+        border-color: rgba(255,255,255,.2);
+    }
+
+        .menu-list a:hover, .menu-list a:focus, .menu-list .current-item a {
+            border-left-width: .4em;
+            padding-left: .6em;
+        }
+
+.content {
+    background: #fff;
+    min-height: 15em;
+}
+
+.has-matchmedia .content {
+    -webkit-transition: -webkit-transform .2s cubic-bezier(.3,.75,.7,1.25);
+    transition: transform .2s cubic-bezier(.3,.75,.7,1.25);
+}
+
+.content-main {
+    font-size: 125%;
+    padding: .5em 0;
+}
+
+    .content-main a:hover {
+        text-decoration: underline;
+    }
+
+.article-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.article-item {
+    border-top: 1px solid #ddd;
+    padding: 1.5em 0;
+    margin: 0;
+}
+
+    .article-item:first-child {
+        border: none;
+    }
+
+    .article-item h2 {
+        font: 100 1.4em/1.2 "_Segoe","Segoe UI Light","Segoe WP Light","Avenir Next","Segoe WP","Segoe UI",Arial,sans-serif;
+        margin: 0;
+    }
+
+        .article-item h2 a {
+            color: #333;
+        }
+
+            .article-item h2 a:hover {
+                text-decoration: none;
+                color: #888;
+            }
+
+    .article-item p {
+        margin: .4em 0 0;
+        font-weight: 300;
+        font-family: "_Segoe","Segoe UI Semilight","Segoe WP Semilight","Avenir Next","Segoe UI",Arial,sans-serif;
+    }
+
+    .article-item .datetime {
+        color: #888;
+        font: 400 80%/1.5 "_Segoe","Segoe UI","Avenir next",Arial,sans-serif;
+    }
+
+.footer {
+    padding: 0 1em;
+    color: #888;
+}
+
+    .footer .container {
+        border-top: 1px solid #ddd;
+        padding: 1.25em 0 2em;
+    }
+
+    .footer p {
+        margin: 0;
+    }
+
+    .footer a:hover {
+        text-decoration: underline;
+    }
+
+@media screen and (min-width:40em) {
+    .header {
+        padding-top: 4.5em;
+    }
+
+    .has-matchmedia .menu-btn {
+        display: none;
+    }
+
+    .page-title {
+        float: left;
+        font-size: 2em;
+        line-height: 1.2;
+        padding: .1em 0;
+    }
+
+    .menu-list {
+        float: right;
+        line-height: 3;
+    }
+
+        .menu-list li {
+            margin: 0 0 0 .7em;
+            float: left;
+        }
+
+        .menu-list a {
+            padding: .1em .45em .4em;
+            transition: box-shadow .3s;
+        }
+
+            .menu-list a:hover, .menu-list a:focus, .menu-list .current-item a {
+                border-left: none;
+                box-shadow: inset 0 -6px rgba(255,255,255,.2);
+                padding-left: .45em;
+            }
+
+    .has-matchmedia .content {
+        transition: 0s;
+    }
+
+    .content-main {
+        padding: 1em 0;
+    }
+}

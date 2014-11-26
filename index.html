@@ -1,153 +1,48 @@
 ﻿<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>Layout demo~</title>
+    <title>Not ready yet</title>
+    <meta name="x-ua-compatible" content="ie=edge" />
     <meta name="viewport" content="width=device-width" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" href="/css/site.css" />
-    <style>
-        .demo {
-            background: #eee;
-            padding: 1px;
-        }
-
-        .prettycode {
-            padding: 0 .3em;
-            background: #fff;
-            border: 1px solid #ddd;
-            border-radius: 3px;
-            margin: 0 .2em;
-        }
-    </style>
+    <link rel="stylesheet" href="/css/blog/main.css" />
 </head>
 <body>
-    <div class="content">
-        <div class="container">
-            <div class="sidebar">
-                <a href="https://github.com/infinnie" class="btn block-btn btn-main">Follow me on GitHub</a>
-                <ul class="slist">
-                    <li>
-                        <a href="#basic">Basic</a>
-                    </li>
-                    <li>
-                        <a href="#buttons">Buttons</a>
-                    </li>
-                    <li>
-                        <a href="#formelements">Form elements</a>
-                    </li>
-                    <li>
-                        <a href="#layout">Layout</a>
-                    </li>
+    <div class="image-overlay"></div>
+    <div class="page-content">
+        <div class="header">
+            <div class="container">
+                <a href="#" id="menuBtn" class="menu-btn"></a>
+                <h1 class="page-title"><a href="/">Not ready yet</a></h1>
+                <ul class="menu-list" id="menuList">
+                    <li class="current-item"><a href="/">Home</a></li>
+                    <li><a href="/ui-demo/">Old version</a></li>
                 </ul>
             </div>
-            <div class="main">
-                <h1>Demos</h1>
-                <p>This is an abandoned project. Existing features might get maintained, modified or removed, but NO new features would be added.</p>
-                <h2 id="basic">Basic</h2>
-                <p>A paragraph has default margins. <a href="#">Hyperlinks are like this.</a></p>
-                <p>Another paragraph.</p>
-                <h1>Header 1</h1>
-                <h2>Header 2</h2>
-                <h3>Header 3</h3>
-                <h4>Header 4</h4>
-                <h2 id="buttons">Buttons</h2>
-                <p>Buttons have no margins by default - but they do have paddings.</p>
-                <p>
-                    <input type="button" value="Button" class="btn" />
-                    <input type="button" value="Main button" class="btn btn-main" />
-                    <input type="button" value="Mini button" class="btn btn-mini" />
-                    Some text.
-                </p>
-                <p><input type="button" value="Block button" class="btn block-btn" /></p>
-                <p>
-                    <a href="layout.html" class="btn">Link button</a>
-                    <a href="#" class="btn btn-main">Main button</a>
-                    <a href="#" class="btn btn-mini">Mini button</a>
-                    Some text.
-                </p>
-                <p><a href="#" class="block-btn btn">Block link button</a></p>
-                <p>Buttons can also be grouped like below.</p>
-                <div class="btngroup">
-                    <a class="btn btn-main" href="#">Link</a>
-                    <a class="btn btn-main" href="#">buttons</a>
-                    <a class="btn" href="#">inside</a>
-                    <a class="btn" href="#">a</a>
-                    <a class="btn" href="#">group.</a>
+        </div>
+        <div class="content" id="bodyContent">
+            <div class="container">
+                <div class="content-main">
+                    <ul class="article-list">
+                        <li class="article-item">
+                            <h2><a href="/blog/online.html">Hey, my blog is now online.</a></h2>
+                            <p>
+                                Things are almost done.
+                            </p>
+                            <p class="datetime">Posted on Nov. 26, 2014</p>
+                        </li>
+                    </ul>
                 </div>
-                <br />
-                <div class="btngroup">
-                    <a class="btn btn-mini" href="#">Mini-sized</a>
-                    <a class="btn btn-mini" href="#">link</a>
-                    <a class="btn btn-mini" href="#">buttons</a>
-                    <a class="btn btn-mini" href="#">inside</a>
-                    <a class="btn btn-mini" href="#">a</a>
-                    <a class="btn btn-mini" href="#">group.</a>
-                </div>
-                <div class="btngroup-v">
-                    <a class="btn" href="#">Vertical</a>
-                    <a class="btn" href="#">link</a>
-                    <a class="btn" href="#">buttons</a>
-                    <a class="btn btn-mini" href="#">and</a>
-                    <a class="btn btn-mini" href="#">mini</a>
-                    <a class="btn btn-mini" href="#">buttons</a>
-                    <a class="btn" href="#">inside</a>
-                    <a class="btn" href="#">a</a>
-                    <a class="btn" href="#">group.</a>
-                </div>
-                <p>Button classes can also be used for pagination.</p>
-                <div class="content">
-                    <div class="btngroup fr">
-                        <span class="btn btn-main">1</span>
-                        <a href="#" class="btn">2</a>
-                        <a href="#" class="btn">3</a>
-                        <a href="#" class="btn">Next</a>
-                    </div>
-                </div>
-                <h2 id="formelements">Form elements</h2>
-                <p><input placeholder="Styleless input" /><button class="btn">Button</button></p>
-                <div style="background:#666;display:inline-block;width:100%">
-                    <div class="search">
-                        <form>
-                            <div class="extra">
-                                <label>
-                                    <input placeholder="Search form" />
-                                </label>
-                            </div>
-                            <input type="submit" class="submit" />
-                        </form>
-                    </div>
-                </div>
-                <h2 id="layout">Layout</h2>
-                <div class="sidebar demo"><p>I am sidebar: <code class="prettycode">.sidebar</code></p></div>
-                <div class="main demo">
-                    <p>I am main content: <code class="prettycode">.main</code></p>
-                    <p>
-                        <code class="prettycode">.main</code>,
-                        like a normal div, will cause margins collapse and will not clear floats. <button class="btn">Even another button</button>
-                    </p>
-                </div>
-                <p><code class="prettycode">Hello world</code> is the universal language among programmers.</p>
-                <h2 id="dialogs">Dialogs</h2>
-                <p>
-                    <a class="btn btn-main" href="#" data-turnon="#mydialog">Toggle dialog</a>
-                </p>
             </div>
-        </div>
-    </div>
-    <div class="footer">
-        <div class="content">
-            <p class="copyright">&copy; <a href="https://github.com/infinnie">Infinnie</a> (also on <a href="https://plus.google.com/+JingqiXie?rel=author">Google+</a>) &hearts; GitHub.</p>
-        </div>
-    </div>
-    <div class="dialog-container" id="mydialog">
-        <div class="dialog">
-            <h2><button type="button" class="close" data-dismiss="#mydialog">&times;</button>Dialog header</h2>
-            <div class="dialog-body">
-                <p>Say hello to the world!</p>
+            <div class="footer">
+                <div class="container">
+                    Find me elsewhere: <a href="https://github.com/infinnie">GitHub</a>
+                    &middot; <a href="http://weibo.com/sky14way">Sina Weibo</a>
+                    &middot; <a href="https://plus.google.com/+JingqiXie">Google+</a>
+                </div>
             </div>
         </div>
     </div>
     <script src="/js/jquery-1.8.0.min.js"></script>
-    <script src="/js/site.js"></script>
+    <script src="/js/blog/header.js"></script>
 </body>
 </html>

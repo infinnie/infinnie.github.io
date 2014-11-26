@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Hey, my blog is now online &mdash; Not ready yet</title>
+    <meta name="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="/css/blog/main.css" />
+    <link rel="stylesheet" href="/css/blog/article.css" />
+    <link rel="stylesheet" href="/css/blog/zoom.css" />
+</head>
+<body>
+    <div class="image-overlay"></div>
+    <div class="page-content">
+        <div class="header">
+            <div class="container">
+                <a href="#" id="menuBtn" class="menu-btn"></a>
+                <h1 class="page-title"><a href="/">Not ready yet</a></h1>
+                <ul class="menu-list" id="menuList">
+                    <li class="current-item"><a href="/">Home</a></li>
+                    <li><a href="/ui-demo/">Old version</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="content" id="bodyContent">
+            <div class="container">
+                <div class="content-main">
+                    <div class="title-box">
+                        <h1>Hey, my blog is now online.</h1>
+                        <h2>Things are almost done.</h2>
+                    </div>
+                    <div class="article-content">
+                        <p>
+                            If published tonight, it would be my first article blogged here.
+                            This blog contains many things I feel good and useful,
+                            and I might later write articles about the techniques I have used here.
+                        </p>
+                    </div>
+                    <div class="article-content">
+                        <h2>What I might write</h2>
+                        <h3>Images &mdash; figures, zooming &amp; captions</h3>
+                        <!--<img src="/images/background.jpg" alt="Image" data-zoom="true" data-size="[1366,360]" />-->
+                        <figure class="figure figure-outset-left">
+                            <noscript data-src-small="/images/background.jpg" data-alt="Image" data-zoom="true" data-size-small="[1366,360]" data-role="image-container">
+                                <img src="/images/background.jpg" alt="Image" />
+                            </noscript>
+                            <figcaption class="caption">Figure caption</figcaption>
+                        </figure>
+                        <p>
+                            Left is a demo image (the same as the one used as header background).
+                            Image zooming is fast and fluid, and you can try to zoom it in and out.
+                        </p>
+                        <p>There&rsquo;re 4 different kinds of figures, but the one demonstrated is only one of the four.</p>
+                        <h3>Typography</h3>
+                        <p>
+                            How to use <code>@font-face</code> to correctly refer to local fonts,
+                            and how the <code>font-feature-settings</code> CSS property works
+                            &mdash; which I am not myself clear about.
+                        </p>
+                    </div>
+                    <div class="article-content">
+                        <h2>What&rsquo;s yet to be done</h2>
+                        <p>I am going to place a share button in article pages.</p>
+                        <p>
+                            I would also have to manually maintain every page,
+                            and have no plan to generate the pages automatically yet.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer">
+                <div class="container">
+                    Find me elsewhere: <a href="https://github.com/infinnie">GitHub</a>
+                    &middot; <a href="http://weibo.com/sky14way">Sina Weibo</a>
+                    &middot; <a href="https://plus.google.com/+JingqiXie">Google+</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/js/jquery-1.8.0.min.js"></script>
+    <script src="/js/blog/header.js"></script>
+    <script src="/js/blog/image.js"></script>
+    <script>
+        jQuery(function ($) {
+            $("[data-zoom=true]").zoomable();
+        });
+    </script>
+</body>
+</html>

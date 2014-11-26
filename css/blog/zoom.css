@@ -1,0 +1,42 @@
+﻿.zoomable, .zoom-overlay {
+    cursor: pointer;
+}
+
+.zoom-hidden {
+    visibility: hidden;
+}
+
+.zoom-overlay, .zoom-overlay-bg {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transition: .4s ease-out .05s;
+}
+
+.zoom-overlay {
+    position: absolute;
+    z-index: 1;
+    visibility: hidden;
+}
+
+    .zoom-overlay img {
+        transition: .4s;
+        position: absolute;
+        z-index: 1;
+        -webkit-transform: translateZ(0);
+    }
+
+.zoomed .zoom-overlay {
+    visibility: visible;
+}
+
+.zoom-overlay-bg {
+    position: fixed;
+    background: #fff;
+    opacity: 0;
+}
+
+.zoomed .zoom-overlay-bg {
+    opacity: 1;
+}
