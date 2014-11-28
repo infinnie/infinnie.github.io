@@ -10,6 +10,7 @@
         font-size: 200%;
         font-weight: 700;
         line-height: 1.1;
+        letter-spacing: -.01rem;
     }
 
     .title-box h2, .article-content h3 {
@@ -17,34 +18,26 @@
         color: #888;
     }
 
-.article-content {
-    letter-spacing: .1px;
+.article-content:before, .article-content:after {
+    content: "";
+    overflow: hidden;
+    visibility: hidden;
+    display: block;
+    clear: both;
+    padding: .5em 0 0;
 }
 
-    .article-content:before, .article-content:after {
-        content: "";
-        overflow: hidden;
-        visibility: hidden;
-        display: block;
-        clear: both;
-        padding: .5em 0 0;
-    }
-
-    .article-content:before {
-        visibility: visible;
-        border-top: 1px solid #ddd;
-        margin: 1em 0 1.8em;
-        width: 4em;
-    }
+.article-content:before {
+    visibility: visible;
+    border-top: 1px solid #ddd;
+    margin: 1em 0 1.8em;
+    width: 4em;
+}
 
 .title-box + .article-content:before {
     visibility: hidden;
     margin: 0;
     border: 0;
-}
-
-.article-content h1, .article-content h3 {
-    letter-spacing: normal;
 }
 
 .article-content h2 {

@@ -89,7 +89,7 @@ img {
 }
 
 pre, code {
-    font-family: Consolas,"Source Code Pro",Menlo,"Lucida Console",monospace;
+    font-family: Consolas,"Source Code Pro",Menlo,"Courier New",monospace;
     background: #f3f3f3;
     -webkit-font-feature-settings: normal;
     font-feature-settings: normal;
