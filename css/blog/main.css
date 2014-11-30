@@ -67,7 +67,7 @@
 }
 
 body, input, button, select {
-    font: 100%/1.5 "_Segoe","Segoe UI","Avenir next",Arial,sans-serif;
+    font: 100%/1.5 "_Segoe","Segoe UI",Seravek,"Avenir next",Arial,sans-serif;
     color: #333;
     -webkit-font-feature-settings: "dlig" 1,"kern" 1;
     font-feature-settings: "dlig" 1,"kern" 1;
@@ -170,7 +170,7 @@ pre {
 .page-title {
     margin: 0 0 .25em;
     padding: .32em 0;
-    font: 300 160%/1.25 "_Segoe","Segoe UI Semilight","Segoe WP Semilight","Segoe UI Light","Avenir Next","Segoe UI",Arial,sans-serif;
+    font: 300 160%/1.25 "_Segoe","Segoe UI Semilight","Segoe WP Semilight","Segoe UI Light",Seravek,"Avenir Next","Segoe UI",Arial,sans-serif;
     opacity: .7;
     transition: opacity .3s;
     overflow: hidden;
@@ -241,7 +241,7 @@ pre {
     }
 
     .article-item h2 {
-        font: 100 1.4em/1.2 "_Segoe","Segoe UI Light","Segoe WP Light","Avenir Next","Segoe WP","Segoe UI",Arial,sans-serif;
+        font: 100 1.4em/1.2 "_Segoe","Segoe UI Light","Segoe WP Light",Seravek,"Avenir Next","Segoe WP","Segoe UI",Arial,sans-serif;
         margin: 0;
     }
 
@@ -257,12 +257,11 @@ pre {
     .article-item p {
         margin: .4em 0 0;
         font-weight: 300;
-        font-family: "_Segoe","Segoe UI Semilight","Segoe WP Semilight","Avenir Next","Segoe UI",Arial,sans-serif;
     }
 
     .article-item .datetime {
         color: #888;
-        font: 400 80%/1.5 "_Segoe","Segoe UI","Avenir next",Arial,sans-serif;
+        font: 400 80%/1.5 "_Segoe","Segoe UI",Seravek,"Avenir next",Arial,sans-serif;
     }
 
 .footer {
