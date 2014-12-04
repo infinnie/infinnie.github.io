@@ -29,7 +29,7 @@ $(function () {
         if (current !== null) {
             current = null;
             $(body).removeClass("zoomed");
-            img.css("transform", "translateZ(0)");
+            img.css("WebkitTransform","translatez(0)").css("transform", "translateZ(0)");
             setTimeout(function () {
                 if (img) {
                     img.remove();
