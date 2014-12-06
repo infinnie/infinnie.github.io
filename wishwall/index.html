@@ -1,0 +1,449 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>The wish wall</title>
+    <meta name="viewport" content="width=device-width" />
+    <style>
+        @font-face {
+            font-family: "_Segoe";
+            src: local("Segoe UI");
+        }
+
+        @font-face {
+            font-family: "_Segoe";
+            src: local("Segoe UI Italic"),local("Segoe UI");
+            font-style: italic;
+        }
+
+        @font-face {
+            font-family: "_Segoe";
+            src: local("Segoe UI Light"),local("Segoe UI Semilight"),local("Segoe UI");
+            font-weight: 100;
+        }
+
+        @font-face {
+            font-family: "_Segoe";
+            src: local("Segoe UI Light Italic"),local("Segoe UI Italic"),local("Segoe UI Light");
+            font-weight: 100;
+            font-style: italic;
+        }
+
+        @font-face {
+            font-family: "_Segoe";
+            src: local("Segoe UI Semilight"),local("Segoe UI Light"),local("Segoe UI");
+            font-weight: 300;
+        }
+
+        @font-face {
+            font-family: "_Segoe";
+            src: local("Segoe UI Semilight Italic"),local("Segoe UI Light Italic"),local("Segoe UI Italic"),local("Segoe UI Semilight"),local("Segoe UI");
+            font-weight: 300;
+            font-style: italic;
+        }
+
+        @font-face {
+            font-family: "_Segoe";
+            src: local("Segoe UI Semibold"),local("Segoe UI Bold"),local("Segoe UI");
+            font-weight: 600;
+        }
+
+        @font-face {
+            font-family: "_Segoe";
+            src: local("Segoe UI Semibold Italic"),local("Segoe UI Bold Italic"),local("Segoe UI Semibold"),local("Segoe UI");
+            font-weight: 600;
+            font-style: italic;
+        }
+
+        @font-face {
+            font-family: "_Segoe";
+            src: local("Segoe UI Bold"),local("Segoe UI");
+            font-weight: 700;
+        }
+
+        @font-face {
+            font-family: "_Segoe";
+            src: local("Segoe UI Bold Italic"),local("Segoe UI");
+            font-weight: 700;
+            font-style: italic;
+        }
+
+        @-ms-viewport {
+            width: device-width;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        body, input, button, select {
+            font: 100%/1.5 "_Segoe","Segoe UI","Microsoft YaHei",Arial,sans-serif;
+        }
+
+        img {
+            height: auto;
+            border: none;
+        }
+
+        .image-cover, .blur-cover {
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+        }
+
+        .image-cover {
+            position: relative;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        .blur-cover-middle {
+            margin: 25vh 0 0;
+        }
+
+        .blur-overlay {
+            background: rgba(0,0,0,.15);
+            color: #fff;
+            font-size: 160%;
+            font-weight: 300;
+            padding: 1em;
+        }
+
+            .blur-overlay p {
+                margin: .75em 0;
+            }
+
+        .container {
+            max-width: 48em;
+            margin: 0 auto;
+        }
+
+        .blur-overlay .container {
+            max-width: 30em;
+        }
+
+        .title, .subtitle {
+            margin: 0;
+            font-weight: 100;
+        }
+
+        .title {
+            font-size: 2em;
+        }
+
+        .subtitle {
+            font-size: 1.4em;
+            margin-top: .2em;
+        }
+
+        .wishwall {
+            margin-bottom: 8em;
+        }
+
+        .gallery {
+            overflow-y: hidden;
+            overflow-x: auto;
+            list-style: none;
+            margin: 1em 0 .5em;
+            padding: 0;
+        }
+
+            .gallery li {
+                margin: 0;
+            }
+
+            .gallery a {
+                color: #fff;
+                text-decoration: none;
+                display: block;
+                position: relative;
+                line-height: 1.4;
+            }
+
+            .gallery img {
+                width: 100%;
+                display: block;
+            }
+
+            .gallery p {
+                margin: 0 0 .2em;
+            }
+
+        .gallery-caption {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,.3);
+            padding: 1.5em;
+            /*font-size: 79%;*/
+            transition: opacity .3s;
+            overflow: hidden;
+        }
+
+        .gallery a:hover .gallery-caption {
+            opacity: 0;
+        }
+
+        .gallery-link-hidden {
+            visibility: hidden;
+        }
+
+            .gallery-link-hidden .gallery-caption {
+                opacity: 0;
+            }
+
+        .footer {
+            background: #fff;
+            padding: 2em;
+            text-align: center;
+        }
+
+        .footer-quote {
+            margin: 0;
+            font-size: 1.75em;
+            font-weight: 300;
+            padding: .2em 0 1.2em;
+        }
+
+            .footer-quote p {
+                margin: 0;
+            }
+
+            .footer-quote .title {
+                line-height: 1.1;
+                margin: .2em 0;
+            }
+
+        .footer-credit {
+            color: #888;
+            border-top: 1px solid #ddd;
+            padding: 1.5em 0 0;
+            margin: 0;
+        }
+
+        .zoom-overlay, .zoom-overlay-bg {
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            transition: .4s ease-out .05s;
+        }
+
+        .zoom-overlay {
+            position: absolute;
+            z-index: 1;
+            visibility: hidden;
+        }
+
+            .zoom-overlay img {
+                transition: .4s;
+                position: absolute;
+                z-index: 1;
+                -webkit-transform: translateZ(0);
+            }
+
+        .zoomed .zoom-overlay {
+            visibility: visible;
+        }
+
+        .zoom-overlay-bg {
+            position: fixed;
+            background: #fff;
+            opacity: 0;
+        }
+
+        .zoomed .zoom-overlay-bg {
+            opacity: 1;
+        }
+
+        @media screen and (min-width:45em) {
+            .gallery {
+                margin-right: -1em;
+                margin-top: 0;
+            }
+
+                .gallery li {
+                    width: 50%;
+                    float: left;
+                    margin-top: 1em;
+                }
+
+                    .gallery li:nth-child(2n+1) {
+                        clear: both;
+                    }
+
+                .gallery a {
+                    margin-right: 1em;
+                }
+
+            .gallery-caption {
+                padding: 10%;
+                font-size: 89%;
+            }
+        }
+
+        @media screen and (min-width:75em) {
+            .gallery li {
+                width: 33.3%;
+            }
+
+                .gallery li:nth-child(2n+1) {
+                    clear: none;
+                }
+
+                .gallery li:nth-child(3n+1) {
+                    clear: both;
+                }
+
+            .gallery-caption {
+                font-size: 100%;
+            }
+        }
+
+        @media screen and (min-height:32em) {
+            .blur-cover-middle {
+                margin: 28vh 0 0;
+            }
+
+                .blur-cover-middle .blur-overlay {
+                    padding: 10vh 1em;
+                }
+        }
+    </style>
+</head>
+<body>
+    <div class="image-cover" style="background-image:url(images/225044-106.jpg)">
+        <div class="blur-cover blur-cover-middle" style="background-image:url(images/blur/225044-106.jpg)">
+            <div class="blur-overlay">
+                <div class="container">
+                    <h1 class="title">The wish wall</h1>
+                    <p>Make your wishes heard, by people you care about.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="image-cover" style="background-image:url(images/225796-106.jpg)">
+        <div class="blur-cover" style="background-image:url(images/blur/225796-106.jpg)">
+            <div class="blur-overlay wishwall">
+                <h2 class="subtitle">The wishes</h2>
+                <ul class="gallery" id="gallery">
+                    <li>
+                        <a href="images/226791-106.jpg" data-width="1366" data-height="768">
+                            <img src="images/226791-106.jpg" alt="Image" />
+                            <div class="gallery-caption">
+                                <p>I want to go to Paris with Bob.</p>
+                                <p>&mdash; Alice</p>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="images/104973-106.jpg" data-width="1366" data-height="768">
+                            <img src="images/104973-106.jpg" alt="Image" />
+                            <div class="gallery-caption">
+                                <p>Want someone to buy me two bottles of Rio.</p>
+                                <p>&mdash; Carol</p>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="images/140278-106.jpg" data-width="1366" data-height="768">
+                            <img src="images/140278-106.jpg" alt="Image" />
+                            <div class="gallery-caption">
+                                <p>Wanna have a cup of coffee with Lucy tomorrow.</p>
+                                <p>&mdash; Eliza</p>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="container">
+            <blockquote class="footer-quote">
+                <h2 class="title">Send your wishes here</h2>
+                <p>Make your wishes shine, better with an image.</p>
+            </blockquote>
+            <p class="footer-credit">
+                Image credit &copy;LoveWallpaper
+            </p>
+        </div>
+    </div>
+    <div class="zoom-overlay" id="zoom">
+        <div class="zoom-overlay-bg"></div>
+    </div>
+    <script>
+        (function () {
+            "use strict";
+            if (document.addEventListener) {
+                document.addEventListener("DOMContentLoaded", function () {
+                    function zoomOut(that) {
+                        var img = that.querySelector("img"), curLink = currentLink;
+                        if (currentLink !== null) {
+                            currentLink = null;
+                            body.className = body.className.replace(/(\s|^)zoomed(?=\s|$)/, "");
+                            img.style.transform = img.style.WebkitTransform = img.style.msTransform = "none";
+                            setTimeout(function () {
+                                if (img) {
+                                    that.removeChild(img);
+                                }
+                                if (curLink !== null) {
+                                    curLink.className = curLink.className.replace(/(\s|^)gallery-link-hidden(?=\s|$)/, "");
+                                }
+                            }, 450);
+                        }
+                    }
+                    var body = document.body, gallery = document.getElementById("gallery"), zoomOverlay = document.getElementById("zoom"),
+                        maxZoomWidth = innerWidth - 80, maxZoomHeight = innerHeight - 80,
+                        links = gallery.querySelectorAll("a"), len = links.length, i, currentLink = null;
+                    for (i = 0; i < len; i++) {
+                        links[i].addEventListener("click", function (e) {
+                            var src = this.href, bcr = this.getBoundingClientRect(), that = this,
+                                width = this.getAttribute("data-width"), height = this.getAttribute("data-height"), img = new Image();
+                            e.preventDefault();
+                            e.stopPropagation();
+                            // Zoom image in
+                            if (currentLink != null) { return; }
+                            currentLink = this;
+                            body.className += " zoomed";
+                            img.src = src;
+                            img.style.cssText = "top:" + (pageYOffset + bcr.top) + "px;left:" + (pageXOffset + bcr.left) + "px;height:" +
+                                (bcr.bottom - bcr.top) + "px;width:" + (bcr.right - bcr.left) + "px";
+                            zoomOverlay.appendChild(img);
+                            setTimeout(function () {
+                                that.className += " gallery-link-hidden";
+                            }, 50);
+                            setTimeout(function () {
+                                var tx = (innerWidth - bcr.right - bcr.left) / 2, ty = (innerHeight - bcr.bottom - bcr.top) / 2, scale,
+                                    imgWidth = bcr.right - bcr.left, imgHeight = bcr.bottom - bcr.top;
+                                if (width < maxZoomWidth && height < maxZoomHeight) {
+                                    scale = width / imgWidth;
+                                } else {
+                                    scale = width / height > maxZoomWidth / maxZoomHeight ? maxZoomWidth / imgWidth : maxZoomHeight / imgHeight;
+                                }
+                                img.style.msTransform = "translate(" + tx + "px," + ty + "px) scale(" + scale + ")";
+                                img.style.transform = img.style.WebkitTransform = "translate3D(" + tx + "px," + ty + "px,0) scale(" + scale + ")";
+                            }, 50);
+                        }, false);
+                    }
+                    zoomOverlay.addEventListener("click", function (e) {
+                        zoomOut(this);
+                    });
+                    window.addEventListener("resize", function () {
+                        maxZoomWidth = innerWidth - 80; maxZoomHeight = innerHeight - 80;
+                    });
+                    window.addEventListener("scroll", function () {
+                        setTimeout(function () {
+                            zoomOut(zoomOverlay);
+                        }, 20);
+                    });
+                });
+            }
+        })();
+    </script>
+</body>
+</html>

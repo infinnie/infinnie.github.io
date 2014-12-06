@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<svg width="1366" height="768" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <image xlink:href="/images/225044-106.jpg" width="1366" height="768" id="image" />
+    <filter id="testblur">
+      <feGaussianBlur stdDeviation="20" />
+    </filter>
+  </defs>
+  <g filter="url(#testblur)">
+    <g>
+      <use xlink:href="#image" />
+    </g>
+    <g transform="rotate(-180)">
+      <use xlink:href="#image" />
+    </g>
+    <g transform="translate(2732,1536) rotate(-180)">
+      <use xlink:href="#image" />
+    </g>
+    <g transform="translate(2732,0) rotate(-180)">
+      <use xlink:href="#image" />
+    </g>
+    <g transform="translate(0,1536) rotate(-180)">
+      <use xlink:href="#image" />
+    </g>
+    <g transform="scale(1 -1)">
+      <use xlink:href="#image" />
+    </g>
+    <g transform="translate(0 1536) scale(1 -1)">
+      <use xlink:href="#image" />
+    </g>
+    <g transform="scale(-1 1)">
+      <use xlink:href="#image"></use>
+    </g>
+    <g transform="translate(2732 0) scale(-1 1)">
+      <use xlink:href="#image" />
+    </g>
+  </g>
+</svg>
