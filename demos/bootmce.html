@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>BootMCE demo</title>
+    <link rel="stylesheet" href="/css/blog/main.css" />
+</head>
+<body>
+    <div class="container">
+        <textarea id="test"></textarea>
+    </div>
+    <script src="/js/jquery-1.8.0.min.js"></script>
+    <script src="/tinymce/tinymce.min.js"></script>
+    <script>
+        jQuery(function ($) {
+            tinymce.init({
+                selector: "#test",
+                menubar: false,
+                statusbar: false,
+                plugins: "autolink link autoresize",
+                toolbar: "bold italic link | blockquote bullist numlist | removeformat",
+                browser_spellcheck: true,
+                skin: "bootmce"
+            });
+        });
+    </script>
+</body>
+</html>
