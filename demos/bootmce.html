@@ -25,6 +25,15 @@
                 &mdash; another <a href="http://getbootstrap.com/" target="_blank">Bootstrap</a>-styled skin for
                 <a href="http://tinymce.com/">TinyMCE</a>
             </p>
+            <pre>tinymce.init({
+    selector: "#test",
+    menubar: false,
+    statusbar: false,
+    plugins: "autolink link autoresize",
+    toolbar: "bold italic link | blockquote bullist numlist | removeformat",
+    browser_spellcheck: true,
+    skin: "bootmce"
+});</pre>
             <textarea id="test">Try BootMCE here.</textarea>
             <p>View the project on <a href="https://github.com/infinnie/BootMCE">GitHub</a>.</p>
         </div>
