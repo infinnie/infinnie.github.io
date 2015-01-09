@@ -63,11 +63,6 @@
     font-style: italic;
 }
 
-.article-content pre {
-    font-size: 80%;
-    margin: 2em 0;
-}
-
 .article-content .pull-quote {
     font-size: 120%;
     font-weight: 300;

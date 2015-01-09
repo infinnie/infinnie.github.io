@@ -224,6 +224,12 @@ pre {
         text-decoration: underline;
     }
 
+
+    .content-main pre {
+        font-size: 80%;
+        margin: 2em 0;
+    }
+
 .article-list {
     list-style: none;
     padding: 0;
