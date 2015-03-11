@@ -3,6 +3,14 @@
 <head>
     <title>Todo in CX</title>
     <link rel="stylesheet" href="css/todo.css" />
+    <style>
+        .externallink {
+            position: absolute;
+            top: 0;
+            right: 0;
+            margin: .75em;
+        }
+    </style>
 </head>
 <body>
     <div class="todos" id="app">
@@ -12,6 +20,10 @@
             <ul id="uList" class="list"></ul>
         </div>
         <p class="summary" id="summary"></p>
+    </div>
+    <div class="externallink">
+        <a href="https://github.com/infinnie/infinnie.github.io/demos/todo-cx">View source</a>, or
+        <a href="https://github.com/infinnie/CXJS">fork on GitHub</a>
     </div>
     <script id="ItemTemplate" type="text/html">
         <div data-el="container">

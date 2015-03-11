@@ -1,5 +1,4 @@
-﻿/// <reference path="/js/test/cx.js"/>
-(function () {
+﻿(function () {
     document.addEventListener("DOMContentLoaded", function () {
         var todos = window.todos = CX.Binding.createSet(),
             itemList = document.getElementById("uList"),
