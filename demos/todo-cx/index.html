@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Todo in CX</title>
+    <link rel="stylesheet" href="css/todo.css" />
+</head>
+<body>
+    <div class="todos" id="app">
+        <h1 class="apptitle">Todo list</h1>
+        <div class="card">
+            <input class="add" id="add" placeholder="What needs to be done&hellip;" />
+            <ul id="uList" class="list"></ul>
+        </div>
+        <p class="summary" id="summary"></p>
+    </div>
+    <script id="ItemTemplate" type="text/html">
+        <div data-el="container">
+            <label><input type="checkbox" data-el="check" /></label>
+            <button class="close" data-el="remove" type="button">&times;</button>
+            <input class="editor" data-el="input" />
+            <span class="content" data-el="presenter"></span>
+        </div>
+    </script>
+    <script src="/js/cx/cx.js"></script>
+    <script src="js/todo-cx.js"></script>
+</body>
+</html>
