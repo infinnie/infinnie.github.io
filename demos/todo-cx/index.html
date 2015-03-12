@@ -1,16 +1,8 @@
 ﻿<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>Todo in CX</title>
+    <title>CXTest</title>
     <link rel="stylesheet" href="css/todo.css" />
-    <style>
-        .externallink {
-            position: absolute;
-            top: 0;
-            right: 0;
-            margin: .75em;
-        }
-    </style>
 </head>
 <body>
     <div class="todos" id="app">
@@ -19,8 +11,10 @@
             <input class="add" id="add" placeholder="What needs to be done&hellip;" />
             <ul id="uList" class="list"></ul>
         </div>
+        <p class="clearcompleted"><a href="#" id="clear">Clear completed</a></p>
         <p class="summary" id="summary"></p>
     </div>
+    <div class="indicator" id="indicator"></div>
     <div class="externallink">
         <a href="https://github.com/infinnie/infinnie.github.io/tree/master/demos/todo-cx">View source</a> or
         <a href="https://github.com/infinnie/CXJS">fork on GitHub</a>
@@ -33,7 +27,7 @@
             <span class="content" data-el="presenter"></span>
         </div>
     </script>
-    <script src="/js/cx/cx.js"></script>
+    <script src="/js/cx.js"></script>
     <script src="js/todo-cx.js"></script>
 </body>
 </html>
