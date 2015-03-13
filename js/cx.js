@@ -175,15 +175,18 @@
                         }
                     }
                 }
-            }, createSet: function () {
+            }, createSet: function (id) {
+                /// <param name="id" type="String">The name of the optional ID property.
+                /// If specified, the value of this property would become the key to the internal storage object.
+                /// If not specified, the internal CX key would be used.</param>
                 var _set = {}, notifier = createNotifier(), len = 0, obj = {
                     add: function (bound) {
                         /// <param name="bound" type="_CX.IntelliSenseCompat"/>
-                        var key = bound[expando];
+                        var key = id ? bound.get(id) : bound.getCXID();
                         if (!_set[key]) {
                             bound.on("change", function () {
                                 notifier.notify("itemchange", key);
-                            }).on("destroy", function (key) {
+                            }).on("destroy", function () {
                                 obj.removeAt(key);
                             });
                             _set[key] = bound;
@@ -213,7 +216,7 @@
                                 ret[key] = _set[key];
                             }
                         }
-                        return retSet;
+                        return ret;
                     }, toJSON: function () {
                         return obj.toStatic();
                     }, length: function () {
@@ -225,7 +228,7 @@
                         }
                     }, filter: function (f) {
                         /// <param name="f" type="Function"/>
-                        var ret = _CX.Binding.createSet(), key;
+                        var ret = _CX.Binding.createSet(id), key;
                         for (key in _set) {
                             if (f.call(window, _set[key])) {
                                 ret.add(_set[key]);
@@ -265,14 +268,10 @@
             }, init: function (element, bound, bindCallback) {
                 /// <param name="element" type="HTMLElement"/>
                 /// <param name="bindCallback" type="Function"/>
-                var ret = {
-                    element: element,
-                    CXBound: bound
-                }, key;
+
                 if (typeof bindCallback === "function") {
-                    bindCallback.call(window, element, bound);
+                    return bindCallback.call(window, element, bound);
                 }
-                return ret;
             }
         },
 
