@@ -9,17 +9,28 @@
             indicator = document.getElementById("indicator"),
             clearLink = document.getElementById("clear"),
             App = CX.App,
-            todoStorage = {
-                read: function (callback) {
-                    /// <param name="callback" type="Function"/>
-                    var obj = JSON.parse(localStorage.getItem("TodoList")) || {};
-                    callback.call(window, obj);
-                    return obj;
-                },
-                write: function (obj) {
-                    localStorage.setItem("TodoList", JSON.stringify(obj));
+            todoStorage = (function (t) {
+                var s = {};
+                return {
+                    read: function (callback) {
+                        /// <param name="callback" type="Function"/>
+                        s = JSON.parse(localStorage.getItem(t)) || {};
+                        callback.call(window, s);
+                        return s;
+                    },
+                    write: function (key, obj) {
+                        s[key] = obj;
+                        localStorage.setItem(t, JSON.stringify(s));
+                    },
+                    remove: function (key) {
+                        delete s[key];
+                        localStorage.setItem(t, JSON.stringify(s));
+                    },
+                    clear: function () {
+                        localStorage.clear(); // for later use
+                    }
                 }
-            }, TodoID = (function () {
+            })("TodoList"), TodoID = (function () {
                 var max = 0;
                 return {
                     compare: function (id) {
@@ -40,6 +51,7 @@
                     /// <param name="todo" type="CX.IntelliSenseCompat"/>
                     App.notify("beforesave");
                     setTimeout(function () {
+                        todoStorage.write(todo.get("ID"), todo);
                         todo.notify("init");
                     }, 100);
                 }, function (init, obj, callback) {
@@ -57,12 +69,14 @@
                     setTimeout(function () {
                         // Simulate async operations.
                         dc[key] = val;
+                        todoStorage.write(todo.get("ID"), todo);
                         todo.notify("change", key, val);
                     }, 100);
                 }, function (todo) {
                     /// <param name="todo" type="CX.IntelliSenseCompat"/>
                     App.notify("beforesave");
                     setTimeout(function () {
+                        todoStorage.remove(todo.get("ID"));
                         todo.notify("destroy", todo.getCXID());
                     }, 100);
                 });
@@ -186,10 +200,6 @@
                         todos.add(todo);
                     });
                 }
-            });
-
-            todos.on("itemadd itemchange itemremove", function () {
-                todoStorage.write(todos);
             });
 
             input.addEventListener("keyup", function (e) {
