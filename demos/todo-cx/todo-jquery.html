@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Todo list in CX and jQuery with localStorage</title>
+    <link rel="stylesheet" href="css/todo.css" />
+</head>
+<body>
+    <div class="todos" id="app">
+        <h1 class="apptitle">Todo list</h1>
+        <div class="card">
+            <input class="add" id="add" placeholder="What needs to be done&hellip;" />
+            <ul id="uList" class="list" data-cx-each="true">
+                <li>
+                    <div data-cx-bind="className:doneClass">
+                        <label><input type="checkbox" data-cx-bind="checked:done" data-cx-events="change:{done:checked}" /></label>
+                        <a class="close" data-cx-events="click:{destroy()}" href="#">&times;</a>
+                        <input class="editor" data-cx-bind="value:content" data-cx-events="blur:{content:value}" data-el="editor" />
+                        <span class="content" data-cx-bind="innerHTML:content"></span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <p class="clearcompleted"><a href="#" id="clear">Clear completed</a></p>
+        <p class="summary" id="summary"></p>
+    </div>
+    <div class="indicator" id="indicator"></div>
+    <div class="externallink">
+        <a href="https://github.com/infinnie/infinnie.github.io/tree/master/demos/todo-cx">View source</a> or
+        <a href="https://github.com/infinnie/CXJS">fork on GitHub</a>
+    </div>
+    <script src="/js/jquery-1.8.0.min.js"></script>
+    <script src="/js/cx-jquery.js"></script>
+    <script src="js/todo-cx-jquery.js"></script>
+</body>
+</html>

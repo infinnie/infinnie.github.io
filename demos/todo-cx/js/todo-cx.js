@@ -1,30 +1,30 @@
 ﻿/// <reference path="/js/cx.js"/>
-/// Real Todo: add swiping support and localStorage support (done)
+// Real Todo: add swiping support and localStorage support (done)
 (function () {
     "use strict";
     document.addEventListener("DOMContentLoaded", function () {
-        var todos = window.todos = CX.Binding.createSet("ID"),
+        var todos = window.todos = CX.Binding.createSet(),
             itemList = document.getElementById("uList"),
             itemTemplate = document.getElementById("ItemTemplate").innerHTML,
             indicator = document.getElementById("indicator"),
             clearLink = document.getElementById("clear"),
             App = CX.App,
-            todoStorage = (function (t) {
+            todoStorage = (function (ns) {
                 var s = {};
                 return {
                     read: function (callback) {
                         /// <param name="callback" type="Function"/>
-                        s = JSON.parse(localStorage.getItem(t)) || {};
+                        s = JSON.parse(localStorage.getItem(ns)) || {};
                         callback.call(window, s);
                         return s;
                     },
                     write: function (key, obj) {
                         s[key] = obj;
-                        localStorage.setItem(t, JSON.stringify(s));
+                        localStorage.setItem(ns, JSON.stringify(s));
                     },
                     remove: function (key) {
                         delete s[key];
-                        localStorage.setItem(t, JSON.stringify(s));
+                        localStorage.setItem(ns, JSON.stringify(s));
                     },
                     clear: function () {
                         localStorage.clear(); // for later use
@@ -34,12 +34,10 @@
                 var max = 0;
                 return {
                     compare: function (id) {
-                        /// <param name="todo" type="CX.IntelliSenseCompat"/>
                         if (id > max) {
                             max = id;
                         }
                     }, create: function () {
-                        /// <param name="todo" type="CX.IntelliSenseCompat"/>
                         max++;
                         return max;
                     }
@@ -51,7 +49,7 @@
                     /// <param name="todo" type="CX.IntelliSenseCompat"/>
                     App.notify("beforesave");
                     setTimeout(function () {
-                        todoStorage.write(todo.get("ID"), todo);
+                        todoStorage.write(todo.get("ID"), todo.toStatic());
                         todo.notify("init");
                     }, 100);
                 }, function (init, obj, callback) {
@@ -69,7 +67,7 @@
                     setTimeout(function () {
                         // Simulate async operations.
                         dc[key] = val;
-                        todoStorage.write(todo.get("ID"), todo);
+                        todoStorage.write(todo.get("ID"), todo.toStatic());
                         todo.notify("change", key, val);
                     }, 100);
                 }, function (todo) {
@@ -194,7 +192,8 @@
             todoStorage.read(function (s) {
                 var key;
                 for (key in s) {
-                    Todo.read(s[key], function (todo) {
+                    // Preventing CX key from being added to localStorage, and it fucking works
+                    Todo.read(Object.create(s[key]), function (todo) {
                         /// <param name="todo" type="CX.IntelliSenseCompat"/>
                         TodoID.compare(todo.get("ID"));
                         todos.add(todo);

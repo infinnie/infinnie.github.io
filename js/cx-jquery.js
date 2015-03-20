@@ -1,4 +1,6 @@
-﻿var CX = (function () {
+﻿/// <reference path="/js/jquery-1.8.0.min.js"/>
+
+var CX = (function ($) {
     "use strict";
     var expando = "__CX_" + (+new Date()), // We should expect it to be unique
     debug = true,
@@ -42,11 +44,12 @@
     _CX = {
         App: createNotifier(),
         Binding: {
-            create: function (create, read, update, destroy) {
+            create: function (create, read, update, destroy, composers) {
                 /// <param name="read" type="Function"/>
                 /// <param name="update" type="Function"/>
                 /// <param name="create" type="Function">Initialization callback</param>
                 /// <param name="destroy" type="Function"/>
+                /// <param name="composers" type="Object">Composed getters and setters</params>
                 var _CXStorage = {},
                     _init = function (data, dataExpandos, isCreate) {
                         if (!data || typeof data !== "object") {
@@ -55,7 +58,7 @@
                         var key, obj = {},
                             dataCopy /* A deep copy of the param data */ = {},
                             notifier = createNotifier(), curExpando,
-                            reserved = /^(?:on|notify|add|remove|destroy|set)$/;
+                            reserved = /^(?:on|notify|add|destroy|set)$/;
                         dataExpandos = arguments[1] || {};
                         if (data[expando]) {
                             return _CXStorage[data[expando]];
@@ -67,7 +70,7 @@
                             // Skip expando key.
                             if (key !== expando) {
                                 switch (typeof data[key]) {
-                                    case "function":
+                                    case "function": case "undefined":
                                         // Non-function values only.
                                         break;
                                     case "object":
@@ -84,8 +87,8 @@
                                                     console.log("Circular reference detected.");
                                                 }
                                             }
+                                            break;
                                         }
-                                        break;
                                     default:
                                         if (reserved.test(key)) {
                                             if (debug) {
@@ -119,6 +122,10 @@
                                 }
                                 return obj;
                             }
+                            if (composers && composers.set && typeof composers.set[key] == "function") {
+                                composers.set[key].call(window, obj);
+                                return obj;
+                            }
                             if (typeof update === "function") {
                                 update.call(window, dataCopy, obj, key, value);
                             } else {
@@ -128,6 +135,9 @@
                             return obj;
                         };
                         obj.get = function (key) {
+                            if (composers && composers.get && typeof composers.get[key] == "function") {
+                                return composers.get[key].call(window, obj);
+                            }
                             return dataCopy[key];
                         };
                         obj.getCXID = function () {
@@ -273,11 +283,87 @@
                 return obj;
             }, init: function (element, bound, bindCallback) {
                 /// <param name="element" type="HTMLElement"/>
+                /// <param name="bound" type="_CX.IntelliSenseCompat"/>
                 /// <param name="bindCallback" type="Function"/>
+                if (element) {
+                    $(element).find("*").andSelf().each(function () {
+                        var that = this, binds, keyValArr, keyVals = {}, i;
+                        if (typeof $(that).attr("data-cx-bind") !== "undefined") {
+                            binds = $(that).attr("data-cx-bind").split(";");
+                            for (i = 0; i < binds.length; i++) {
+                                keyValArr = binds[i].split(":");
+                                keyVals[$.trim(keyValArr[0])] = $.trim(keyValArr[1]);
+                            }
+                            for (i in keyVals) {
+                                $(that).prop(i, bound.get(keyVals[i]));
+                            }
+                            bound.on("change", function (key, val) {
+                                for (i in keyVals) {
+                                    $(that).prop(i, bound.get(keyVals[i]));
+                                }
+                            });
+                        }
+
+                        if (typeof $(that).attr("data-cx-events") !== "undefined") {
+                            binds = $(that).attr("data-cx-events").split(";");
+                            for (i = 0; i < binds.length; i++) {
+                                keyValArr = binds[i].split(/\:(?=\s*\{)/);
+                                keyVals[$.trim(keyValArr[0])] = $.trim(keyValArr[1]);
+                            }
+                            for (i in keyVals) {
+                                keyVals[i].replace(/\{([^()]+)\(\)\}/, function (_, fname) {
+                                    $(that).on(i, function () {
+                                        bound[fname]();
+                                        return !$(that).is("a,button");
+                                    });
+                                }).replace(/\{([^:]+?)(?:\:(.+?))?\}/, function (_, objProp, elemProp) {
+                                    /// <param name="objProp" type="String"/>
+                                    /// <param name="elemProp" type="String"/>
+                                    $(that).on(i, function () {
+                                        elemProp = elemProp || "";
+                                        bound.set($.trim(objProp), $(that).prop($.trim(elemProp)));
+                                        return !$(that).is("a,button");
+                                    });
+                                });
+                            }
+                        }
+                    });
+                    bound.on("destroy", function () {
+                        $(element).remove();
+                    });
+                }
 
                 if (typeof bindCallback === "function") {
-                    return bindCallback.call(window, element, bound);
+                    bindCallback.call(window, element, bound);
                 }
+                return {
+                    element: function () {
+                        return element;
+                    }
+                };
+            }, initSet: function (element, boundSet, binder, itemBinder) {
+                /// <param name="element" type="HTMLElement"/>
+                /// <param name="boundSet" type="_CX.Binding.createSet"/>
+                /// <param name="binder" type="Function"/>
+                /// <param name="itemBinder" type="Function"/>
+                $(element).find("[data-cx-each=true]").andSelf().filter("[data-cx-each=true]").each(function () {
+                    var that = this, children = $(that).children().remove();
+                    // children.each(function () { });
+                    boundSet.on("itemadd", function (key) {
+                        var bound = boundSet.find(key);
+                        children.clone().each(function () {
+                            _CX.Binding.init(this, bound, itemBinder);
+                        }).appendTo(that);
+                    });
+                });
+                if (typeof binder === "function") {
+                    binder.call(window, element, boundSet);
+                }
+                return {
+                    element: function () {
+                        return element;
+                    }
+                };
             }
         },
 
@@ -285,7 +371,7 @@
         IntelliSenseCompat: function () {
             return _CX.Binding.create().init();
         },
-        Version: .01
+        Version: .0233333333
     };
     return _CX;
-})();
+})(jQuery);
