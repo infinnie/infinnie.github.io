@@ -12,7 +12,7 @@
     }, body: function () {
         return this;
     }, speciesName: function () {
-        return this.genus + this.speciesModifier;
+        return this.genus + "" + this.speciesModifier;
     },
     kingdom: "Animalia",
     genus: "",
@@ -24,7 +24,7 @@
     }
 }, some = {
     doSomething: function () {
-        alert("Doing something!")
+        alert("Doing something!");
     }
 };
 var human = Object.create(animal);

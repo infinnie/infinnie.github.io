@@ -11,10 +11,10 @@
             <input class="add" id="add" placeholder="What needs to be done&hellip;" />
             <ul id="uList" class="list" data-cx-each="true">
                 <li>
-                    <div data-cx-bind="className:doneClass">
-                        <label><input type="checkbox" data-cx-bind="checked:done" data-cx-events="change:{done:checked}" /></label>
-                        <a class="close" data-cx-events="click:{destroy()}" href="#">&times;</a>
-                        <input class="editor" data-cx-bind="value:content" data-cx-events="blur:{content:value}" data-el="editor" />
+                    <div data-cx-class="done:done">
+                        <label><input type="checkbox" data-cx-bind="checked:done" data-cx-events="change:$bind" /></label>
+                        <a class="close" data-cx-events="click:destroy" href="#">&times;</a>
+                        <input class="editor" data-cx-bind="value:content" data-cx-events="blur:$bind" data-el="editor" />
                         <span class="content" data-cx-bind="innerHTML:content"></span>
                     </div>
                 </li>

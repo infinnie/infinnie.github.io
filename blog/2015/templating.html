@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>Simple inheritance &mdash; Not ready yet</title>
+    <title>On another templating language &mdash; Not ready yet</title>
     <meta name="x-ua-compatible" content="ie=edge" />
     <meta name="viewport" content="width=device-width" />
     <link rel="stylesheet" href="/css/blog/main.css" />
@@ -25,53 +25,45 @@
             <div class="container">
                 <div class="content-main">
                     <div class="title-box">
-                        <h1>Simple inheritance</h1>
-                        <h2>Just for fun.</h2>
+                        <h1>On another templating language</h1>
+                        <h2>Just an idea; not yet implemented</h2>
                     </div>
                     <div class="article-content">
-                        <blockquote class="pull-quote">Again, just for fun.</blockquote>
-                    </div>
-                    <div class="article-content">
-                        <pre>var extendObject = function (obj) {
-    var args = Array.prototype.slice.call(arguments, 1),
-        i, len = args.length, p;
-    for (i = 0; i < len; i++) {
-        for (p in args[i]) {
-            obj[p] = args[i][p];
+                        <blockquote>This is an idea <strong>that is not yet implemented</strong>.</blockquote>
+                        <p>A while ago I was thinking about a new templating language:</p>
+                        <pre>
+div.test.some {
+    "hello",
+    p {
+        "Quick brown foxes jump over the lazy dog",
+        br,
+        a[href="#"].btn.btn-primary#one {
+            "Read more"
         }
     }
-}, animal = {
-    sleep: function () {
-        alert("Sleeping!");
-    }, body: function () {
-        return this;
-    }, speciesName: function () {
-        return this.genus + " " + this.speciesModifier;
-    },
-    kingdom: "Animalia",
-    genus: "",
-    speciesModifier: ""
-}, programmable = {
-    computer: "",
-    program: function () {
-        alert("I am programming using " + this.computer);
-    }
-}, some = {
-    doSomething: function () {
-        alert("Doing something!");
-    }
-};
-
-var human = Object.create(animal);
-extendObject(human, programmable, some, {
-    genus: "Homo",
-    speciesModifier: "sapiens",
-    computer: "Surface Pro 3"
-});
-
-alert(human.speciesName());
-human.program();</pre>
-                        <p>Or <a href="/demos/demo.js">download the source</a></p>
+}</pre>
+                        <p>Which should be compiled to HTML:</p>
+                        <pre>
+&lt;div class="test some"&gt;
+    hello
+    &lt;p&gt;
+        Quick brown foxes jump over the lazy dog
+        &lt;br /&gt;
+        &lt;a href="#" class="btn btn-primary" id="one"&gt;
+            Read more
+        &lt;/a&gt;
+    &lt;/p&gt;
+&lt;/div&gt;</pre>
+                        <p>And can be minified to:</p>
+                        <pre>
+div.test.some{"hello",p{"Quick brown foxes jump over the lazy dog",br,a[href="#"].btn.btn-primary#one{"Read more"}}}</pre>
+                        <p>Compare it to the minified HTML:</p>
+                        <pre>
+&lt;div class="test some"&gt;hello&lt;p&gt;Quick brown foxes jump over the lazy dog&lt;br&gt;&lt;a href="#" class="btn btn-primary" id="one"&gt;Read more&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</pre>
+                        <p>
+                            If I were able to, I might write a compiler&mdash;and IntelliSense support&mdash;for it.
+                            Well, since it is minification friendly, a minification tool for web transfer might as well be provided.
+                        </p>
                     </div>
                 </div>
             </div>

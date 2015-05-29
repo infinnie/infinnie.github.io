@@ -1,5 +1,6 @@
 ﻿/// <reference path="/js/jquery-1.8.0.min.js"/>
 
+/// <var name="CX">CX version 0.025, whose name would get changed as it enters the alpha stage.</var>
 var CX = (function ($) {
     "use strict";
     var expando = "__CX_" + (+new Date()), // We should expect it to be unique
@@ -38,18 +39,25 @@ var CX = (function ($) {
         return notifier;
     },
 
-    isArray = function (x) {
-        return Object.prototype.toString.call(x) === "[object Array]";
+    isArray = $.isArray,
+
+    specials = {
+        "true": true,
+        "false": false,
+        "null": null
     },
+
+    getProp = function (bound, prop) {
+        return bound.get(prop) || specials[prop] || window[prop];
+    },
+
     _CX = {
         App: createNotifier(),
         Binding: {
-            create: function (create, read, update, destroy, composers) {
-                /// <param name="read" type="Function"/>
-                /// <param name="update" type="Function"/>
-                /// <param name="create" type="Function">Initialization callback</param>
-                /// <param name="destroy" type="Function"/>
+            create: function (crud, composers) {
+                /// <param name="crud" type="Object">An object that contains CRUD functions</param>
                 /// <param name="composers" type="Object">Composed getters and setters</params>
+                crud = crud || {};
                 var _CXStorage = {},
                     _init = function (data, dataExpandos, isCreate) {
                         if (!data || typeof data !== "object") {
@@ -59,7 +67,7 @@ var CX = (function ($) {
                             dataCopy /* A deep copy of the param data */ = {},
                             notifier = createNotifier(), curExpando,
                             reserved = /^(?:on|notify|add|destroy|set)$/;
-                        dataExpandos = arguments[1] || {};
+                        dataExpandos = dataExpandos || {};
                         if (data[expando]) {
                             return _CXStorage[data[expando]];
                         }
@@ -109,8 +117,8 @@ var CX = (function ($) {
                             return obj;
                         }
                         obj.destroy = function () {
-                            if (typeof destroy === "function") {
-                                destroy.call(window, obj);
+                            if (typeof crud.destroy === "function") {
+                                crud.destroy.call(window, obj);
                             } else {
                                 notifier.notify("destroy", dataCopy[expando]);
                             }
@@ -126,8 +134,8 @@ var CX = (function ($) {
                                 composers.set[key].call(window, obj);
                                 return obj;
                             }
-                            if (typeof update === "function") {
-                                update.call(window, dataCopy, obj, key, value);
+                            if (typeof crud.update === "function") {
+                                crud.update.call(window, dataCopy, obj, key, value);
                             } else {
                                 dataCopy[key] = value;
                                 notifier.notify("change", key, value);
@@ -139,6 +147,9 @@ var CX = (function ($) {
                                 return composers.get[key].call(window, obj);
                             }
                             return dataCopy[key];
+                        };
+                        obj.has = function (key) {
+                            return key in dataCopy || key in composers.get || key in composers.set;
                         };
                         obj.getCXID = function () {
                             return obj[expando];
@@ -166,9 +177,8 @@ var CX = (function ($) {
                             return obj.toStatic();
                         }
                         obj[expando] = data[expando];
-
-                        if (isCreate && typeof create === "function") {
-                            create.call(window, dataCopy, obj);
+                        if (isCreate && typeof crud.create === "function") {
+                            crud.create.call(crud, dataCopy, obj);
                         } else {
                             obj.notify("init");
                         }
@@ -184,18 +194,23 @@ var CX = (function ($) {
                         args.unshift(function (data) {
                             return _init(data, null, false);
                         });
-                        if (typeof read === "function") {
-                            return read.apply(window, args);
+                        if (typeof crud.read === "function") {
+                            return crud.read.apply(crud, args);
                         }
                     }
                 }
-            }, createSet: function (id) {
+            }, createSet: function (id, crud, composers) {
                 /// <param name="id" type="String">The name of the optional ID property.
                 /// If specified, the value of this property would become the key to the internal storage object.
                 /// If not specified, the internal CX key would be used.</param>
-                var _set = {}, notifier = createNotifier(), len = 0, obj = {
+                /// <param name="crud" type="Object">The CRUD methods for default binding.</param>
+                /// <param name="composers" type="Object">Composed getters and setters for default binding.</params>
+                var _set = {}, notifier = createNotifier(), len = 0, binder = _CX.Binding.create(crud, composers), obj = {
                     add: function (bound) {
                         /// <param name="bound" type="_CX.IntelliSenseCompat"/>
+                        if (!bound[expando]) {
+                            bound = binder.init(bound);
+                        }
                         var key = id ? bound.get(id) : bound.getCXID();
                         if (!_set[key]) {
                             bound.on("change", function () {
@@ -287,41 +302,76 @@ var CX = (function ($) {
                 /// <param name="bindCallback" type="Function"/>
                 if (element) {
                     $(element).find("*").andSelf().each(function () {
-                        var that = this, binds, keyValArr, keyVals = {}, i;
+                        var that = this, binds, keyValArr, keyVals = {}, currentSet, i;
+
                         if (typeof $(that).attr("data-cx-bind") !== "undefined") {
-                            binds = $(that).attr("data-cx-bind").split(";");
+                            keyVals.bind = {};
+                            currentSet = keyVals.bind;
+                            binds = $(that).attr("data-cx-bind").split(",");
                             for (i = 0; i < binds.length; i++) {
                                 keyValArr = binds[i].split(":");
-                                keyVals[$.trim(keyValArr[0])] = $.trim(keyValArr[1]);
+                                currentSet[$.trim(keyValArr[0])] = $.trim(keyValArr[1]);
                             }
-                            for (i in keyVals) {
-                                $(that).prop(i, bound.get(keyVals[i]));
+                            for (i in currentSet) {
+                                that[i] = getProp(bound, currentSet[i]);
                             }
                             bound.on("change", function (key, val) {
-                                for (i in keyVals) {
-                                    $(that).prop(i, bound.get(keyVals[i]));
+                                var currentSet = keyVals.bind;
+                                for (i in currentSet) {
+                                    that[i] = getProp(bound, currentSet[i]);
+                                }
+                            });
+                        }
+
+                        if (typeof $(that).attr("data-cx-class") !== "undefined") {
+                            keyVals.classes = {};
+                            currentSet = keyVals.classes;
+                            binds = $(that).attr("data-cx-class").split(",");
+                            for (i = 0; i < binds.length; i++) {
+                                keyValArr = binds[i].split(":");
+                                currentSet[$.trim(keyValArr[0])] = $.trim(keyValArr[1]);
+                            }
+                            for (i in currentSet) {
+                                $(that)[getProp(bound, currentSet[i]) ? "addClass" : "removeClass"](i);
+                            }
+                            bound.on("change", function (key, val) {
+                                var currentSet = keyVals.classes;
+                                for (i in currentSet) {
+                                    $(that)[getProp(bound, currentSet[i]) ? "addClass" : "removeClass"](i);
                                 }
                             });
                         }
 
                         if (typeof $(that).attr("data-cx-events") !== "undefined") {
-                            binds = $(that).attr("data-cx-events").split(";");
+                            keyVals.events = {};
+                            currentSet = keyVals.events;
+                            binds = $(that).attr("data-cx-events").split(",");
                             for (i = 0; i < binds.length; i++) {
-                                keyValArr = binds[i].split(/\:(?=\s*\{)/);
-                                keyVals[$.trim(keyValArr[0])] = $.trim(keyValArr[1]);
+                                keyValArr = binds[i].split(":");
+                                currentSet[$.trim(keyValArr[0])] = $.trim(keyValArr[1]);
                             }
-                            for (i in keyVals) {
-                                keyVals[i].replace(/\{([^()]+)\(\)\}/, function (_, fname) {
+                            for (i in currentSet) {
+                                currentSet[i].replace(/^\$bind$/, function () {
                                     $(that).on(i, function () {
-                                        bound[fname]();
+                                        /// <var name="currentSet" type="Object"/>
+                                        var i, currentSet = keyVals.bind || {}, currentProp;
+                                        for (i in currentSet) {
+                                            currentProp = currentSet[i];
+                                            if (/^(?:checked|value|selected|innerHTML)$/.test(i) && bound.has(currentProp)) {
+                                                bound.set(currentProp, $(that).prop(i));
+                                            }
+                                        }
                                         return !$(that).is("a,button");
                                     });
-                                }).replace(/\{([^:]+?)(?:\:(.+?))?\}/, function (_, objProp, elemProp) {
-                                    /// <param name="objProp" type="String"/>
-                                    /// <param name="elemProp" type="String"/>
+                                    return "";
+                                }).replace(/^([$A-Za-z_][$A-Za-z_0-9]*)$/, function (_, fname) {
+                                    /// <param name="fname" type="String"/>
                                     $(that).on(i, function () {
-                                        elemProp = elemProp || "";
-                                        bound.set($.trim(objProp), $(that).prop($.trim(elemProp)));
+                                        /// <var name="f" type="Function"/>
+                                        var f = bound[fname];
+                                        if (typeof f === "function") {
+                                            f.call(bound);
+                                        }
                                         return !$(that).is("a,button");
                                     });
                                 });
@@ -371,7 +421,7 @@ var CX = (function ($) {
         IntelliSenseCompat: function () {
             return _CX.Binding.create().init();
         },
-        Version: .0233333333
+        Version: .025
     };
     return _CX;
 })(jQuery);

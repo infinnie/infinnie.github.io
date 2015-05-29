@@ -1,61 +1,58 @@
 ﻿/// <reference path="/js/cx-jquery.js"/>
-// Real Todo: add swiping support and localStorage support (done)
+// Real Todo: add swiping support <done>and localStorage support</done>
 jQuery(function ($) {
     "use strict";
-    var todos = window.todos = CX.Binding.createSet(),
-        indicator = $("#indicator"),
-        App = CX.App,
-        todoStorage = (function (ns) {
-            var s = {};
-            return {
-                read: function (callback) {
-                    /// <param name="callback" type="Function"/>
-                    s = JSON.parse(localStorage.getItem(ns)) || {};
+    var todos = window.todos = CX.Binding.createSet(), indicator = $("#indicator"), App = CX.App, todoStorage = (function (ns) {
+        var s = {};
+        return {
+            read: function (callback) {
+                /// <param name="callback" type="Function"/>
+                s = JSON.parse(localStorage.getItem(ns)) || {};
+                if (callback) {
                     callback.call(window, s);
-                    return s;
-                },
-                write: function (key, obj) {
-                    s[key] = obj;
-                    localStorage.setItem(ns, JSON.stringify(s));
-                },
-                remove: function (key) {
-                    delete s[key];
-                    localStorage.setItem(ns, JSON.stringify(s));
-                },
-                clear: function () {
-                    localStorage.clear(); // for later use
                 }
+                return s;
+            },
+            write: function (key, obj) {
+                s[key] = obj;
+                localStorage.setItem(ns, JSON.stringify(s));
+            },
+            remove: function (key) {
+                delete s[key];
+                localStorage.setItem(ns, JSON.stringify(s));
+            },
+            clear: function () {
+                localStorage.clear(); // for later use
             }
-        })("TodoList"), TodoID = (function () {
-            var max = 0;
-            return {
-                compare: function (id) {
-                    if (id > max) {
-                        max = id;
-                    }
-                }, create: function () {
-                    max++;
-                    return max;
+        }
+    })("TodoList"), TodoID = (function () {
+        var max = 0;
+        return {
+            compare: function (id) {
+                if (id > max) {
+                    max = id;
                 }
-            };
-        })(),
-
-        Todo = (function () {
-            var _Todo = CX.Binding.create(function (_, todo) {
+            }, create: function () {
+                max++;
+                return max;
+            }
+        };
+    })(), Todo = (function () {
+        var _Todo = CX.Binding.create({
+            create: function (_, todo) {
                 /// <param name="todo" type="CX.IntelliSenseCompat"/>
                 App.notify("beforesave");
                 setTimeout(function () {
                     todoStorage.write(todo.get("ID"), todo.toStatic());
                     todo.notify("init");
                 }, 100);
-            }, function (init, obj, callback) {
+            }, read: function (init, obj, callback) {
                 /// <param name="init" type="Function"/>
                 /// <param name="callback" type="Function"/>
                 var todo = init(obj);
                 callback.call(window, todo);
                 todo.notify("read");
-            },
-            function (dc, todo, key, val) {
+            }, update: function (dc, todo, key, val) {
                 /// <param name="dc" type="Object"/>
                 /// <param name="todo" type="CX.IntelliSenseCompat"/>
                 /// <param name="key" type="String"/>
@@ -66,43 +63,37 @@ jQuery(function ($) {
                     todoStorage.write(todo.get("ID"), todo.toStatic());
                     todo.notify("change", key, val);
                 }, 100);
-            }, function (todo) {
+            }, destroy: function (todo) {
                 /// <param name="todo" type="CX.IntelliSenseCompat"/>
                 App.notify("beforesave");
                 setTimeout(function () {
                     todoStorage.remove(todo.get("ID"));
                     todo.notify("destroy", todo.getCXID());
                 }, 100);
-            }, {
-                get: {
-                    doneClass: function (todo) {
-                        /// <param name="todo" type="CX.IntelliSenseCompat"/>
-                        return todo.get("done") ? "done" : "";
-                    }
-                }
-            });
-            return {
-                create: function (value, done) {
-                    var todo = _Todo.init({
-                        content: value,
-                        done: done || false,
-                        ID: TodoID.create()
-                    });
-                    // Initialization
+            }
+        });
+        return {
+            create: function (value, done) {
+                var todo = _Todo.init({
+                    content: value,
+                    done: done || false,
+                    ID: TodoID.create()
+                });
+                // Initialization
+                todo.on("change init destroy", function () {
+                    App.notify("save");
+                });
+                return todo;
+            }, read: function (obj, callback) {
+                return _Todo.read(obj, function (todo) {
                     todo.on("change init destroy", function () {
                         App.notify("save");
                     });
-                    return todo;
-                }, read: function (obj, callback) {
-                    return _Todo.read(obj, function (todo) {
-                        todo.on("change init destroy", function () {
-                            App.notify("save");
-                        });
-                        callback.call(window, todo);
-                    });
-                }
-            };
-        })();
+                    callback.call(window, todo);
+                });
+            }
+        };
+    })();
 
     CX.Binding.initSet(document.body, todos, function (_, todos) {
         var input = $("#add"),
