@@ -1,0 +1,345 @@
+﻿@font-face {
+    font-family: "_segoe";
+    src: local("Segoe UI");
+}
+
+@font-face {
+    font-family: "_segoe";
+    src: local("Segoe UI Italic"),local("Segoe UI");
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "_segoe";
+    src: local("Segoe UI Light"),local("Segoe WP Light"),local("Segoe UI");
+    font-weight: 100;
+}
+
+@font-face {
+    font-family: "_segoe";
+    src: local("Segoe UI Light Italic"),local("Segoe UI Italic"),local("Segoe UI Light"),local("Segoe UI");
+    font-weight: 100;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "_segoe";
+    src: local("Segoe UI Semilight"),local("Segoe WP Semilight"),local("Segoe UI Light"),local("Segoe UI");
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: "_segoe";
+    src: local("Segoe UI Semilight Italic"),local("Segoe UI Light Italic"),local("Segoe UI Italic"),local("Segoe UI Semilight"),local("Segoe UI Light"),local("Segoe UI");
+    font-weight: 300;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "_segoe";
+    src: local("Segoe UI Semibold"),local("Segoe WP Semibold"),local("Segoe UI Bold"),local("Segoe UI");
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: "_segoe";
+    src: local("Segoe UI Semibold Italic"),local("Segoe UI Bold Italic"),local("Segoe UI Semibold"),local("Segoe UI");
+    font-weight: 600;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "_segoe";
+    src: local("Segoe UI Bold"),local("Segoe UI");
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: "_segoe";
+    src: local("Segoe UI Bold Italic"),local("Segoe UI");
+    font-weight: 700;
+    font-style: italic;
+}
+
+@-ms-viewport {
+    width: device-width;
+}
+
+/*#region reset*/
+body, input, button, select, textarea {
+    font: 100%/1.5 "_segoe","Segoe UI",Seravek,"Open Sans",Roboto,Verdana,sans-serif;
+    font-feature-settings: "dlig" 1,"kern" 1,"tnum" 1;
+}
+
+pre, code {
+    font-family: Consolas,"Lucida Console",monospace;
+    font-feature-settings: normal;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+img, image {
+    border: none;
+    height: auto;
+}
+
+a {
+    text-decoration: none;
+}
+
+h1 {
+    font-weight: 700;
+    line-height: 1.1;
+}
+
+h2 {
+    font-weight: 100;
+    line-height: 1.25;
+}
+
+h3 {
+    font-weight: 300;
+}
+
+h4, h5, h6 {
+    font-weight: 400;
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+li {
+    margin: .5em 0;
+}
+/*#endregion*/
+
+body {
+    color: #333;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
+}
+
+.container {
+    padding: 0 1.5em;
+    max-width: 60em;
+    margin: 0 auto;
+}
+
+.overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(40,40,40,.25);
+    top: 0;
+    left: 0;
+}
+
+.header {
+    background: #fff;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    box-shadow: 0 0 15px rgba(0,0,0,.1);
+}
+
+.header-container {
+    text-align: center;
+}
+
+.page-nav-heading {
+    position: absolute;
+    margin: 0;
+    width: 1px;
+    right: 100%;
+}
+
+.page-nav {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.page-nav-item {
+    display: inline-block;
+    margin: 0 .25em;
+}
+
+.page-nav-link {
+    display: block;
+    padding: 1.5em;
+    transition: .5s;
+    color: #333;
+}
+
+    .page-nav-link:hover, .page-nav-link:focus {
+        box-shadow: inset 0 .5em #d5a;
+    }
+
+.image-cover, .blur-cover {
+    background: #444 fixed center no-repeat;
+    background-size: cover;
+    position: relative;
+    z-index: 0;
+    color: #fff;
+}
+
+.image-cover {
+    background-image: url("/images/portfolio/bg.jpg");
+    padding: 9em 0 5em;
+}
+
+.image-cover-overlay {
+    background: rgba(40,40,40,.2);
+}
+
+.image-cover-container, .blur-cover-container {
+    position: relative;
+}
+
+.image-cover-inner {
+    font-size: 1.25em;
+}
+
+.image-cover-inner {
+    text-align: center;
+}
+
+.portfolio-image {
+    width: 12em;
+    border-radius: 99em;
+    box-shadow: 0 0 0 12px rgba(255,255,255,.3);
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+}
+
+.portfolio-title {
+    font-size: 2.4em;
+    margin: .5em 0 0;
+}
+
+.portfolio-subtitle {
+    font-size: 1.6em;
+    line-height: 1.2;
+    font-weight: 100;
+    color: rgba(255,255,255,.7);
+    margin: .4em 0 0;
+}
+
+.blur-cover {
+    background-image: url("/images/portfolio/bg-blur.jpg");
+    padding: 1em 0;
+}
+
+.blur-cover-overlay {
+    background-color: rgba(30,30,30,.3);
+}
+
+.body-content, .footer-content {
+    font-weight: 300;
+    font-size: 150%;
+}
+
+.body-section {
+    padding: .5em 0;
+}
+
+.sec-title {
+    margin: .5em 0 .25em;
+}
+
+.periodic-letter-deco {
+    margin: 0 .25em;
+    display: inline-block;
+    text-align: center;
+    width: 2em;
+    padding: .4em 0;
+    border: 2px solid;
+    border-radius: 6px;
+}
+
+.periodic-atomic-num {
+    font-weight: 300;
+    font-size: 63%;
+}
+
+.footer {
+    padding: 1em 0;
+}
+
+.section-bold {
+    font-weight: 600;
+}
+
+.section-link {
+    color: #a27;
+    transition: .5s;
+}
+
+    .section-link:hover, .section-link:focus {
+        text-decoration: underline;
+        color: #d5a;
+    }
+
+@media screen and (min-width:50em) {
+    .portfolio-title {
+        font-size: 3em;
+    }
+
+    .body-section {
+        position: relative;
+        padding: 1.5em 0;
+    }
+
+    .sec-header-wrapper {
+        position: absolute;
+        height: 100%;
+        width: 14em;
+        top: 0;
+    }
+
+    .sec-header {
+        display: table;
+        width: 100%;
+        height: 100%;
+    }
+
+    .sec-header-cell {
+        display: table-cell;
+        vertical-align: middle;
+        text-align: center;
+    }
+
+    .sec-title {
+        font-size: 2em;
+        margin: 0;
+    }
+
+    /*WARNING: BAD PRACTICE*/
+    .section-left {
+        padding-left: 15em;
+    }
+
+        .section-left .sec-header-wrapper {
+            left: 0;
+        }
+
+    .section-right {
+        padding-right: 15em;
+        text-align: right;
+    }
+
+        .section-right .sec-header-wrapper {
+            right: 0;
+        }
+    /*WARNING ENDS*/
+}
