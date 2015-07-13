@@ -67,7 +67,7 @@
 
 /*#region reset*/
 body, input, button, select, textarea {
-    font: 100%/1.5 "_segoe","Segoe UI",Seravek,"Open Sans",Roboto,Verdana,sans-serif;
+    font: 100%/1.5 "_segoe","Segoe UI",Seravek,Avenir,"Open Sans",Roboto,Verdana,sans-serif;
     font-feature-settings: "dlig" 1,"kern" 1,"tnum" 1;
 }
 
@@ -262,7 +262,9 @@ body {
     display: inline-block;
     text-align: center;
     width: 2em;
-    padding: .4em 0;
+    height: 1em;
+    line-height: 1;
+    padding: .44em 0 .56em;
     border: 2px solid;
     border-radius: 6px;
 }
