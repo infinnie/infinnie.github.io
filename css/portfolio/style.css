@@ -244,9 +244,9 @@ body {
     background-color: rgba(30,30,30,.3);
 }
 
-.body-content, .footer-content {
+.body-content {
     font-weight: 300;
-    font-size: 150%;
+    font-size: 125%;
 }
 
 .body-section {
@@ -254,6 +254,7 @@ body {
 }
 
 .sec-title {
+    font-size: 2em;
     margin: .5em 0 .25em;
 }
 
@@ -284,7 +285,7 @@ body {
 
 .section-link {
     color: #a27;
-    transition: .5s;
+    transition: color .5s;
 }
 
     .section-link:hover, .section-link:focus {
@@ -295,6 +296,10 @@ body {
 @media screen and (min-width:50em) {
     .portfolio-title {
         font-size: 3em;
+    }
+
+    .body-content {
+        font-size: 150%;
     }
 
     .body-section {
@@ -322,7 +327,6 @@ body {
     }
 
     .sec-title {
-        font-size: 2em;
         margin: 0;
     }
 
