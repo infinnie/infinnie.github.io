@@ -1,0 +1,206 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Typography&mdash;ZoaUI</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="/css/zoaui/zoaui.css" />
+    <link rel="stylesheet" href="/css/zoaui/docs/doc.css" />
+</head>
+<body>
+    <div class="zo-navbar zo-navbar--dark zo-navbar-borderless">
+        <div class="zo-container">
+            <a href="#" class="zo-navbar__link zo-navbar__toggle zo-navbar__link--bgDark" role="button" data-zo-navbar="#mainNav"></a>
+            <h2 class="zo-navbar__brand">
+                <a href="/zoaui/" class="zo-navbar__link zo-navbar__brand__link zo-navbar__link--bgDark">ZoaUI</a>
+            </h2>
+            <div class="zo-navbar__nav zo-navbar__nav--bgDark" id="mainNav">
+                <ul class="zo-navbar__list">
+                    <li class="zo-navbar__item">
+                        <a href="/zoaui/css/" class="zo--active zo-navbar__link zo-navbar__nav__link zo-navbar__link--bgDark">CSS</a>
+                    </li>
+                    <li class="zo-navbar__item">
+                        <a href="/zoaui/js/" class="zo-navbar__link zo-navbar__nav__link zo-navbar__link--bgDark">JavaScript</a>
+                    </li>
+                </ul>
+                <ul class="zo-navbar__list zo-navbar__list--right">
+                    <li class="zo-navbar__item">
+                        <a href="https://github.com/infinnie/zoaui" target="_blank" class="zo-navbar__link zo-navbar__nav__link zo-navbar__link--bgDark">GitHub</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="zo-container">
+        <div class="zo-g">
+            <div class="zo-g__col zo-g__col--m3 zo-g__col--l4">
+                <div class="zo-g__content">
+                    <ul class="doc-sideNav">
+                        <li class="doc-sideNav__item">
+                            <a href="/zoaui/css/" class="doc-sideNav__link">CSS</a>
+                        </li>
+                        <li class="doc-sideNav__item">
+                            <a href="/zoaui/css/layout.html" class="doc-sideNav__link">Layout</a>
+                        </li>
+                        <li class="doc-sideNav__item">
+                            <a href="/zoaui/css/typography.html" class="zo--active doc-sideNav__link">Typography</a>
+                        </li>
+                        <li class="doc-sideNav__item">
+                            <a href="/zoaui/css/button.html" class="doc-sideNav__link">Buttons</a>
+                        </li>
+                        <li class="doc-sideNav__item">
+                            <a href="/zoaui/css/form.html" class="doc-sideNav__link">Form elements</a>
+                        </li>
+                        <li class="doc-sideNav__item">
+                            <a href="/zoaui/css/image.html" class="doc-sideNav__link">Images</a>
+                        </li>
+                        <li class="doc-sideNav__item">
+                            <a href="/zoaui/css/pagination.html" class="doc-sideNav__link">Pagination</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="zo-g__col zo-g__col--m9 zo-g__col--l8">
+                <div class="zo-g__content">
+                    <h1 class="zo-h1--top">Typography</h1>
+                    <p>ZoaUI puts readability at a high priority.</p>
+                    <h2>Links</h2>
+                    <p><a href="#" class="zo-link">Example hyperlink</a></p>
+                    <pre class="zo-pre">&lt;a href="#" class="zo-link"&gt;Example hyperlink&lt;/a&gt;</pre>
+                    <h2>Headings</h2>
+                    <h1>Heading 1</h1>
+                    <h2>Heading 2</h2>
+                    <h3>Heading 3</h3>
+                    <h4>Heading 4</h4>
+                    <h5>Heading 5</h5>
+                    <h6>Heading 6</h6>
+                    <pre class="zo-pre">
+&lt;h1&gt;Heading 1&lt;/h1&gt;</pre>
+                    <p><em><strong>Note:</strong> if you want to reduce the top margin of a certain heading (</em><code class="zo-code">h1</code><em> or </em><code class="zo-code">h2</code><em>) in case it occurs at the top, add the classname </em><code class="zo-code">zo-h1--top</code><em> or </em><code class="zo-code">zo-h2--top</code><em> to the corresponding elements.</em></p>
+                    <h2>Pre &amp; code</h2>
+                    <p>Use <code class="zo-code">.zo-code</code> for inline code.</p>
+                    <pre class="zo-pre">&lt;pre class="zo-pre"&gt;...&lt;/pre&gt;</pre>
+                    <h2>Lists</h2>
+                    <ul class="zo-list zo-list--ul">
+                        <li class="zo-list__item">I am a list item</li>
+                        <li class="zo-list__item">
+                            Nested list
+                            <ul class="zo-list zo-list--ul zo-list--nested">
+                                <li class="zo-list__item">I am indented</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <pre class="zo-pre">
+&lt;ul class="zo-list zo-list--ul"&gt;
+    &lt;li class="zo-list__item"&gt;I am a list item&lt;/li&gt;
+    &lt;li class="zo-list__item"&gt;
+        Nested list
+        &lt;ul class="zo-list zo-list--ul zo-list--nested"&gt;
+            &lt;li class="zo-list__item"&gt;I am indented&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;</pre>
+                    <ol class="zo-list zo-list--ol">
+                        <li class="zo-list__item">I am a list item</li>
+                        <li class="zo-list__item">
+                            Nested list
+                            <ol class="zo-list zo-list--ol zo-list--nested">
+                                <li class="zo-list__item">I am indented</li>
+                            </ol>
+                        </li>
+                    </ol>
+                    <h2>Quotes</h2>
+                    <blockquote class="zo-quote">If the central dogma is true, and if it is also true that nucleic acids are the only means whereby information is transmitted between generations, this has crucial implications for evolution. It would imply that all evolutionary novelty requires changes in nucleic acids, and that these changes&mdash;mutations&mdash;are essentially accidental and non-adaptive in nature. Changes elsewhere&mdash;in the egg cytoplasm, in materials transmitted through the placenta, in the mother's milk&mdash;might alter the development of the child, but, unless the changes were in nucleic acids, they would have no long-term evolutionary effects.</blockquote>
+                    <p class="zo-quoteSource">Maynard Smith</p>
+                    <pre class="zo-pre">
+&lt;blockquote class="zo-quote"&gt;...&lt;/blockquote&gt;
+&lt;p class="zo-quoteSource"&gt;[Quote source]&lt;/p&gt;</pre>
+                    <p><em><strong>Note:</strong> the em dash in the quote source is automatically added using the </em><code class="zo-code">:before</code><em> pseudo-element.</em></p>
+                    <h2>Tables</h2>
+                    <p><em><strong>Note:</strong> using </em><code class="zo-code">border-spacing</code><em>, as ZoaUI does, would cause compatibility problems with IE 7 or below. However, using </em><code class="zo-code">border-collapse</code><em> might cause </em><code class="zo-code">box-shadow</code><em> to cease to work in IE 9 through Microsoft Edge.</em></p>
+                    <h3>Simple</h3>
+                    <table class="zo-table">
+                        <tr>
+                            <th class="zo-table__heading">Heading</th>
+                            <th class="zo-table__heading">Heading</th>
+                        </tr>
+                        <tr>
+                            <td class="zo-table__cell">Sample table cell</td>
+                            <td class="zo-table__cell">Sample table cell</td>
+                        </tr>
+                    </table>
+                    <pre class="zo-pre">
+&lt;table class="zo-table"&gt;
+    &lt;tr&gt;
+        &lt;th class="zo-table__heading"&gt;Heading&lt;/th&gt;
+        &lt;th class="zo-table__heading"&gt;Heading&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td class="zo-table__cell"&gt;Sample table cell&lt;/td&gt;
+        &lt;td class="zo-table__cell"&gt;Sample table cell&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;</pre>
+                    <h3>Outlined</h3>
+                    <table class="zo-table zo-table--outline">
+                        <tr>
+                            <th class="zo-table__heading">Heading</th>
+                            <th class="zo-table__heading">Heading</th>
+                        </tr>
+                        <tr>
+                            <td class="zo-table__cell">Sample table cell</td>
+                            <td class="zo-table__cell">Sample table cell</td>
+                        </tr>
+                    </table>
+                    <pre class="zo-pre">
+&lt;table class="zo-table zo-table--outline"&gt;
+    &lt;tr&gt;
+        &lt;th class="zo-table__heading"&gt;Heading&lt;/th&gt;
+        &lt;th class="zo-table__heading"&gt;Heading&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td class="zo-table__cell"&gt;Sample table cell&lt;/td&gt;
+        &lt;td class="zo-table__cell"&gt;Sample table cell&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;</pre>
+                    <h3>Bordered</h3>
+                    <p><em><strong>Note:</strong> add the </em><code class="zo-code">zo-table--bordered__heading</code><em> or </em><code class="zo-code">zo-table--bordered__cell</code><em> classes on each of the </em><code class="zo-code">th</code><em> and </em><code class="zo-code">td</code> <em>elements.</em></p>
+                    <table class="zo-table zo-table--bordered">
+                        <tr>
+                            <th class="zo-table__heading zo-table--bordered__heading">Heading</th>
+                            <th class="zo-table__heading zo-table--bordered__heading">Heading</th>
+                        </tr>
+                        <tr>
+                            <td class="zo-table__cell zo-table--bordered__cell">Sample table cell</td>
+                            <td class="zo-table__cell zo-table--bordered__cell">Sample table cell</td>
+                        </tr>
+                    </table>
+                    <pre class="zo-pre">
+&lt;table class="zo-table zo-table--bordered"&gt;
+    &lt;tr&gt;
+        &lt;th class="zo-table__heading zo-table--bordered__heading"&gt;Heading&lt;/th&gt;
+        &lt;th class="zo-table__heading zo-table--bordered__heading"&gt;Heading&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td class="zo-table__cell zo-table--bordered__cell"&gt;Sample table cell&lt;/td&gt;
+        &lt;td class="zo-table__cell zo-table--bordered__cell"&gt;Sample table cell&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;</pre>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="doc-footer">
+        <div class="zo-container">
+            <div class="zo-g">
+                <div class="zo-g__col">
+                    <div class="zo-g__content">
+                        <p>&copy; <a href="/zoaui/" class="doc-footer__link">ZoaUI</a> &middot; built with &hearts; and <a href="https://msdn.microsoft.com/vstudio/" target="_blank" class="doc-footer__link">Visual Studio</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/js/jquery-1.8.0.min.js"></script>
+    <script src="/js/zoaui/zoaui.js"></script>
+</body>
+</html>

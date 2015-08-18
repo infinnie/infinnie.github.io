@@ -1,0 +1,237 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Layout&mdash;ZoaUI</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="/css/zoaui/zoaui.css" />
+    <link rel="stylesheet" href="/css/zoaui/docs/doc.css" />
+</head>
+<body>
+    <div class="zo-navbar zo-navbar--dark zo-navbar-borderless">
+        <div class="zo-container">
+            <a href="#" class="zo-navbar__link zo-navbar__toggle zo-navbar__link--bgDark" role="button" data-zo-navbar="#mainNav"></a>
+            <h2 class="zo-navbar__brand">
+                <a href="/zoaui/" class="zo-navbar__link zo-navbar__brand__link zo-navbar__link--bgDark">ZoaUI</a>
+            </h2>
+            <div class="zo-navbar__nav zo-navbar__nav--bgDark" id="mainNav">
+                <ul class="zo-navbar__list">
+                    <li class="zo-navbar__item">
+                        <a href="/zoaui/css/" class="zo--active zo-navbar__link zo-navbar__nav__link zo-navbar__link--bgDark">CSS</a>
+                    </li>
+                    <li class="zo-navbar__item">
+                        <a href="/zoaui/js/" class="zo-navbar__link zo-navbar__nav__link zo-navbar__link--bgDark">JavaScript</a>
+                    </li>
+                </ul>
+                <ul class="zo-navbar__list zo-navbar__list--right">
+                    <li class="zo-navbar__item">
+                        <a href="https://github.com/infinnie/zoaui" target="_blank" class="zo-navbar__link zo-navbar__nav__link zo-navbar__link--bgDark">GitHub</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="zo-container">
+        <div class="zo-g">
+            <div class="zo-g__col zo-g__col--m3 zo-g__col--l4">
+                <div class="zo-g__content">
+                    <ul class="doc-sideNav">
+                        <li class="doc-sideNav__item">
+                            <a href="/zoaui/css/" class="doc-sideNav__link">CSS</a>
+                        </li>
+                        <li class="doc-sideNav__item">
+                            <a href="/zoaui/css/layout.html" class="zo--active doc-sideNav__link">Layout</a>
+                        </li>
+                        <li class="doc-sideNav__item">
+                            <a href="/zoaui/css/typography.html" class="doc-sideNav__link">Typography</a>
+                        </li>
+                        <li class="doc-sideNav__item">
+                            <a href="/zoaui/css/button.html" class="doc-sideNav__link">Buttons</a>
+                        </li>
+                        <li class="doc-sideNav__item">
+                            <a href="/zoaui/css/form.html" class="doc-sideNav__link">Form elements</a>
+                        </li>
+                        <li class="doc-sideNav__item">
+                            <a href="/zoaui/css/image.html" class="doc-sideNav__link">Images</a>
+                        </li>
+                        <li class="doc-sideNav__item">
+                            <a href="/zoaui/css/pagination.html" class="doc-sideNav__link">Pagination</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="zo-g__col zo-g__col--m9 zo-g__col--l8">
+                <div class="zo-g__content">
+                    <h1 class="zo-h1--top">Layout</h1>
+                    <p>ZoaUI utilizes responsive grids for layout. In ZoaUI, screen sizes are divided into 3 categories by 2 breakpoints: small (s), medium (m), and large (l).</p>
+                    <h2 class="zo-h2--top">Small</h2>
+                    <div class="zo-g">
+                        <div class="zo-g__col zo-g__col--s1">
+                            <div class="doc-displayBorder">1 col</div>
+                        </div>
+                        <div class="zo-g__col zo-g__col--s11">
+                            <div class="doc-displayBorder">11 columns</div>
+                        </div>
+                    </div>
+                    <div class="zo-g">
+                        <div class="zo-g__col zo-g__col--s2">
+                            <div class="doc-displayBorder">2 cols</div>
+                        </div>
+                        <div class="zo-g__col zo-g__col--s10">
+                            <div class="doc-displayBorder">10 columns</div>
+                        </div>
+                    </div>
+                    <div class="zo-g">
+                        <div class="zo-g__col zo-g__col--s3">
+                            <div class="doc-displayBorder">3 columns</div>
+                        </div>
+                        <div class="zo-g__col zo-g__col--s9">
+                            <div class="doc-displayBorder">9 columns</div>
+                        </div>
+                    </div>
+                    <div class="zo-g">
+                        <div class="zo-g__col zo-g__col--s4">
+                            <div class="doc-displayBorder">4 columns</div>
+                        </div>
+                        <div class="zo-g__col zo-g__col--s8">
+                            <div class="doc-displayBorder">8 columns</div>
+                        </div>
+                    </div>
+                    <div class="zo-g">
+                        <div class="zo-g__col zo-g__col--s5">
+                            <div class="doc-displayBorder">5 columns</div>
+                        </div>
+                        <div class="zo-g__col zo-g__col--s7">
+                            <div class="doc-displayBorder">7 columns</div>
+                        </div>
+                    </div>
+                    <div class="zo-g">
+                        <div class="zo-g__col zo-g__col--s6">
+                            <div class="doc-displayBorder">6 columns</div>
+                        </div>
+                        <div class="zo-g__col zo-g__col--s6">
+                            <div class="doc-displayBorder">6 columns</div>
+                        </div>
+                    </div>
+                    <pre class="zo-pre">
+&lt;div class="zo-g"&gt;
+    &lt;div class="zo-g__col zo-g__col--s1"&gt;
+        ...
+    &lt;/div&gt;
+    &lt;div class="zo-g__col zo-g__col--s11"&gt;
+        ...
+    &lt;/div&gt;
+&lt;/div&gt;
+</pre>
+                    <h2>Medium</h2>
+                    <div class="zo-g">
+                        <div class="zo-g__col zo-g__col--m1">
+                            <div class="doc-displayBorder">1 col</div>
+                        </div>
+                        <div class="zo-g__col zo-g__col--m11">
+                            <div class="doc-displayBorder">11 columns</div>
+                        </div>
+                    </div>
+                    <div class="zo-g">
+                        <div class="zo-g__col zo-g__col--m2">
+                            <div class="doc-displayBorder">2 cols</div>
+                        </div>
+                        <div class="zo-g__col zo-g__col--m10">
+                            <div class="doc-displayBorder">10 columns</div>
+                        </div>
+                    </div>
+                    <div class="zo-g">
+                        <div class="zo-g__col zo-g__col--m3">
+                            <div class="doc-displayBorder">3 columns</div>
+                        </div>
+                        <div class="zo-g__col zo-g__col--m9">
+                            <div class="doc-displayBorder">9 columns</div>
+                        </div>
+                    </div>
+                    <div class="zo-g">
+                        <div class="zo-g__col zo-g__col--m4">
+                            <div class="doc-displayBorder">4 columns</div>
+                        </div>
+                        <div class="zo-g__col zo-g__col--m8">
+                            <div class="doc-displayBorder">8 columns</div>
+                        </div>
+                    </div>
+                    <div class="zo-g">
+                        <div class="zo-g__col zo-g__col--m5">
+                            <div class="doc-displayBorder">5 columns</div>
+                        </div>
+                        <div class="zo-g__col zo-g__col--m7">
+                            <div class="doc-displayBorder">7 columns</div>
+                        </div>
+                    </div>
+                    <div class="zo-g">
+                        <div class="zo-g__col zo-g__col--m6">
+                            <div class="doc-displayBorder">6 columns</div>
+                        </div>
+                        <div class="zo-g__col zo-g__col--m6">
+                            <div class="doc-displayBorder">6 columns</div>
+                        </div>
+                    </div>
+                    <pre class="zo-pre">
+&lt;div class="zo-g"&gt;
+    &lt;div class="zo-g__col zo-g__col--m1"&gt;
+        ...
+    &lt;/div&gt;
+    &lt;div class="zo-g__col zo-g__col--m11"&gt;
+        ...
+    &lt;/div&gt;
+&lt;/div&gt;
+</pre>
+
+                    <h2>Offset</h2>
+                    <div class="zo-g">
+                        <div class="zo-g__col zo-g__col--s6 zo-g__col--sOffset3">
+                            <div class="doc-displayBorder">s6, offset 3</div>
+                        </div>
+                    </div>
+                    <pre class="zo-pre">
+&lt;div class="zo-g"&gt;
+    &lt;div class="zo-g__col zo-g__col--s6 zo-g__col--sOffset3"&gt;
+        &lt;div class="doc-displayBorder"&gt;s6, offset 3&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</pre>
+                    <h2>Push &amp; pull</h2>
+                    <p>Resize the browser window to see more.</p>
+                    <div class="zo-g">
+                        <div class="zo-g__col zo-g__col--m8 zo-g__col--mPushPull zo-g__col--mPush4 zo-g__col--lReset">
+                            <div class="doc-displayBorder">8 columns. This div occurs in the DOM prior to the 4-column-wide one.</div>
+                        </div>
+                        <div class="zo-g__col zo-g__col--m4 zo-g__col--mPushPull zo-g__col--mPull8 zo-g__col--lReset">
+                            <div class="doc-displayBorder">4 columns</div>
+                        </div>
+                    </div>
+                    <pre class="zo-pre">
+&lt;div class="zo-g"&gt;
+    &lt;div class="zo-g__col zo-g__col--m8 zo-g__col--mPushPull zo-g__col--mPush4 zo-g__col--lReset"&gt;
+        ...
+    &lt;/div&gt;
+    &lt;div class="zo-g__col zo-g__col--m4 zo-g__col--mPushPull zo-g__col--mPull8 zo-g__col--lReset"&gt;
+        ...
+    &lt;/div&gt;
+&lt;/div&gt;
+</pre>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="doc-footer">
+        <div class="zo-container">
+            <div class="zo-g">
+                <div class="zo-g__col">
+                    <div class="zo-g__content">
+                        <p>&copy; <a href="/zoaui/" class="doc-footer__link">ZoaUI</a> &middot; built with &hearts; and <a href="https://msdn.microsoft.com/vstudio/" target="_blank" class="doc-footer__link">Visual Studio</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/js/jquery-1.8.0.min.js"></script>
+    <script src="/js/zoaui/zoaui.js"></script>
+</body>
+</html>
