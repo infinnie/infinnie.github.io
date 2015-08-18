@@ -63,7 +63,61 @@
             <div class="zo-g__col zo-g__col--m9 zo-g__col--l8">
                 <div class="zo-g__content">
                     <h1 class="zo-h1--top">Images</h1>
-                    <p>(Under construction)</p>
+                    <h2>Helper classes</h2>
+                    <p>The only constraint by default (with no classnames added to <code class="zo-code">img</code> element) is that its <code class="zo-code">height</code> is <code class="zo-code">auto</code>. Adding the classname <code class="zo-code">zo-img</code> would constrain its <code class="zo-code">max-width</code> to <code class="zo-code">100%</code>.</p>
+                    <p>With the classname <code class="zo-code">zo-img--block</code>, its <code class="zo-code">display</code> would be set to <code class="zo-code">block</code>. With <code class="zo-code">.zo-img--fill</code>, its <code class="zo-code">width</code> would be set to <code class="zo-code">100%</code>.</p>
+                    <h2>Figures</h2>
+                    <p>Images can be organized in figures. They can have different shapes, be inline or block, or be arranged in grids.</p>
+                    <div class="zo-g zo-g--fill">
+                        <div class="zo-g__col zo-g__col--s4">
+                            <div class="zo-g__content">
+                                <figure class="zo-figure zo-figure--block">
+                                    <img src="/images/zoadoc/test.jpg" class="zo-img zo-img--block zo-img--fill" />
+                                    <figcaption class="zo-figure__caption">I am caption</figcaption>
+                                </figure>
+                            </div>
+                        </div>
+                        <div class="zo-g__col zo-g__col--s4">
+                            <div class="zo-g__content">
+                                <div class=" zo-figure zo-figure--block zo--radius">
+                                    <img src="/images/zoadoc/test.jpg" class="zo-img zo-img--block zo-img--fill" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="zo-g__col zo-g__col--s4">
+                            <div class="zo-g__content">
+                                <div class=" zo-figure zo-figure--block zo--round">
+                                    <img src="/images/zoadoc/test.jpg" class="zo-img zo-img--block zo-img--fill zo--round" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <pre class="zo-pre">
+&lt;div class="zo-g zo-g--fill"&gt;
+    &lt;div class="zo-g__col zo-g__col--s4"&gt;
+        &lt;div class="zo-g__content"&gt;
+            &lt;figure class="zo-figure zo-figure--block"&gt;
+                &lt;img src="/images/zoadoc/test.jpg" class="zo-img zo-img--block zo-img--fill" /&gt;
+                &lt;figcaption class="zo-figure__caption"&gt;I am caption&lt;/figcaption&gt;
+            &lt;/figure&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="zo-g__col zo-g__col--s4"&gt;
+        &lt;div class="zo-g__content"&gt;
+            &lt;div class=" zo-figure zo-figure--block zo--radius"&gt;
+                &lt;img src="/images/zoadoc/test.jpg" class="zo-img zo-img--block zo-img--fill" /&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="zo-g__col zo-g__col--s4"&gt;
+        &lt;div class="zo-g__content"&gt;
+            &lt;div class=" zo-figure zo-figure--block zo--round"&gt;
+                &lt;img src="/images/zoadoc/test.jpg" class="zo-img zo-img--block zo-img--fill zo--round" /&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</pre>
                 </div>
             </div>
         </div>

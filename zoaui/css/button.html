@@ -63,7 +63,159 @@
             <div class="zo-g__col zo-g__col--m9 zo-g__col--l8">
                 <div class="zo-g__content">
                     <h1 class="zo-h1--top">Buttons</h1>
-                    <p>(Under construction)</p>
+                    <p>In ZoaUI, buttons can have different radii, sizes and colors, be inline or block, and be grouped with other buttons.</p>
+                    <p><em><strong>Note:</strong> ghost buttons, as appeared in <a href="/zoaui/">ZoaUI home page</a>, are not supported natively in ZoaUI. Support would be added in later releases.</em></p>
+                    <h2>Buttons with different radii &amp; colors</h2>
+                    <p>
+                        <button class="zo-btn zo-btn--default">I am a button</button>
+                        <button class="zo-btn zo-btn--primary">Button</button>
+                        <button class="zo-btn zo-btn--error">Error</button>
+                        <button class="zo-btn zo-btn--success">Success</button>
+                        <button class="zo-btn zo-btn--info">Info</button>
+                        <a href="#" class="zo-btn zo-btn--primary" role="button">Link button</a>
+                        Some text
+                    </p>
+                    <pre class="zo-pre">
+&lt;p&gt;
+    &lt;button class="zo-btn zo-btn--default"&gt;I am a button&lt;/button&gt;
+    &lt;button class="zo-btn zo-btn--primary"&gt;Button&lt;/button&gt;
+    &lt;button class="zo-btn zo-btn--error"&gt;Error&lt;/button&gt;
+    &lt;button class="zo-btn zo-btn--success"&gt;Success&lt;/button&gt;
+    &lt;button class="zo-btn zo-btn--info"&gt;Info&lt;/button&gt;
+    &lt;a href="#" class="zo-btn zo-btn--primary" role="button"&gt;Link button&lt;/a&gt;
+    Some text
+&lt;/p&gt;</pre>
+                    <p>
+                        <button class="zo-btn zo-btn--default zo--radius">Button with radius</button>
+                        <button class="zo-btn zo-btn--primary zo--radius">Button</button>
+                        <button class="zo-btn zo-btn--error zo--radius">Error</button>
+                        <button class="zo-btn zo-btn--success zo--radius">Success</button>
+                        <button class="zo-btn zo-btn--info zo--radius">Info</button>
+                    </p>
+                    <pre class="zo-pre">
+&lt;button class="zo-btn zo-btn--default zo--radius"&gt;
+    Button with radius
+&lt;/button&gt;
+</pre>
+                    <p>
+                        <button class="zo-btn zo-btn--default zo--round">Rounded button</button>
+                        <button class="zo-btn zo-btn--primary zo--round">Button</button>
+                        <button class="zo-btn zo-btn--error zo--round">Error</button>
+                    </p>
+                    <pre class="zo-pre">
+&lt;button class="zo-btn zo-btn--default zo--round"&gt;
+    Rounded button
+&lt;/button&gt;
+</pre>
+                    <h2>Buttons with different sizes</h2>
+                    <p>Buttons can have 3 different sizes&mdash;small, medium and large.</p>
+                    <p>
+                        <button class="zo-btn zo--radius zo-btn--primary zo-btn--s">Small</button>
+                        <button class="zo-btn zo--radius zo-btn--primary">Medium</button>
+                        <button class="zo-btn zo--radius zo-btn--primary zo-btn--l">Large</button>
+                    </p>
+                    <pre class="zo-pre">
+&lt;p&gt;
+    &lt;button class="zo-btn zo--radius zo-btn--primary zo-btn--s"&gt;Small&lt;/button&gt;
+    &lt;button class="zo-btn zo--radius zo-btn--primary"&gt;Medium&lt;/button&gt;
+    &lt;button class="zo-btn zo--radius zo-btn--primary zo-btn--l"&gt;Large&lt;/button&gt;
+&lt;/p&gt;
+</pre>
+                    <h2>Compressed buttons</h2>
+                    <p>Compressed buttons have reduced paddings in some or all directions, and therefore can fit into a tighter space.</p>
+                    <p>
+                        <button class="zo-btn zo-btn--primary zo-btn--compressed">Vertically compressed</button>
+                        <button class="zo-btn zo-btn--primary zo-btn--compressedLeft">Compressed left</button>
+                        <button class="zo-btn zo-btn--primary zo-btn--compressedRight">Compressed right</button>
+                        <button class="zo-btn zo-btn--primary zo-btn--compressedAll">Compressed</button>
+                    </p>
+                    <pre class="zo-pre">
+&lt;button class="zo-btn zo-btn--primary zo-btn--compressed"&gt;
+    Vertically compressed
+&lt;/button&gt;
+&lt;button class="zo-btn zo-btn--primary zo-btn--compressedLeft"&gt;
+    Compressed left
+&lt;/button&gt;
+&lt;button class="zo-btn zo-btn--primary zo-btn--compressedRight"&gt;
+    Compressed right
+&lt;/button&gt;
+&lt;button class="zo-btn zo-btn--primary zo-btn--compressedAll"&gt;
+    Compressed
+&lt;/button&gt;
+</pre>
+                    <h2>Block-level buttons</h2>
+                    <button class="zo-btn zo-btn--primary zo-btn--block">Button</button>
+                    <pre class="zo-pre">
+&lt;button class="zo-btn zo-btn--primary zo-btn--block"&gt;Button&lt;/button&gt;
+</pre>
+                    <h2>Button grouping</h2>
+                    <p>Buttons can also be grouped horizontally or vertically.</p>
+                    <p>
+                        <span class="zo-btnGroup">
+                            <button class="zo-btn zo-btn--default zo-btnGroup__btn zo--radiusLeft">Button</button>
+                            <button class="zo-btn zo-btn--primary zo-btnGroup__btn">Primary</button>
+                            <button class="zo-btn zo-btn--success zo-btnGroup__btn">Success</button>
+                            <button class="zo-btn zo-btn--error zo-btnGroup__btn zo--radiusRight">Error</button>
+                        </span>
+                    </p>
+                    <pre class="zo-pre">
+&lt;span class="zo-btnGroup"&gt;
+    &lt;button class="zo-btn zo-btn--default zo-btnGroup__btn zo--radiusLeft"&gt;Button&lt;/button&gt;
+    &lt;button class="zo-btn zo-btn--primary zo-btnGroup__btn"&gt;Primary&lt;/button&gt;
+    &lt;button class="zo-btn zo-btn--success zo-btnGroup__btn"&gt;Success&lt;/button&gt;
+    &lt;button class="zo-btn zo-btn--error zo-btnGroup__btn zo--radiusRight"&gt;Error&lt;/button&gt;
+&lt;/span&gt;</pre>
+                    <p>
+                        <span class="zo-btnGroup zo-btnGroup--vertical">
+                            <button class="zo-btn zo-btn--default zo-btn--block zo-btnGroup--vertical__btn zo--radiusTop">Button</button>
+                            <button class="zo-btn zo-btn--primary zo-btn--block zo-btnGroup--vertical__btn zo-btn--block">Primary</button>
+                            <button class="zo-btn zo-btn--success zo-btn--block zo-btnGroup--vertical__btn">Success</button>
+                            <button class="zo-btn zo-btn--error zo-btn--block zo-btnGroup--vertical__btn zo--radiusBottom">Error</button>
+                        </span>
+                    </p>
+                    <pre class="zo-pre">
+&lt;span class="zo-btnGroup zo-btnGroup--vertical"&gt;
+    &lt;button class="zo-btn zo-btn--default zo-btn--block zo-btnGroup--vertical__btn zo--radiusTop"&gt;Button&lt;/button&gt;
+    &lt;button class="zo-btn zo-btn--primary zo-btn--block zo-btnGroup--vertical__btn zo-btn--block"&gt;Primary&lt;/button&gt;
+    &lt;button class="zo-btn zo-btn--success zo-btn--block zo-btnGroup--vertical__btn"&gt;Success&lt;/button&gt;
+    &lt;button class="zo-btn zo-btn--error zo-btn--block zo-btnGroup--vertical__btn zo--radiusBottom"&gt;Error&lt;/button&gt;
+&lt;/span&gt;</pre>
+                    <p>
+                        <span class="zo-btnGroup zo-btnGroup--block">
+                            <button class="zo-btn zo-btn--default zo-btn--block zo-btnGroup--block__btn zo--radiusTop">Button</button>
+                            <button class="zo-btn zo-btn--primary zo-btn--block zo-btnGroup--block__btn zo-btn--block">Primary</button>
+                            <button class="zo-btn zo-btn--success zo-btn--block zo-btnGroup--block__btn">Success</button>
+                            <button class="zo-btn zo-btn--error zo-btn--block zo-btnGroup--block__btn zo--radiusBottom">Error</button>
+                        </span>
+                    </p>
+                    <pre class="zo-pre">
+&lt;span class="zo-btnGroup zo-btnGroup--block"&gt;
+    &lt;button class="zo-btn zo-btn--default zo-btn--block zo-btnGroup--block__btn zo--radiusTop"&gt;Button&lt;/button&gt;
+    &lt;button class="zo-btn zo-btn--primary zo-btn--block zo-btnGroup--block__btn zo-btn--block"&gt;Primary&lt;/button&gt;
+    &lt;button class="zo-btn zo-btn--success zo-btn--block zo-btnGroup--block__btn"&gt;Success&lt;/button&gt;
+    &lt;button class="zo-btn zo-btn--error zo-btn--block zo-btnGroup--block__btn zo--radiusBottom"&gt;Error&lt;/button&gt;
+&lt;/span&gt;</pre>
+                    <h2>Split buttons</h2>
+                    <p>Buttons can be split by splitters, which might be useful with <a href="/zoaui/js/dropdown.html" class="zo-link">dropdowns</a>.</p>
+                    <p>
+                        <button class="zo-btn zo-btn--primary zo--radius">
+                            Do something
+                            <span class="zo-btn__splitter"></span>
+                            <span class="zo-triangle zo-triangle--down"></span>
+                        </button>
+                        <a href="#" class="zo-btn zo-btn--default zo--radius">
+                            Follow
+                            <span class="zo-btn__splitter zo-btn__splitter--dark"></span>
+                            233
+                        </a>
+                    </p>
+                    <pre class="zo-pre">
+&lt;button class="zo-btn zo-btn--primary zo--radius"&gt;
+    Do something
+    &lt;span class="zo-btn__splitter"&gt;&lt;/span&gt;
+    &lt;span class="zo-triangle zo-triangle--down"&gt;&lt;/span&gt;
+&lt;/button&gt;
+</pre>
                 </div>
             </div>
         </div>

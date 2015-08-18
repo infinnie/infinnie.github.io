@@ -63,7 +63,212 @@
             <div class="zo-g__col zo-g__col--m9 zo-g__col--l8">
                 <div class="zo-g__content">
                     <h1 class="zo-h1--top">Form elements</h1>
-                    <p>(Under construction)</p>
+                    <h2>Input, label, textarea &amp; select</h2>
+                    <form>
+                        <p>
+                            <input class="zo-input zo-input--singleLine" placeholder="Type some text." />
+                            <input class="zo-btn zo-btn--primary" type="submit" value="Input button" />
+                        </p>
+                        <p>
+                            <input class="zo-input zo--radius zo-input--singleLine" placeholder="Type some text." />
+                            <button class="zo-btn zo-btn--primary zo--radius" type="button">Button</button>
+                        </p>
+                        <label class="zo-label zo-label--hasContentBox">
+                            Label
+                            <input class="zo-input zo--radius zo-label__input zo-input--singleLine" placeholder="Input inside a label" />
+                        </label>
+                        <label class="zo-label zo-label--hasContentBox">
+                            Textarea label
+                            <textarea class="zo-input zo--radius zo-label__input" placeholder="Textarea inside a label"></textarea>
+                        </label>
+                        <label class="zo-label zo-label--hasSelect">
+                            Label
+                            <select class="zo-select zo--radius zo-label__select">
+                                <option>Select inside a label</option>
+                            </select>
+                        </label>
+                        <p>
+                            <label class="zo-checkLabel"><input class="zo-check" type="checkbox" /> Check me</label>
+                            <label class="zo-checkLabel"><input class="zo-check" type="checkbox" /> Check me too~</label>
+                        </p>
+                    </form>
+                    <pre class="zo-pre">
+&lt;form&gt;
+    &lt;p&gt;
+        &lt;input class="zo-input zo-input--singleLine" placeholder="Type some text." /&gt;
+        &lt;input class="zo-btn zo-btn--primary" type="submit" value="Input button" /&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+        &lt;input class="zo-input zo--radius zo-input--singleLine" placeholder="Type some text." /&gt;
+        &lt;button class="zo-btn zo-btn--primary zo--radius" type="button"&gt;Button&lt;/button&gt;
+    &lt;/p&gt;
+    &lt;label class="zo-label zo-label--hasContentBox"&gt;
+        Label
+        &lt;input class="zo-input zo--radius zo-label__input zo-input--singleLine" placeholder="Input inside a label" /&gt;
+    &lt;/label&gt;
+    &lt;label class="zo-label zo-label--hasContentBox"&gt;
+        Textarea label
+        &lt;textarea class="zo-input zo--radius zo-label__input" placeholder="Textarea inside a label"&gt;&lt;/textarea&gt;
+    &lt;/label&gt;
+    &lt;label class="zo-label zo-label--hasSelect"&gt;
+        Label
+        &lt;select class="zo-select zo--radius zo-label__select"&gt;
+            &lt;option&gt;Select inside a label&lt;/option&gt;
+        &lt;/select&gt;
+    &lt;/label&gt;
+    &lt;p&gt;
+        &lt;label class="zo-checkLabel"&gt;&lt;input class="zo-check" type="checkbox" /&gt; Check me&lt;/label&gt;
+        &lt;label class="zo-checkLabel"&gt;&lt;input class="zo-check" type="checkbox" /&gt; Check me too~&lt;/label&gt;
+    &lt;/p&gt;
+&lt;/form&gt;
+</pre>
+                    <h2>Input groups</h2>
+                    <p>Input groups are not supported natively as in Bootstrap, but can be mimicked using the grid system.</p>
+                    <p><em><strong>Note:</strong> levels of nesting vary between different types of form elements.</em></p>
+                    <form>
+                        <p class="zo-g">
+                            <span class="zo-g__col zo-g__col--s9 zo-g__col--m10">
+                                <span class="zo-label zo-g__inputBox zo-label--hasContentBox">
+                                    <input class="zo-input zo-input--singleLine zo-label__input zo-g__input zo--radiusLeft zo-input--borderlessRight" placeholder="Input with an addon" id="testInput" />
+                                </span>
+                            </span>
+                            <label class="zo-g__col zo-g__col--s3 zo-g__col--m2" for="testInput">
+                                <span class="zo-addon zo--radiusRight">Addon</span>
+                            </label>
+                        </p>
+                        <p class="zo-g">
+                            <span class="zo-g__col zo-g__col--s9 zo-g__col--m10">
+                                <label class="zo-label zo-g__inputBox zo-label--hasContentBox">
+                                    <input class="zo-input zo-input--singleLine zo-label__input zo-g__input zo--radiusLeft zo-input--borderlessRight" placeholder="Input inside a group" />
+                                </label>
+                            </span>
+                            <button class="zo-btn zo-btn--primary zo-g__col zo-g__col--s3 zo-g__col--m2 zo-g__btn zo--radiusRight" type="button">Button</button>
+                        </p>
+                        <p class="zo-g">
+                            <button class="zo-btn zo-btn--primary zo-g__col zo-g__col--s3 zo-g__col--m2 zo-g__btn zo--radiusLeft" type="button">Button</button>
+                            <span class="zo-g__col zo-g__col--s9 zo-g__col--m10">
+                                <select class="zo-select zo-g__select zo--radiusRight zo-input--borderlessLeft">
+                                    <option>I am a select box</option>
+                                </select>
+                            </span>
+                        </p>
+                        <p class="zo-g">
+                            <label class="zo-g__col zo-g__col--s2 zo-g__col--m1" for="testInput1">
+                                <span class="zo-addon zo--radiusLeft">$</span>
+                            </label>
+                            <span class="zo-g__col zo-g__col--s7 zo-g__col--m9">
+                                <span class="zo-label zo-g__inputBox zo-g__inputBox--middle zo-label--hasContentBox">
+                                    <input class="zo-input zo-input--singleLine zo-label__input zo-g__input zo-input--borderlessLeft zo-input--borderlessRight" placeholder="Input with an addon" id="testInput1" />
+                                </span>
+                            </span>
+                            <button class="zo-btn zo-btn--primary zo-g__col zo-g__col--s3 zo-g__col--m2 zo-g__btn zo--radiusRight" type="button">Button</button>
+                        </p>
+                    </form>
+                    <pre class="zo-pre">
+&lt;form&gt;
+    &lt;p class="zo-g"&gt;
+        &lt;span class="zo-g__col zo-g__col--s9 zo-g__col--m10"&gt;
+            &lt;span class="zo-label zo-g__inputBox zo-label--hasContentBox"&gt;
+                &lt;input class="zo-input zo-input--singleLine zo-label__input zo-g__input zo--radiusLeft zo-input--borderlessRight" placeholder="Input with an addon" id="testInput" /&gt;
+            &lt;/span&gt;
+        &lt;/span&gt;
+        &lt;label class="zo-g__col zo-g__col--s3 zo-g__col--m2" for="testInput"&gt;
+            &lt;span class="zo-addon zo--radiusRight"&gt;Addon&lt;/span&gt;
+        &lt;/label&gt;
+    &lt;/p&gt;
+    &lt;p class="zo-g"&gt;
+        &lt;span class="zo-g__col zo-g__col--s9 zo-g__col--m10"&gt;
+            &lt;label class="zo-label zo-g__inputBox zo-label--hasContentBox"&gt;
+                &lt;input class="zo-input zo-input--singleLine zo-label__input zo-g__input zo--radiusLeft zo-input--borderlessRight" placeholder="Input inside a group" /&gt;
+            &lt;/label&gt;
+        &lt;/span&gt;
+        &lt;button class="zo-btn zo-btn--primary zo-g__col zo-g__col--s3 zo-g__col--m2 zo-g__btn zo--radiusRight" type="button"&gt;Button&lt;/button&gt;
+    &lt;/p&gt;
+    &lt;p class="zo-g"&gt;
+        &lt;button class="zo-btn zo-btn--primary zo-g__col zo-g__col--s3 zo-g__col--m2 zo-g__btn zo--radiusLeft" type="button"&gt;Button&lt;/button&gt;
+        &lt;span class="zo-g__col zo-g__col--s9 zo-g__col--m10"&gt;
+            &lt;select class="zo-select zo-g__select zo--radiusRight zo-input--borderlessLeft"&gt;
+                &lt;option&gt;I am a select box&lt;/option&gt;
+            &lt;/select&gt;
+        &lt;/span&gt;
+    &lt;/p&gt;
+    &lt;p class="zo-g"&gt;
+        &lt;label class="zo-g__col zo-g__col--s2 zo-g__col--m1" for="testInput1"&gt;
+            &lt;span class="zo-addon zo--radiusLeft"&gt;$&lt;/span&gt;
+        &lt;/label&gt;
+        &lt;span class="zo-g__col zo-g__col--s7 zo-g__col--m9"&gt;
+            &lt;span class="zo-label zo-g__inputBox zo-g__inputBox--middle zo-label--hasContentBox"&gt;
+                &lt;input class="zo-input zo-input--singleLine zo-label__input zo-g__input zo-input--borderlessLeft zo-input--borderlessRight" placeholder="Input with an addon" id="testInput1" /&gt;
+            &lt;/span&gt;
+        &lt;/span&gt;
+        &lt;button class="zo-btn zo-btn--primary zo-g__col zo-g__col--s3 zo-g__col--m2 zo-g__btn zo--radiusRight" type="button"&gt;Button&lt;/button&gt;
+    &lt;/p&gt;
+&lt;/form&gt;
+</pre>
+                    <h2>Inside a navbar</h2>
+                    <p>A simple form can be put inside a navbar.</p>
+                    <div class="zo-navbar zo-navbar--dark zo-navbar--bordered zo--radius">
+                        <div class="zo-container">
+                            <a href="#" class="zo-navbar__link zo-navbar__toggle zo-navbar__link--bgDark" role="button" data-zo-navbar="#formNav"></a>
+                            <h2 class="zo-navbar__brand">
+                                <a href="/zoaui/" class="zo-navbar__link zo-navbar__brand__link zo-navbar__link--bgDark">ZoaUI</a>
+                            </h2>
+                            <div class="zo-navbar__nav zo-navbar__nav--bgDark" id="formNav">
+                                <ul class="zo-navbar__list">
+                                    <li class="zo-navbar__item">
+                                        <a href="/zoaui/css/" class="zo-navbar__link zo-navbar__nav__link zo-navbar__link--bgDark">CSS</a>
+                                    </li>
+                                    <li class="zo-navbar__item">
+                                        <a href="/zoaui/js/" class="zo-navbar__link zo-navbar__nav__link zo-navbar__link--bgDark">JavaScript</a>
+                                    </li>
+                                </ul>
+                                <ul class="zo-navbar__list zo-navbar__list--right">
+                                    <li class="zo-navbar__item">
+                                        <form class="zo-g zo-navbar__form zo-navbar__form--compressed">
+                                            <div class="zo-g__col zo-g__col--s9 zo-g__col--m8">
+                                                <label class="zo-label zo-label--hasContentBox zo-g__inputBox">
+                                                    <input class="zo-input zo-input--singleLine zo-input--compressed zo-g__input zo-label__input zo-input--borderless zo--radiusLeft" placeholder="Text" />
+                                                </label>
+                                            </div>
+                                            <input type="submit" value="Submit" class="zo-g__btn zo-btn zo-btn--compressed zo-btn--info zo-g__col zo-g__col--s3 zo-g__col--m4 zo--radiusRight" />
+                                        </form>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <pre class="zo-pre">
+&lt;div class="zo-navbar zo-navbar--dark zo-navbar--bordered zo--radius"&gt;
+    &lt;div class="zo-container"&gt;
+        &lt;a href="#" class="zo-navbar__link zo-navbar__toggle zo-navbar__link--bgDark" role="button" data-zo-navbar="#formNav"&gt;&lt;/a&gt;
+        &lt;h2 class="zo-navbar__brand"&gt;
+            &lt;a href="/zoaui/" class="zo-navbar__link zo-navbar__brand__link zo-navbar__link--bgDark"&gt;ZoaUI&lt;/a&gt;
+        &lt;/h2&gt;
+        &lt;div class="zo-navbar__nav zo-navbar__nav--bgDark" id="formNav"&gt;
+            &lt;ul class="zo-navbar__list"&gt;
+                &lt;li class="zo-navbar__item"&gt;
+                    &lt;a href="/zoaui/css/" class="zo-navbar__link zo-navbar__nav__link zo-navbar__link--bgDark"&gt;CSS&lt;/a&gt;
+                &lt;/li&gt;
+                &lt;li class="zo-navbar__item"&gt;
+                    &lt;a href="/zoaui/js/" class="zo-navbar__link zo-navbar__nav__link zo-navbar__link--bgDark"&gt;JavaScript&lt;/a&gt;
+                &lt;/li&gt;
+            &lt;/ul&gt;
+            &lt;ul class="zo-navbar__list zo-navbar__list--right"&gt;
+                &lt;li class="zo-navbar__item"&gt;
+                    &lt;form class="zo-g zo-navbar__form zo-navbar__form--compressed"&gt;
+                        &lt;div class="zo-g__col zo-g__col--s9 zo-g__col--m8"&gt;
+                            &lt;label class="zo-label zo-label--hasContentBox zo-g__inputBox"&gt;
+                                &lt;input class="zo-input zo-input--singleLine zo-input--compressed zo-g__input zo-label__input zo-input--borderless zo--radiusLeft" placeholder="Text" /&gt;
+                            &lt;/label&gt;
+                        &lt;/div&gt;
+                        &lt;input type="submit" value="Submit" class="zo-g__btn zo-btn zo-btn--compressed zo-btn--info zo-g__col zo-g__col--s3 zo-g__col--m4 zo--radiusRight" /&gt;
+                    &lt;/form&gt;
+                &lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</pre>
                 </div>
             </div>
         </div>
