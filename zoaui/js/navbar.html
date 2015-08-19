@@ -54,7 +54,163 @@
             <div class="zo-g__col zo-g__col--m9 zo-g__col--l8">
                 <div class="zo-g__content">
                     <h1 class="zo-h1--top">Navbar</h1>
-                    <p>(Under construction)</p>
+                    <p>In ZoaUI, the navbar provides an organized and responsive way of navigation. This component relies on JavaScript.</p>
+                    <p><em><strong>Note:</strong> the value of the toggle button&rsquo;s </em><code class="zo-code">data-zo-navbar</code><em> attribute should match the corresponding </em><code class="zo-code">.zo-navbar__nav</code><em>&rsquo;s </em><code class="zo-code">id</code><em> attribute&mdash;or whichever selector.</em></p>
+                    <div class="zo-navbar zo-navbar--bordered">
+                        <a href="#" class="zo-navbar__link zo-navbar__toggle" role="button" data-zo-navbar="#nav1"></a>
+                        <h2 class="zo-navbar__brand">
+                            <a href="#" class="zo-navbar__link zo-navbar__brand__link">ZoaUI</a>
+                        </h2>
+                        <div class="zo-navbar__nav" id="nav1">
+                            <ul class="zo-navbar__list">
+                                <li class="zo-navbar__item">
+                                    <a href="#" class="zo-navbar__link zo-navbar__nav__link zo--active">Active item</a>
+                                </li>
+                                <li class="zo-navbar__item">
+                                    <a href="#" class="zo-navbar__link zo-navbar__nav__link">Another</a>
+                                </li>
+                            </ul>
+                            <ul class="zo-navbar__list zo-navbar__list--right">
+                                <li class="zo-navbar__item">
+                                    <a href="#" class="zo-navbar__link zo-navbar__nav__link">Hyperlink</a>
+                                </li>
+                                <li class="zo-navbar__item">
+                                    <a href="#" class="zo-navbar__link zo-navbar__nav__link">Another</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <pre class="zo-pre">
+&lt;div class="zo-navbar zo-navbar--bordered"&gt;
+    &lt;a href="#" class="zo-navbar__link zo-navbar__toggle" role="button" <em>data-zo-navbar="#nav1"</em>&gt;&lt;/a&gt;
+    &lt;h2 class="zo-navbar__brand"&gt;
+        &lt;a href="#" class="zo-navbar__link zo-navbar__brand__link"&gt;ZoaUI&lt;/a&gt;
+    &lt;/h2&gt;
+    &lt;div class="zo-navbar__nav" <em>id="nav1"</em>&gt;
+        &lt;ul class="zo-navbar__list"&gt;
+            &lt;li class="zo-navbar__item"&gt;
+                &lt;a href="#" class="zo-navbar__link zo-navbar__nav__link zo--active"&gt;Active item&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li class="zo-navbar__item"&gt;
+                &lt;a href="#" class="zo-navbar__link zo-navbar__nav__link"&gt;Another&lt;/a&gt;
+            &lt;/li&gt;
+        &lt;/ul&gt;
+        &lt;ul class="zo-navbar__list zo-navbar__list--right"&gt;
+            &lt;li class="zo-navbar__item"&gt;
+                &lt;a href="#" class="zo-navbar__link zo-navbar__nav__link"&gt;Hyperlink&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li class="zo-navbar__item"&gt;
+                &lt;a href="#" class="zo-navbar__link zo-navbar__nav__link"&gt;Another&lt;/a&gt;
+            &lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</pre>
+                    <h2>Alternate backgrounds, borders and border radii</h2>
+                    <p>Navbars can also be styled in ZoaUI&rsquo;s primary color. By default they have only a border at the bottom. However they can be made bordered by adding <code class="zo-code">.zo-navbar--bordered</code>, or borderless by <code class="zo-code">.zo-navbar--borderless</code>.</p>
+                    <p>Rounded corners can be achieved by adding the <code class="zo-code">zo--radius</code> class.</p>
+                    <p><em><strong>Note:</strong> the deprecated </em><code class="zo-code">zo-navbar--radius</code><em> class would set the navbar&rsquo;s </em><code class="zo-code">border-radius</code><em> to 6px instead of 4px.</em></p>
+                    <div class="zo-navbar zo-navbar--dark">
+                        <a href="#" class="zo-navbar__link zo-navbar__toggle zo-navbar__link--bgDark" role="button" data-zo-navbar="#nav2"></a>
+                        <h2 class="zo-navbar__brand">
+                            <a href="#" class="zo-navbar__link zo-navbar__brand__link zo-navbar__link--bgDark">ZoaUI</a>
+                        </h2>
+                        <div class="zo-navbar__nav zo-navbar__nav--bgDark" id="nav2">
+                            <ul class="zo-navbar__list">
+                                <li class="zo-navbar__item">
+                                    <a href="#" class="zo-navbar__link zo-navbar__nav__link zo-navbar__link--bgDark">Hyperlink</a>
+                                </li>
+                                <li class="zo-navbar__item">
+                                    <a href="#" class="zo-navbar__link zo-navbar__nav__link zo-navbar__link--bgDark">Another</a>
+                                </li>
+                            </ul>
+                            <ul class="zo-navbar__list zo-navbar__list--right">
+                                <li class="zo-navbar__item">
+                                    <a href="#" class="zo-navbar__link zo-navbar__nav__link zo-navbar__link--bgDark">Hyperlink</a>
+                                </li>
+                                <li class="zo-navbar__item">
+                                    <a href="#" class="zo-navbar__link zo-navbar__nav__link zo-navbar__link--bgDark">Another</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <pre class="zo-pre">
+&lt;div class="zo-navbar zo-navbar--dark"&gt;
+    &lt;a href="#" class="zo-navbar__link zo-navbar__toggle zo-navbar__link--bgDark" role="button" data-zo-navbar="#nav2"&gt;&lt;/a&gt;
+    &lt;h2 class="zo-navbar__brand"&gt;
+        &lt;a href="#" class="zo-navbar__link zo-navbar__brand__link zo-navbar__link--bgDark"&gt;ZoaUI&lt;/a&gt;
+    &lt;/h2&gt;
+    &lt;div class="zo-navbar__nav zo-navbar__nav--bgDark" id="nav2"&gt;
+        &lt;ul class="zo-navbar__list"&gt;
+            &lt;li class="zo-navbar__item"&gt;
+                &lt;a href="#" class="zo-navbar__link zo-navbar__nav__link zo-navbar__link--bgDark"&gt;Hyperlink&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li class="zo-navbar__item"&gt;
+                &lt;a href="#" class="zo-navbar__link zo-navbar__nav__link zo-navbar__link--bgDark"&gt;Another&lt;/a&gt;
+            &lt;/li&gt;
+        &lt;/ul&gt;
+        &lt;ul class="zo-navbar__list zo-navbar__list--right"&gt;
+            &lt;li class="zo-navbar__item"&gt;
+                &lt;a href="#" class="zo-navbar__link zo-navbar__nav__link zo-navbar__link--bgDark"&gt;Hyperlink&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li class="zo-navbar__item"&gt;
+                &lt;a href="#" class="zo-navbar__link zo-navbar__nav__link zo-navbar__link--bgDark"&gt;Another&lt;/a&gt;
+            &lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</pre>
+                    <h3>Borderless with a radius</h3>
+                    <div class="zo-navbar zo-navbar--dark zo-navbar-borderless zo--radius">
+                        <a href="#" class="zo-navbar__link zo-navbar__toggle zo-navbar__link--bgDark" role="button" data-zo-navbar="#nav3"></a>
+                        <h2 class="zo-navbar__brand">
+                            <a href="#" class="zo-navbar__link zo-navbar__brand__link zo-navbar__link--bgDark">ZoaUI</a>
+                        </h2>
+                        <div class="zo-navbar__nav zo-navbar__nav--bgDark zo--radius" id="nav3">
+                            <ul class="zo-navbar__list">
+                                <li class="zo-navbar__item">
+                                    <a href="#" class="zo-navbar__link zo-navbar__nav__link zo-navbar__link--bgDark">Hyperlink</a>
+                                </li>
+                                <li class="zo-navbar__item">
+                                    <a href="#" class="zo-navbar__link zo-navbar__nav__link zo-navbar__link--bgDark">Another</a>
+                                </li>
+                            </ul>
+                            <ul class="zo-navbar__list zo-navbar__list--right">
+                                <li class="zo-navbar__item">
+                                    <a href="#" class="zo-navbar__link zo-navbar__nav__link zo-navbar__link--bgDark">Hyperlink</a>
+                                </li>
+                                <li class="zo-navbar__item">
+                                    <a href="#" class="zo-navbar__link zo-navbar__nav__link zo-navbar__link--bgDark">Another</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <pre class="zo-pre">
+&lt;div class="zo-navbar zo-navbar--dark zo-navbar-borderless zo--radius"&gt;
+    &lt;a href="#" class="zo-navbar__link zo-navbar__toggle zo-navbar__link--bgDark" role="button" data-zo-navbar="#nav3"&gt;&lt;/a&gt;
+    &lt;h2 class="zo-navbar__brand"&gt;
+        &lt;a href="#" class="zo-navbar__link zo-navbar__brand__link zo-navbar__link--bgDark"&gt;ZoaUI&lt;/a&gt;
+    &lt;/h2&gt;
+    &lt;div class="zo-navbar__nav zo-navbar__nav--bgDark zo--radius" id="nav3"&gt;
+        &lt;ul class="zo-navbar__list"&gt;
+            &lt;li class="zo-navbar__item"&gt;
+                &lt;a href="#" class="zo-navbar__link zo-navbar__nav__link zo-navbar__link--bgDark"&gt;Hyperlink&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li class="zo-navbar__item"&gt;
+                &lt;a href="#" class="zo-navbar__link zo-navbar__nav__link zo-navbar__link--bgDark"&gt;Another&lt;/a&gt;
+            &lt;/li&gt;
+        &lt;/ul&gt;
+        &lt;ul class="zo-navbar__list zo-navbar__list--right"&gt;
+            &lt;li class="zo-navbar__item"&gt;
+                &lt;a href="#" class="zo-navbar__link zo-navbar__nav__link zo-navbar__link--bgDark"&gt;Hyperlink&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li class="zo-navbar__item"&gt;
+                &lt;a href="#" class="zo-navbar__link zo-navbar__nav__link zo-navbar__link--bgDark"&gt;Another&lt;/a&gt;
+            &lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</pre>
                 </div>
             </div>
         </div>

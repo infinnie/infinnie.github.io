@@ -63,7 +63,157 @@
             <div class="zo-g__col zo-g__col--m9 zo-g__col--l8">
                 <div class="zo-g__content">
                     <h1 class="zo-h1--top">Pagination</h1>
-                    <p>(Under construction)</p>
+                    <p>Pagination is a set of controls in ZoaUI that can work independently of JavaScript. They can be aligned left, center, or right, with shapes rectangular, corner-rounded or round.</p>
+                    <p><em><strong>Note: </strong>Alignment and triangles do not work on IE7 or below.</em></p>
+                    <div class="zo-paginationContainer">
+                        <ul class="zo-pagination">
+                            <li class="zo-pagination__item">
+                                <span class="zo-pagination__span zo--round">
+                                    <span class="zo-sr">Previous</span>
+                                    <span class="zo-triangle zo-triangle--left"></span>
+                                </span>
+                            </li>
+                            <li class="zo-pagination__item">
+                                <span class="zo-pagination__span zo--active zo--round">
+                                    1
+                                </span>
+                            </li>
+                            <li class="zo-pagination__item">
+                                <a href="#" class="zo-pagination__link zo--round">
+                                    2
+                                </a>
+                            </li>
+                            <li class="zo-pagination__item">
+                                <a href="#" class="zo-pagination__link zo--round">
+                                    3
+                                </a>
+                            </li>
+                            <li class="zo-pagination__item">
+                                <a href="#" class="zo-pagination__link zo--round">
+                                    <span class="zo-sr">Next</span>
+                                    <span class="zo-triangle zo-triangle--right"></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <pre class="zo-pre">
+&lt;div class="zo-paginationContainer"&gt;
+    &lt;ul class="zo-pagination"&gt;
+        &lt;li class="zo-pagination__item"&gt;
+            &lt;span class="zo-pagination__span zo--round"&gt;
+                &lt;span class="zo-sr"&gt;Previous&lt;/span&gt;
+                &lt;span class="zo-triangle zo-triangle--left"&gt;&lt;/span&gt;
+            &lt;/span&gt;
+        &lt;/li&gt;
+        &lt;li class="zo-pagination__item"&gt;
+            &lt;span class="zo-pagination__span zo--active zo--round"&gt;
+                1
+            &lt;/span&gt;
+        &lt;/li&gt;
+        &lt;li class="zo-pagination__item"&gt;
+            &lt;a href="#" class="zo-pagination__link zo--round"&gt;
+                2
+            &lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li class="zo-pagination__item"&gt;
+            &lt;a href="#" class="zo-pagination__link zo--round"&gt;
+                3
+            &lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li class="zo-pagination__item"&gt;
+            &lt;a href="#" class="zo-pagination__link zo--round"&gt;
+                &lt;span class="zo-sr"&gt;Next&lt;/span&gt;
+                &lt;span class="zo-triangle zo-triangle--right"&gt;&lt;/span&gt;
+            &lt;/a&gt;
+        &lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt;</pre>
+                    <div class="zo-paginationContainer">
+                        <ul class="zo-pagination">
+                            <li class="zo-pagination__item zo-pagination__item--text">
+                                <span class="zo-pagination__span">
+                                    Previous
+                                </span>
+                            </li>
+                            <li class="zo-pagination__item">
+                                <span class="zo-pagination__span zo--active">
+                                    1
+                                </span>
+                            </li>
+                            <li class="zo-pagination__item">
+                                <a href="#" class="zo-pagination__link">
+                                    2
+                                </a>
+                            </li>
+                            <li class="zo-pagination__item">
+                                <a href="#" class="zo-pagination__link">
+                                    3
+                                </a>
+                            </li>
+                            <li class="zo-pagination__item">
+                                <a href="#" class="zo-pagination__link zo-pagination__item--text">
+                                    Next
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <pre class="zo-pre">
+&lt;div class="zo-paginationContainer"&gt;
+    &lt;ul class="zo-pagination"&gt;
+        &lt;li class="zo-pagination__item zo-pagination__item--text"&gt;
+            &lt;span class="zo-pagination__span"&gt;
+                Previous
+            &lt;/span&gt;
+        &lt;/li&gt;
+        &lt;li class="zo-pagination__item"&gt;
+            &lt;span class="zo-pagination__span zo--active"&gt;
+                1
+            &lt;/span&gt;
+        &lt;/li&gt;
+        ...
+        &lt;li class="zo-pagination__item"&gt;
+            &lt;a href="#" class="zo-pagination__link zo-pagination__item--text"&gt;
+                Next
+            &lt;/a&gt;
+        &lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt;
+</pre>
+                    <div class="zo-paginationContainer zo--textCenter">
+                        <ul class="zo-pagination">
+                            <li class="zo-pagination__item">
+                                <span class="zo-pagination__span">
+                                    <span class="zo-sr">Previous</span>
+                                    <span class="zo-triangle zo-triangle--left"></span>
+                                </span>
+                            </li>
+                            <li class="zo-pagination__item">
+                                <span class="zo-pagination__span zo--active">
+                                    1
+                                </span>
+                            </li>
+                            <li class="zo-pagination__item">
+                                <a href="#" class="zo-pagination__link">
+                                    2
+                                </a>
+                            </li>
+                            <li class="zo-pagination__item">
+                                <a href="#" class="zo-pagination__link">
+                                    3
+                                </a>
+                            </li>
+                            <li class="zo-pagination__item">
+                                <a href="#" class="zo-pagination__link">
+                                    <span class="zo-sr">Next</span>
+                                    <span class="zo-triangle zo-triangle--right"></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <pre class="zo-pre">
+&lt;div class="zo-paginationContainer zo--textCenter"&gt;
+    ...
+&lt;/div&gt;</pre>
                 </div>
             </div>
         </div>
