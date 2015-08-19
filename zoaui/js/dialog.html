@@ -54,8 +54,10 @@
             <div class="zo-g__col zo-g__col--m9 zo-g__col--l8">
                 <div class="zo-g__content">
                     <h1 class="zo-h1--top">Dialog</h1>
-                    <p>(Under construction)</p>
-                    <pre>
+                    <p><a href="#" role="button" data-zo-toggle="#dialog" class="zo-btn zo-btn--primary zo--radius">Toggle dialog</a></p>
+                    <pre class="zo-pre">
+&lt;a href="#" role="button" data-zo-toggle="#dialog" class="zo-btn zo-btn--primary zo--radius"&gt;Toggle dialog&lt;/a&gt;
+...
 &lt;div class="zo-dlgContainer" id="dialog"&gt;
     &lt;div class="zo-dlgContainer__overlay"&gt;&lt;/div&gt;
     &lt;div class="zo-dlg zo-dlg--shadowed" role="dialog"&gt;
@@ -63,8 +65,8 @@
         &lt;h3 class="zo-dlg__title"&gt;Dialog&lt;/h3&gt;
         &lt;p&gt;Are you sure?&lt;/p&gt;
         &lt;div class="zo-dlg__footer"&gt;
-            &lt;button class="zo-btn zo-btn--primary zo--radius zo-dlg__btn"&gt;OK&lt;/button&gt;
-            &lt;button class="zo-btn zo-btn--default zo--radius zo-dlg__btn"&gt;Cancel&lt;/button&gt;
+            &lt;a href="#" role="button" data-zo-close="#dialog" class="zo-btn zo-btn--primary zo--radius zo-dlg__btn"&gt;OK&lt;/a&gt;
+            &lt;a href="#" role="button" data-zo-close="#dialog" class="zo-btn zo-btn--default zo--radius zo-dlg__btn"&gt;Cancel&lt;/a&gt;
         &lt;/div&gt;
     &lt;/div&gt;
 &lt;/div&gt;
@@ -91,8 +93,8 @@
             <h3 class="zo-dlg__title">Dialog</h3>
             <p>Are you sure?</p>
             <div class="zo-dlg__footer">
-                <button class="zo-btn zo-btn--primary zo--radius zo-dlg__btn">OK</button>
-                <button class="zo-btn zo-btn--default zo--radius zo-dlg__btn">Cancel</button>
+                <a href="#" role="button" data-zo-close="#dialog" class="zo-btn zo-btn--primary zo--radius zo-dlg__btn">OK</a>
+                <a href="#" role="button" data-zo-close="#dialog" class="zo-btn zo-btn--default zo--radius zo-dlg__btn">Cancel</a>
             </div>
         </div>
     </div>
