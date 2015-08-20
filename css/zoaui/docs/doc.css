@@ -56,22 +56,6 @@
     margin-top: 1.25em;
 }
 
-.doc-actionBtn {
-    display: inline-block;
-    background: transparent;
-    color: #fff;
-    border: 2px solid;
-    padding: .5em 1.25em;
-    text-transform: uppercase;
-    font-weight: 600;
-    transition: .5s;
-    letter-spacing: .02em;
-}
-
-    .doc-actionBtn:hover, .doc-actionBtn:focus {
-        background-color: rgba(0,0,0,.1);
-    }
-
 .doc-sideNav {
     border-right: 1px solid #ddd;
     list-style: none;

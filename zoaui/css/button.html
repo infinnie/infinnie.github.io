@@ -64,7 +64,7 @@
                 <div class="zo-g__content">
                     <h1 class="zo-h1--top">Buttons</h1>
                     <p>In ZoaUI, buttons can have different radii, sizes and colors, be inline or block, and be grouped with other buttons.</p>
-                    <p><em><strong>Note:</strong> ghost buttons, as appeared in <a href="/zoaui/">ZoaUI home page</a>, are not supported natively in ZoaUI. Support would be added in later releases.</em></p>
+                    <blockquote class="zo-quote"><em><strong>New in v0.1.4:</strong> support for ghost buttons has been added.</em></blockquote>
                     <h2>Buttons with different radii &amp; colors</h2>
                     <p>
                         <button class="zo-btn zo-btn--default">I am a button</button>
@@ -196,7 +196,7 @@
     &lt;button class="zo-btn zo-btn--error zo-btn--block zo-btnGroup--block__btn zo--radiusBottom"&gt;Error&lt;/button&gt;
 &lt;/span&gt;</pre>
                     <h2>Split buttons</h2>
-                    <p>Buttons can be split by splitters, which might be useful with <a href="/zoaui/js/dropdown.html" class="zo-link">dropdowns</a>.</p>
+                    <p>Buttons can be split by splitters, which might be useful with, for example, <a href="/zoaui/js/dropdown.html" class="zo-link">dropdowns</a>.</p>
                     <p>
                         <button class="zo-btn zo-btn--primary zo--radius">
                             Do something
@@ -216,6 +216,35 @@
     &lt;span class="zo-triangle zo-triangle--down"&gt;&lt;/span&gt;
 &lt;/button&gt;
 </pre>
+                    <h2>Ghost buttons</h2>
+                    <p>Ghost buttons are great for call-to-action buttons covering an image.</p>
+                    <p>
+                        <a href="#" role="button" class="zo-ghostBtn">Ghost button</a>
+                        <a href="#" role="button" class="zo-ghostBtn zo--round zo-ghostBtn--primary">Primary</a>
+                        <a href="#" role="button" class="zo-ghostBtn zo--radius zo-ghostBtn--success">Success</a>
+                        <a href="#" role="button" class="zo-ghostBtn zo--round zo-ghostBtn--error">Error</a>
+                        <a href="#" role="button" class="zo-ghostBtn zo--radius zo-ghostBtn--info">Info</a>
+                    </p>
+                    <p style="background:#555;padding:1em">
+                        <a href="#" role="button" class="zo-ghostBtn zo--round zo-ghostBtn--inverted">Inverted</a>
+                        <a href="#" role="button" class="zo-ghostBtn zo--round zo-ghostBtn--info">Info</a>
+                        <a href="#" role="button" class="zo-ghostBtn zo--radius zo-ghostBtn--success">Success</a>
+                        <a href="#" role="button" class="zo-ghostBtn zo--round zo-ghostBtn--error">Error</a>
+                    </p>
+                    <pre class="zo-pre">
+&lt;p&gt;
+    &lt;a href="#" role="button" class="zo-ghostBtn"&gt;Ghost button&lt;/a&gt;
+    &lt;a href="#" role="button" class="zo-ghostBtn zo--round zo-ghostBtn--primary"&gt;Primary&lt;/a&gt;
+    &lt;a href="#" role="button" class="zo-ghostBtn zo--radius zo-ghostBtn--success"&gt;Success&lt;/a&gt;
+    &lt;a href="#" role="button" class="zo-ghostBtn zo--round zo-ghostBtn--error"&gt;Error&lt;/a&gt;
+    &lt;a href="#" role="button" class="zo-ghostBtn zo--radius zo-ghostBtn--info"&gt;Info&lt;/a&gt;
+&lt;/p&gt;
+&lt;p style="background:#555;padding:1em"&gt;
+    &lt;a href="#" role="button" class="zo-ghostBtn zo--round zo-ghostBtn--inverted"&gt;Inverted&lt;/a&gt;
+    &lt;a href="#" role="button" class="zo-ghostBtn zo--round zo-ghostBtn--info"&gt;Info&lt;/a&gt;
+    &lt;a href="#" role="button" class="zo-ghostBtn zo--radius zo-ghostBtn--success"&gt;Success&lt;/a&gt;
+    &lt;a href="#" role="button" class="zo-ghostBtn zo--round zo-ghostBtn--error"&gt;Error&lt;/a&gt;
+&lt;/p&gt;</pre>
                 </div>
             </div>
         </div>
