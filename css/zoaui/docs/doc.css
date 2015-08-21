@@ -40,7 +40,7 @@
 }
 
 .doc-homeNavbar__link {
-    color: #fff;
+    color: rgba(255,255,255,1);
 }
 
     .doc-homeNavbar__link:hover, .doc-homeNavbar__link:focus, .doc-homeNavbar__link.zo--active {
