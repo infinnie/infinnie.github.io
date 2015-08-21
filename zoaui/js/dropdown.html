@@ -55,6 +55,7 @@
                 <div class="zo-g__content">
                     <h1 class="zo-h1--top">Dropdown</h1>
                     <p><em><strong>Warning:</strong> Support is incomplete for multi-level dropdowns and dropdowns nested in dialogs.</em></p>
+                    <p><em><strong>Note: </strong>Add an empty (</em>e.g. <code class="zo-code">void(0)</code><em>) click handler in order for iOS Safari to work.</em></p>
                     <div class="zo-btnGroup zo-dropdown" id="dropdown">
                         <a href="#" class="zo-btn zo-btn--primary zo--radius zo-btnGroup__btn zo-dropdown__toggle" data-zo-toggle="#dropdown">
                             Dropdown
@@ -80,7 +81,7 @@
         &lt;span class="zo-btn__splitter"&gt;&lt;/span&gt;
         &lt;span class="zo-triangle zo-triangle--down"&gt;&lt;/span&gt;
     &lt;/a&gt;
-    &lt;div class="zo-dropdown__overlay" data-zo-close="#dropdown"&gt;&lt;/div&gt;
+    &lt;div class="zo-dropdown__overlay" data-zo-close="#dropdown" onclick="void(0)"&gt;&lt;/div&gt;
     &lt;div class="zo-dropdown__content"&gt;
         &lt;ul class="zo-dropdown__menu zo--radius"&gt;
             &lt;li class="zo-dropdown__menu__item"&gt;
@@ -141,7 +142,7 @@
                         Dropdown
                         &amp;nbsp;&lt;span class="zo-triangle zo-triangle--down"&gt;&lt;/span&gt;
                     &lt;/a&gt;
-                    &lt;div class="zo-dropdown__overlay" data-zo-close="#navDropdown"&gt;&lt;/div&gt;
+                    &lt;div class="zo-dropdown__overlay" data-zo-close="#navDropdown" onclick="void(0)"&gt;&lt;/div&gt;
                     &lt;div class="zo-dropdown__content"&gt;
                         &lt;ul class="zo-dropdown__menu"&gt;
                             &lt;li class="zo-dropdown__menu__item"&gt;
