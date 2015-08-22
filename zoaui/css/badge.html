@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <title>Images&mdash;ZoaUI</title>
+    <title>Badge&mdash;ZoaUI</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="stylesheet" href="/css/zoaui/zoaui.css" />
@@ -52,13 +52,13 @@
                             <a href="/zoaui/css/form.html" class="doc-sideNav__link">Form elements</a>
                         </li>
                         <li class="doc-sideNav__item">
-                            <a href="/zoaui/css/image.html" class="zo--active doc-sideNav__link">Images</a>
+                            <a href="/zoaui/css/image.html" class="doc-sideNav__link">Images</a>
                         </li>
                         <li class="doc-sideNav__item">
                             <a href="/zoaui/css/pagination.html" class="doc-sideNav__link">Pagination</a>
                         </li>
                         <li class="doc-sideNav__item">
-                            <a href="/zoaui/css/badge.html" class="doc-sideNav__link">
+                            <a href="/zoaui/css/badge.html" class="zo--active doc-sideNav__link">
                                 Badges <span class="zo-badge zo-badge--info zo--round">v0.1.6</span>
                             </a>
                         </li>
@@ -67,62 +67,44 @@
             </div>
             <div class="zo-g__col zo-g__col--m9 zo-g__col--l8">
                 <div class="zo-g__content">
-                    <h1 class="zo-h1--top">Images</h1>
-                    <h2>Helper classes</h2>
-                    <p>The only constraints by default (with no classnames added to <code class="zo-code">img</code> element) are that its <code class="zo-code">border</code> is <code class="zo-code">none</code> and <code class="zo-code">height</code> is <code class="zo-code">auto</code>. Adding the classname <code class="zo-code">zo-img</code> would constrain its <code class="zo-code">max-width</code> to <code class="zo-code">100%</code>.</p>
-                    <p>With the classname <code class="zo-code">zo-img--block</code>, its <code class="zo-code">display</code> would be set to <code class="zo-code">block</code>. With <code class="zo-code">.zo-img--fill</code>, its <code class="zo-code">width</code> would be set to <code class="zo-code">100%</code>.</p>
-                    <h2>Figures</h2>
-                    <p>Images can be organized in figures. They can have different shapes, be inline or block, or be arranged in grids.</p>
-                    <p><em><strong>Note:</strong> for the </em><code class="zo-code">figure</code><em> element to work correctly in IE 8 and below, you would consider using some JavaScript.</em></p>
-                    <div class="zo-g zo-g--fill">
-                        <div class="zo-g__col zo-g__col--s4">
-                            <div class="zo-g__content">
-                                <figure class="zo-figure zo-figure--block">
-                                    <img src="/images/zoadoc/test.jpg" class="zo-img zo-img--block zo-img--fill" />
-                                    <figcaption class="zo-figure__caption">I am caption</figcaption>
-                                </figure>
-                            </div>
-                        </div>
-                        <div class="zo-g__col zo-g__col--s4">
-                            <div class="zo-g__content">
-                                <div class=" zo-figure zo-figure--block zo--radius">
-                                    <img src="/images/zoadoc/test.jpg" class="zo-img zo-img--block zo-img--fill" />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="zo-g__col zo-g__col--s4">
-                            <div class="zo-g__content">
-                                <div class=" zo-figure zo-figure--block zo--round">
-                                    <img src="/images/zoadoc/test.jpg" class="zo-img zo-img--block zo-img--fill zo--round" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <h1 class="zo-h1--top">Badge</h1>
+                    <p>As with other elements, badges can be in different shapes when modified with classes like <code class="zo-code">zo-radius</code> or <code class="zo-code">zo-round</code>.</p>
+                    <p>
+                        <span class="zo-badge zo-badge--info zo--radius">New</span>
+                        <em>the badge is a new feature added in ZoaUI v0.1.6.</em>
+                    </p>
+                    <p>
+                        <span class="zo-badge zo-badge--error zo--radius">Warning</span>
+                        <em>badges nested in headings are not yet (by v0.1.6) supported.</em>
+                    </p>
+                    <p>
+                        ZoaUI <span class="zo-badge">v0.1.6</span>
+                        <span class="zo-badge zo-badge--primary zo--radius">Primary</span>
+                        <span class="zo-badge zo-badge--success zo--round">Success</span>
+                        <span class="zo-badge zo-badge--error zo--radius">Error</span>
+                        <span class="zo-badge zo-badge--info">Info</span>
+                    </p>
+                    <p>
+                        <a href="#" role="button" class="zo-btn zo-btn--default zo--radius">
+                            Notifications
+                            <span class="zo-badge zo-badge--error zo--round">233</span>
+                        </a>
+                    </p>
                     <pre class="zo-pre">
-&lt;div class="zo-g zo-g--fill"&gt;
-    &lt;div class="zo-g__col zo-g__col--s4"&gt;
-        &lt;div class="zo-g__content"&gt;
-            &lt;figure class="zo-figure zo-figure--block"&gt;
-                &lt;img src="/images/zoadoc/test.jpg" class="zo-img zo-img--block zo-img--fill" /&gt;
-                &lt;figcaption class="zo-figure__caption"&gt;I am caption&lt;/figcaption&gt;
-            &lt;/figure&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class="zo-g__col zo-g__col--s4"&gt;
-        &lt;div class="zo-g__content"&gt;
-            &lt;div class=" zo-figure zo-figure--block zo--radius"&gt;
-                &lt;img src="/images/zoadoc/test.jpg" class="zo-img zo-img--block zo-img--fill" /&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class="zo-g__col zo-g__col--s4"&gt;
-        &lt;div class="zo-g__content"&gt;
-            &lt;div class=" zo-figure zo-figure--block zo--round"&gt;
-                &lt;img src="/images/zoadoc/test.jpg" class="zo-img zo-img--block zo-img--fill zo--round" /&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
+&lt;p&gt;
+    ZoaUI
+    &lt;span class="zo-badge"&gt;v0.1.6&lt;/span&gt;
+    &lt;span class="zo-badge zo-badge--primary zo--radius"&gt;Primary&lt;/span&gt;
+    &lt;span class="zo-badge zo-badge--success zo--round"&gt;Success&lt;/span&gt;
+    &lt;span class="zo-badge zo-badge--error zo--radius"&gt;Error&lt;/span&gt;
+    &lt;span class="zo-badge zo-badge--info"&gt;Info&lt;/span&gt;
+&lt;/p&gt;
+&lt;p&gt;
+    &lt;a href="#" role="button" class="zo-btn zo-btn--default zo--radius"&gt;
+        Notifications
+        &lt;span class="zo-badge zo-badge--error zo--round"&gt;233&lt;/span&gt;
+    &lt;/a&gt;
+&lt;/p&gt;
 </pre>
                 </div>
             </div>
