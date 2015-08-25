@@ -92,6 +92,12 @@ $(function () {
             setTimeout(function () {
                 zoomOut(zoomOverlay);
             }, 20);
+        }).on("keyup", function (e) {
+            if (e.keyCode === 27) {
+                setTimeout(function () {
+                    zoomOut(zoomOverlay);
+                }, 20);
+            }
         }).trigger("resize");
     });
 })(jQuery);
