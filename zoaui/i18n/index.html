@@ -1,0 +1,126 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>i18n&mdash;ZoaUI</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="/css/zoaui/zoaui.css" />
+    <link rel="stylesheet" href="/css/zoaui/langs/ja-jp.css" />
+    <link rel="stylesheet" href="/css/zoaui/langs/zh-cn.css" />
+    <link rel="stylesheet" href="/css/zoaui/docs/doc.css" />
+</head>
+<body>
+    <div class="zo-navbar zo-navbar--dark zo-navbar-borderless">
+        <div class="zo-container">
+            <a href="#" class="zo-navbar__link zo-navbar__toggle zo-navbar__link--bgDark" role="button" data-zo-navbar="#mainNav"></a>
+            <h2 class="zo-navbar__brand">
+                <a href="/zoaui/" class="zo-navbar__link zo-navbar__brand__link zo-navbar__link--bgDark">ZoaUI</a>
+            </h2>
+            <div class="zo-navbar__nav zo-navbar__nav--bgDark" id="mainNav">
+                <ul class="zo-navbar__list">
+                    <li class="zo-navbar__item">
+                        <a href="/zoaui/css/" class="zo-navbar__link zo-navbar__nav__link zo-navbar__link--bgDark">CSS</a>
+                    </li>
+                    <li class="zo-navbar__item">
+                        <a href="/zoaui/js/" class="zo-navbar__link zo-navbar__nav__link zo-navbar__link--bgDark">JavaScript</a>
+                    </li>
+                    <li class="zo-navbar__item">
+                        <a href="/zoaui/i18n/" class="zo--active zo-navbar__link zo-navbar__nav__link zo-navbar__link--bgDark">i18n</a>
+                    </li>
+                </ul>
+                <ul class="zo-navbar__list zo-navbar__list--right">
+                    <li class="zo-navbar__item">
+                        <a href="https://github.com/infinnie/zoaui" target="_blank" class="zo-navbar__link zo-navbar__nav__link zo-navbar__link--bgDark">GitHub</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="zo-container">
+        <div class="zo-g">
+            <div class="zo-g__col zo-g__col--m3 zo-g__col--l4">
+                <div class="zo-g__content">
+                    <ul class="doc-sideNav">
+                        <li class="doc-sideNav__item">
+                            <a href="/zoaui/i18n/" class="doc-sideNav__link zo--active">i18n</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="zo-g__col zo-g__col--m9 zo-g__col--l8">
+                <div class="zo-g__content">
+                    <h1 class="zo-h1--top">i18n</h1>
+                    <p>Since v0.1.7, ZoaUI puts multilingual typography at a high priority.</p>
+                    <p>Unlike most other CSS libraries, ZoaUI now supports <em>plug-and-play i18n</em>: if you want to optimize an element for a certain language, just include corresponding language packs and add the corresponding <code>lang</code> attribute and classnames to the element.</p>
+                    <h2>Supported languages</h2>
+                    <p>By v0.1.7, languages supported are listed below. Official support for other languages might or might not be added later.</p>
+                    <ul class="zo-list zo-list--ul">
+                        <li class="zo-list__item">
+                            Simplified Chinese
+                            <ul class="zo-list zo-list--nested zo-list--ul">
+                                <li class="zo-list__item"><code class="zo-code">lang</code>: <code class="zo-code">zh</code> or <code class="zo-code">zh-cn</code>, or</li>
+                                <li class="zo-list__item"><code class="zo-code">class</code>: <code class="zo-code">zolang--zh</code></li>
+                            </ul>
+                        </li>
+                        <li class="zo-list__item">
+                            Japanese
+                            <ul class="zo-list zo-list--nested zo-list--ul">
+                                <li class="zo-list__item"><code class="zo-code">lang</code>: <code class="zo-code">ja</code> or <code class="zo-code">ja-jp</code>, or</li>
+                                <li class="zo-list__item"><code class="zo-code">class</code>: <code class="zo-code">zolang--ja</code></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <h2>File structure</h2>
+                    <p>If multilingual typography is needed, it is required that files for corresponding languages be linked to in the HTML.</p>
+                    <pre class="zo-pre">&lt;link rel="stylesheet" href="/css/zoaui/zoaui.css" /&gt;
+&lt;link rel="stylesheet" href="/css/zoaui/langs/ja-jp.css" /&gt;
+&lt;link rel="stylesheet" href="/css/zoaui/langs/zh-cn.css" /&gt;
+</pre>
+                    <h2>Demos</h2>
+                    <div lang="zh-cn" class="zolang--zh zolang--layoutCJK">
+                        <h1 class="zolang-h1--layoutCJK">而这种忘却，有时候会带来无法补救的结果。</h1>
+                        <h2 class="zolang-h2--layoutCJK">我们希望有一天，对每个人而言，现代技术不再是一种无需思考的魔法&hellip;</h2>
+                        <p>着丝粒（染色体的主缢痕）为染色质的结构，将染色体分成二臂，在细胞分裂前期和中期，把两个姐妹染色单体连在一起，到后期两个染色单体的着丝粒分开。着丝粒两侧各有一个由蛋白质构成的 3 层盘状特化结构，为非染色体性质物质的附加物，称为着丝点。</p>
+                        <pre class="zo-pre zolang-pre--zh">这个 pre 里面有中文字符串。</pre>
+                        <blockquote class="zo-quote">
+                            好吧我说的并不准确。实际上并不完全是 computed value, line-height 的无单位数字是直接继承的, 百分百是计算后的, em 同。。。
+                        </blockquote>
+                        <p class="zo-quoteSource"><a href="https://intptr.im/" class="zo-link">萌萌的指针</a></p>
+                    </div>
+                    <pre class="zo-pre zolang-pre--zh">
+&lt;div lang="zh-cn" class="zolang--zh zolang--layoutCJK"&gt;
+    &lt;h1 class="zolang-h1--layoutCJK"&gt;
+        ...
+    &lt;/h1&gt;
+    &lt;h2 class="zolang-h2--layoutCJK"&gt;
+        ...
+    &lt;/h2&gt;
+    &lt;p&gt;
+        ...
+    &lt;/p&gt;
+    &lt;pre class="zo-pre zolang-pre--zh"&gt;这个 pre 里面有中文字符串。&lt;/pre&gt;
+    &lt;blockquote class="zo-quote"&gt;
+        ...
+    &lt;/blockquote&gt;
+    &lt;p class="zo-quoteSource"&gt;&lt;a href="https://intptr.im/" class="zo-link"&gt;萌萌的指针&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+</pre>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="doc-footer">
+        <div class="zo-container">
+            <div class="zo-g">
+                <div class="zo-g__col">
+                    <div class="zo-g__content">
+                        <p>&copy; <a href="/zoaui/" class="doc-footer__link">ZoaUI</a> &middot; built with &hearts; and <a href="https://msdn.microsoft.com/vstudio/" target="_blank" class="doc-footer__link">Visual Studio</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/js/jquery-1.8.0.min.js"></script>
+    <script src="/js/zoaui/zoaui.js"></script>
+</body>
+</html>
