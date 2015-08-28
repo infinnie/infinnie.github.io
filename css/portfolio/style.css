@@ -283,14 +283,26 @@ body {
     font-weight: 600;
 }
 
+.section-link, .section-link-light {
+        transition: color .5s;
+}
+
 .section-link {
     color: #a27;
-    transition: color .5s;
 }
 
     .section-link:hover, .section-link:focus {
         text-decoration: underline;
         color: #d5a;
+    }
+
+.section-link-light {
+    color: rgba(255,255,255,.6);
+    text-decoration:underline;
+}
+
+    .section-link-light:hover, .section-link-light:focus {
+        color: #fff;
     }
 
 @media screen and (min-width:50em) {
