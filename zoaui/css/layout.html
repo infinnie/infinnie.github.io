@@ -72,7 +72,7 @@
                     <p>ZoaUI utilizes responsive grids for layout. In ZoaUI, screen sizes are divided into 3 categories by 2 breakpoints: small (s), medium (m), and large (l).</p>
                     <h2>The role of the container</h2>
                     <p>Use the classname <code class="zo-code">zo-container</code> to restrain contents inside within a given width, which by default, is 960px.</p>
-                    <h2 class="zo-h2--top">Small</h2>
+                    <h2>Small</h2>
                     <div class="zo-g">
                         <div class="zo-g__col zo-g__col--s1">
                             <div class="doc-displayBorder">1 col</div>
@@ -190,7 +190,76 @@
     &lt;/div&gt;
 &lt;/div&gt;
 </pre>
-
+                    <h2>Large</h2>
+                    <div class="zo-g">
+                        <div class="zo-g__col zo-g__col--l1">
+                            <div class="doc-displayBorder">1 col</div>
+                        </div>
+                        <div class="zo-g__col zo-g__col--l11">
+                            <div class="doc-displayBorder">11 columns</div>
+                        </div>
+                    </div>
+                    <pre class="zo-pre">
+&lt;div class="zo-g"&gt;
+    &lt;div class="zo-g__col zo-g__col--l1"&gt;
+        ...
+    &lt;/div&gt;
+    &lt;div class="zo-g__col zo-g__col--l11"&gt;
+        ...
+    &lt;/div&gt;
+&lt;/div&gt;
+</pre>
+                    <h2>Adding margins to the content</h2>
+                    <p>Usually, we want the content area to have appropriate horizontal margins instead of touching the edge. If so, nest a div with the classname <code class="zo-code">zo-g__content</code> inside the column.</p>
+                    <div class="zo-g">
+                        <div class="zo-g__col zo-g__col--s6">
+                            <div class="zo-g__content">
+                                <div class="doc-displayBorder">6 columns, now inside <code class="zo-code">.zo-g__content</code>.</div>
+                            </div>
+                        </div>
+                        <div class="zo-g__col zo-g__col--s6">
+                            <div class="doc-displayBorder">6 columns</div>
+                        </div>
+                    </div>
+                    <pre class="zo-pre">
+&lt;div class="zo-g"&gt;
+    &lt;div class="zo-g__col zo-g__col--s6"&gt;
+        &lt;div class="zo-g__content"&gt;
+            &lt;div class="doc-displayBorder"&gt;6 columns, now inside &lt;code class="zo-code"&gt;.zo-g__content&lt;/code&gt;.&lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="zo-g__col zo-g__col--s6"&gt;
+        &lt;div class="doc-displayBorder"&gt;6 columns&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</pre>
+                    <h2>Keeping the content aligned to the container</h2>
+                    <p>In a nested multicolumn layout, it is <a href="/zoaui/css/image.html">sometimes desired</a> that contents in columns, though having margins, are aligned to the left and right edges of the container. Appending the classname <code class="zo-code">zo-g--fill</code> to <code>zo-g</code> will work.</p>
+                    <div class="zo-g zo-g--fill">
+                        <div class="zo-g__col zo-g__col--s6">
+                            <div class="zo-g__content">
+                                <div class="doc-displayBorder">6 columns inside <code class="zo-code">.zo-g__content</code></div>
+                            </div>
+                        </div>
+                        <div class="zo-g__col zo-g__col--s6">
+                            <div class="zo-g__content">
+                                <div class="doc-displayBorder">6 columns inside <code class="zo-code">.zo-g__content</code></div>
+                            </div>
+                        </div>
+                    </div>
+                    <pre class="zo-pre">
+&lt;div class="zo-g zo-g--fill"&gt;
+    &lt;div class="zo-g__col zo-g__col--s6"&gt;
+        &lt;div class="zo-g__content"&gt;
+            &lt;div class="doc-displayBorder"&gt;...&lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="zo-g__col zo-g__col--s6"&gt;
+        &lt;div class="zo-g__content"&gt;
+            &lt;div class="doc-displayBorder"&gt;...&lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</pre>
                     <h2>Offset</h2>
                     <div class="zo-g">
                         <div class="zo-g__col zo-g__col--s6 zo-g__col--sOffset3">
