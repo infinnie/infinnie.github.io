@@ -95,8 +95,8 @@ img {
 pre, code {
     font-family: Consolas,"Source Code Pro",Menlo,"Courier New",monospace;
     background: #f3f3f3;
-    -webkit-font-feature-settings: normal;
-    font-feature-settings: normal;
+    -webkit-font-feature-settings: "onum" 1;
+    font-feature-settings: "onum" 1;
     letter-spacing: 0;
 }
 
