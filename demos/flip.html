@@ -19,6 +19,7 @@
             transition: .3s;
             position: relative;
             display: inline-block;
+            margin: .25em;
         }
 
             .flip:before, .flip:after {
@@ -35,8 +36,6 @@
                 height: 100%;
                 top: 0;
                 left: 0;
-                margin: -2px;
-                border: 2px solid #ddd;
                 background: #fff;
             }
 
@@ -54,28 +53,45 @@
             }
 
         .flip--on {
-            background: #7be;
-            border-color: #7be;
+            background: #7ad;
+            border-color: #7ad;
         }
 
             .flip--on:before {
                 opacity: 0;
-                transform: translate(37.5%) scale(0);
+                transform: translate(37.5%) scale(.1);
             }
 
             .flip--on::after {
-                border-color: #7be;
+                border-color: #7ad;
                 transform: translate(24px);
             }
+
+        .flip--test:after {
+            height: 3px;
+            border: 0;
+            background: #ddd;
+            width: 8px;
+            margin: 6.5px 6px;
+        }
+
+        .flip--test.flip--on:after {
+            height: 14px;
+            border: 0;
+            background: #fff;
+            width: 14px;
+            margin: 1px;
+        }
     </style>
 </head>
 <body>
     <h1>Flip switches</h1>
-    <span class="flip" id="test"></span>
+    <span class="flip" data-role="flip"></span>
+    <span class="flip flip--test" data-role="flip"></span>
     <script src="/js/jquery-1.8.0.min.js"></script>
     <script>
         jQuery(function ($) {
-            $("#test").on("click", function () {
+            $("[data-role=flip]").on("click", function () {
                 $(this).toggleClass("flip--on");
             });
         });
