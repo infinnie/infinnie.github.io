@@ -24,6 +24,7 @@
             position: relative;
             display: inline-block;
             margin: .25em;
+            vertical-align: middle;
         }
 
             .flip:before, .flip:after {
@@ -95,8 +96,11 @@
 </head>
 <body>
     <h1>Flip switches</h1>
-    <span class="flip" data-role="flip"></span>
-    <span class="flip flip--test" data-role="flip"></span>
+    <p>
+        The quick brown fox jumps over the lazy doge.
+        <span class="flip" data-role="flip"></span>
+        <span class="flip flip--test" data-role="flip">&#160;</span>
+    </p>
     <script src="/js/jquery-1.8.0.min.js"></script>
     <script>
         jQuery(function ($) {
