@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Offcanvas&mdash;ZoaUI</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="/css/zoaui/zoaui.css" />
+    <link rel="stylesheet" href="/css/zoaui/docs/doc.css" />
+</head>
+<body class="zo-offCanvasContainer">
+    <div class="zo-hasOffCanvas">
+        <div class="zo-navbar zo-navbar--dark zo-navbar-borderless">
+            <div class="zo-container">
+                <a href="#" class="zo-navbar__link zo-navbar__toggle zo-navbar__link--bgDark" role="button" data-zo-navbar="#mainNav"></a>
+                <h2 class="zo-navbar__brand">
+                    <a href="/zoaui/" class="zo-navbar__link zo-navbar__brand__link zo-navbar__link--bgDark">ZoaUI</a>
+                </h2>
+                <div class="zo-navbar__nav zo-navbar__nav--bgDark" id="mainNav">
+                    <ul class="zo-navbar__list">
+                        <li class="zo-navbar__item">
+                            <a href="/zoaui/css/" class="zo-navbar__link zo-navbar__nav__link zo-navbar__link--bgDark">CSS</a>
+                        </li>
+                        <li class="zo-navbar__item">
+                            <a href="/zoaui/js/" class="zo--active zo-navbar__link zo-navbar__nav__link zo-navbar__link--bgDark">JavaScript</a>
+                        </li>
+                        <li class="zo-navbar__item">
+                            <a href="/zoaui/i18n/" class="zo-navbar__link zo-navbar__nav__link zo-navbar__link--bgDark">i18n</a>
+                        </li>
+                    </ul>
+                    <ul class="zo-navbar__list zo-navbar__list--right">
+                        <li class="zo-navbar__item">
+                            <a href="https://github.com/infinnie/zoaui" target="_blank" class="zo-navbar__link zo-navbar__nav__link zo-navbar__link--bgDark">GitHub</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="zo-container">
+            <div class="zo-g">
+                <div class="zo-g__col zo-g__col--m3 zo-g__col--l4">
+                    <div class="zo-g__content">
+                        <ul class="doc-sideNav">
+                            <li class="doc-sideNav__item">
+                                <a href="/zoaui/js/" class="doc-sideNav__link">JavaScript</a>
+                            </li>
+                            <li class="doc-sideNav__item">
+                                <a href="/zoaui/js/navbar.html" class="doc-sideNav__link">Navbar</a>
+                            </li>
+                            <li class="doc-sideNav__item">
+                                <a href="/zoaui/js/dialog.html" class="doc-sideNav__link">Dialog</a>
+                            </li>
+                            <li class="doc-sideNav__item">
+                                <a href="/zoaui/js/dropdown.html" class="doc-sideNav__link">Dropdown</a>
+                            </li>
+                            <li class="doc-sideNav__item">
+                                <a href="/zoaui/js/offcanvas.html" class="zo--active doc-sideNav__link">
+                                    Offcanvas
+                                    <span class="zo-badge zo-badge--info zo--round">New</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="zo-g__col zo-g__col--m9 zo-g__col--l8">
+                    <div class="zo-g__content">
+                        <h1 class="zo-h1--top">Offcanvas</h1>
+                        <p><em><strong>Note:</strong> To use offcanvas navigation, it is required that you manually add the classname <code class="zo-code">zo-offCanvasContainer</code> to the <code class="zo-code">body</code>, and wrap the page content you want to offset into an element with the classname <code class="zo-code">zo-hasOffCanvas</code>.</em></p>
+                        <p>
+                            <a href="#" class="zo-btn zo-btn--primary zo--radius" data-zo-toggle="#offcanvas">Toggle offcanvas</a>
+                            <a href="#" class="zo-btn zo-btn--default zo--radius" data-zo-toggle="#offcanvas1">On the right</a>
+                            <a href="#" class="zo-btn zo-btn--info zo--radius" data-zo-toggle="#offcanvas2">Dark</a>
+                        </p>
+                        <pre class="zo-pre">
+&lt;body class="zo-offCanvasContainer"&gt;
+    &lt;div class="zo-hasOffCanvas"&gt;
+    ...
+    &lt;a href="#" class="zo-btn zo-btn--primary zo--radius" data-zo-toggle="#offcanvas"&gt;Toggle offcanvas&lt;/a&gt;
+    ...
+    &lt;/div&gt;
+    &lt;div class="zo-offCanvasCover" data-zo-close="[data-zo-offcanvas-pos]"&gt;&lt;/div&gt;
+    &lt;div class="zo-offCanvas zo-offCanvas--left" data-zo-offcanvas-pos="left" id="offcanvas"&gt;&lt;/div&gt;
+&lt;/body&gt;
+</pre>
+                        <h2>Positions and themes</h2>
+                        <p>It is not necessary to specify the theme, which defaults to light. However, as of v0.1.8, the position is required to specify both in the classname and in the data property.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="doc-footer">
+            <div class="zo-container">
+                <div class="zo-g">
+                    <div class="zo-g__col">
+                        <div class="zo-g__content">
+                            <p>&copy; <a href="/zoaui/" class="doc-footer__link">ZoaUI</a> &middot; built with &hearts; and <a href="https://msdn.microsoft.com/vstudio/" target="_blank" class="doc-footer__link">Visual Studio</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="zo-offCanvasCover" data-zo-close="[data-zo-offcanvas-pos]"></div>
+    <div class="zo-offCanvas zo-offCanvas--left" data-zo-offcanvas-pos="left" id="offcanvas"><p>Left</p></div>
+    <div class="zo-offCanvas zo-offCanvas--right" data-zo-offcanvas-pos="right" id="offcanvas1"><p>Right</p></div>
+    <div class="zo-offCanvas zo-offCanvas--left zo-offCanvas--dark" data-zo-offcanvas-pos="left" data-zo-offcanvas-theme="dark" id="offcanvas2"><p>Dark</p></div>
+    <script src="/js/jquery-1.8.0.min.js"></script>
+    <script src="/js/zoaui/zoaui.js"></script>
+</body>
+</html>
