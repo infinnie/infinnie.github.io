@@ -67,8 +67,6 @@
                         <p><em><strong>Note:</strong> To use offcanvas navigation, it is required that you manually add the classname <code class="zo-code">zo-offCanvasContainer</code> to the <code class="zo-code">body</code>, and wrap the page content you want to offset into an element with the classname <code class="zo-code">zo-hasOffCanvas</code>.</em></p>
                         <p>
                             <a href="#" class="zo-btn zo-btn--primary zo--radius" data-zo-toggle="#offcanvas">Toggle offcanvas</a>
-                            <a href="#" class="zo-btn zo-btn--default zo--radius" data-zo-toggle="#offcanvas1">On the right</a>
-                            <a href="#" class="zo-btn zo-btn--info zo--radius" data-zo-toggle="#offcanvas2">Dark</a>
                         </p>
                         <pre class="zo-pre">
 &lt;body class="zo-offCanvasContainer"&gt;
@@ -78,11 +76,18 @@
     ...
     &lt;/div&gt;
     &lt;div class="zo-offCanvasCover" data-zo-close="[data-zo-offcanvas-pos]"&gt;&lt;/div&gt;
-    &lt;div class="zo-offCanvas zo-offCanvas--left" data-zo-offcanvas-pos="left" id="offcanvas"&gt;&lt;/div&gt;
-&lt;/body&gt;
-</pre>
+    &lt;div class="zo-offCanvas zo-offCanvas--left" data-zo-offcanvas-pos="left" id="offcanvas"&gt;...&lt;/div&gt;
+&lt;/body&gt;</pre>
                         <h2>Positions and themes</h2>
                         <p>It is not necessary to specify the theme, which defaults to light. However, as of v0.1.8, the position is required to specify both in the classname and in the data property.</p>
+                        <p>
+                            <a href="#" class="zo-btn zo-btn--primary zo--radius" data-zo-toggle="#offcanvas1">On the right</a>
+                        </p>
+                        <pre class="zo-pre">&lt;div class="zo-offCanvas zo-offCanvas--right" data-zo-offcanvas-pos="right" id="offcanvas1"&gt;...&lt;/div&gt;</pre>
+                        <p>
+                            <a href="#" class="zo-btn zo-btn--primary zo--radius" data-zo-toggle="#offcanvas2">Dark theme</a>
+                        </p>
+                        <pre class="zo-pre">&lt;div class="zo-offCanvas zo-offCanvas--left zo-offCanvas--dark" data-zo-offcanvas-pos="left" data-zo-offcanvas-theme="dark" id="offcanvas2"&gt;...&lt;/div&gt;</pre>
                     </div>
                 </div>
             </div>
