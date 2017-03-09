@@ -1,0 +1,420 @@
+﻿@-ms-viewport {
+    width: device-width;
+}
+
+@font-face {
+    font-family: "_Segoe";
+    src: local("Segoe UI");
+}
+
+@font-face {
+    font-family: "_Segoe";
+    src: local("Segoe UI Italic"),local("Segoe UI");
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "_Segoe";
+    src: local("Segoe UI Light"),local("Segoe WP Light"),local("Segoe UI");
+    font-weight: 200;
+}
+
+@font-face {
+    font-family: "_Segoe";
+    src: local("Segoe UI Light Italic"),local("Segoe UI Italic"),local("Segoe UI Light"),local("Segoe UI");
+    font-weight: 200;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "_Segoe";
+    src: local("Segoe UI Semilight"),local("Segoe WP Semilight"),local("Segoe UI Light"),local("Segoe UI");
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: "_Segoe";
+    src: local("Segoe UI Semilight Italic"),local("Segoe UI Light Italic"),local("Segoe UI Italic"),local("Segoe UI Semilight"),local("Segoe UI");
+    font-weight: 300;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "_Segoe";
+    src: local("Segoe UI Semibold"),local("Segoe WP Semibold"),local("Segoe UI Bold"),local("Segoe UI");
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: "_Segoe";
+    src: local("Segoe UI Semibold Italic"),local("Segoe UI Bold Italic"),local("Segoe UI");
+    font-weight: 600;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "_Segoe";
+    src: local("Segoe UI Bold"),local("Segoe UI");
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: "_Segoe";
+    src: local("Segoe UI Bold Italic"),local("Segoe UI");
+    font-weight: 700;
+    font-style: italic;
+}
+
+@keyframes todo {
+    0% {
+        transform: scaleZ(1);
+        box-shadow: 0 0 4px rgba(0,0,0,.15);
+        opacity: 0;
+    }
+
+    7% {
+        opacity: 0;
+    }
+
+    15% {
+        transform: translate(-36px) scaleZ(1);
+    }
+
+    45% {
+        transform: translate(12px) scaleZ(1);
+    }
+
+    75% {
+        transform: translate(-4px) scaleZ(1);
+        box-shadow: 0 0 4px rgba(0,0,0,.15);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scaleZ(1);
+        box-shadow: none;
+    }
+}
+
+@-webkit-keyframes todo {
+    0% {
+        -webkit-transform: scaleZ(1);
+        box-shadow: 0 0 4px rgba(0,0,0,.15);
+        opacity: 0;
+    }
+
+    7% {
+        opacity: 0;
+    }
+
+    15% {
+        -webkit-transform: translate(-36px) scaleZ(1);
+    }
+
+    45% {
+        -webkit-transform: translate(12px) scaleZ(1);
+    }
+
+    75% {
+        -webkit-transform: translate(-4px) scaleZ(1);
+        box-shadow: 0 0 4px rgba(0,0,0,.15);
+        opacity: 1;
+    }
+
+    100% {
+        -webkit-transform: scaleZ(1);
+        box-shadow: none;
+    }
+}
+
+@keyframes loading {
+    0% {
+        background-position: 0%;
+    }
+
+    100% {
+        background-position: -200%;
+    }
+}
+
+@-webkit-keyframes loading {
+    0% {
+        background-position: 0%;
+    }
+
+    100% {
+        background-position: -200%;
+    }
+}
+
+body, input, button, select {
+    font: 100%/1.5 "_Segoe","Segoe UI",Seravek,sans-serif;
+    font-feature-settings: "dlig","kern";
+    color: #333;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: #e8e8e8;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: #48b;
+}
+
+    a:hover, a:focus {
+        text-decoration: underline;
+        color: #7be;
+    }
+
+.app-container {
+    max-width: 40em;
+    margin: 0 auto;
+}
+
+.app-title {
+    text-align: center;
+    font-size: 200%;
+    margin: 1em 0 .5em;
+    line-height: 1.2;
+}
+
+.app-area {
+    box-shadow: 0 0 8px rgba(0,0,0,.08),0 6px 20px rgba(0,0,0,.1);
+    font-size: 125%;
+}
+
+.todo-form {
+    background: #fff;
+    padding: 0 4.8em 0 2.5em;
+    position: relative;
+}
+
+    .todo-form:after {
+        display: table;
+        content: "";
+        clear: both;
+    }
+
+.todo-form__label, .todo-item__label {
+    padding: 0 .8em;
+    line-height: 2.5;
+}
+
+.todo-form__label {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.todo-form__input {
+    border: 0;
+    background: #fff;
+    padding: .5em .8em .5em 1px;
+    width: 100%;
+    float: left;
+}
+
+    .todo-form__input:-ms-input-placeholder {
+        color: #aaa;
+    }
+
+    .todo-form__input::-moz-placeholder {
+        color: #aaa;
+        opacity: 1;
+    }
+
+    .todo-form__input::-webkit-input-placeholder {
+        color: #aaa;
+    }
+
+.todo-form__btnArea {
+    margin-right: -4.8em;
+    text-align: right;
+}
+
+.todo-form__btn {
+    font-size: 80%;
+    margin: .55em .75em .5em 1px;
+    padding: .25em .87em;
+    border: 0;
+    background: #6ad;
+    color: #fff;
+    line-height: 1.5;
+    height: 2em;
+    border-radius: 3px;
+    transition: .5s;
+}
+
+    .todo-form__btn::-moz-focus-inner {
+        padding: 0;
+        border: 0;
+    }
+
+    .todo-form__btn:hover, .todo-form__btn:focus {
+        background: #7be;
+        box-shadow: inset 0 -4px rgba(0,0,0,.1);
+    }
+
+    .todo-form__btn:active {
+        background: #48b;
+        box-shadow: inset 0 0 12px rgba(0,0,0,.05);
+    }
+
+.todo-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background: #fff;
+}
+
+.todo-item {
+    margin: 0;
+    background: #fff;
+    border-top: 1px solid #e5e5e5;
+}
+
+    .todo-item:after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+
+.todo-item--animate {
+    animation: todo .4s;
+}
+
+.todo-item--removing {
+    opacity: 0;
+    transform: translate(150px) translateZ(0);
+    transition: .4s cubic-bezier(.3,-.4,.9,.2);
+    -webkit-transform: translate(150px) translateZ(0);
+    box-shadow: 0 0 4px rgba(0,0,0,.15);
+}
+
+.todo-item__label {
+    float: left;
+}
+
+.todo-item--editing .todo-item__label {
+    visibility: hidden;
+}
+
+.todo-item__content {
+    position: relative;
+    overflow: hidden;
+}
+
+.todo-item__text {
+    padding: .5em 0;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: .5s;
+}
+
+.todo-item--done .todo-item__text {
+    text-decoration: line-through;
+    color: #aaa;
+}
+
+.todo-item__clear {
+    float: right;
+    margin: 0;
+    border: none;
+    background: #fff;
+    line-height: 2em;
+    height: 2.5em;
+    width: 2.5em;
+    color: #bbb;
+    transition: .5s;
+}
+
+    .todo-item__clear:before {
+        content: "\d7";
+        font-size: 150%;
+    }
+
+    .todo-item__clear:hover {
+        color: #e44;
+        transform: scale(1.2);
+    }
+
+.todo-item__inputArea {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 2px;
+    bottom: 2px;
+    padding: .5em .8em;
+}
+
+.todo-item__input {
+    display: block;
+    padding: .5em .8em;
+    border: 0;
+    height: 100%;
+    margin: -.5em -.8em;
+    width: 100%;
+    border: 1px solid #888;
+}
+
+.todo-item--editing .todo-item__inputArea {
+    display: block;
+}
+
+.todo-status {
+    margin: 1.25em 1em;
+}
+
+.todo-status__link {
+    color: #999;
+    transition: color .5s;
+}
+
+    .todo-status__link:hover, .todo-status__link:focus {
+        color: #333;
+    }
+
+    .todo-status__link.todo-status__link--current {
+        color: #333;
+        font-weight: bold;
+        text-decoration: none;
+    }
+
+.todo-status__clearLink {
+    float: right;
+}
+
+.indicator {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: .2em;
+    opacity: 0;
+    transition: opacity .5s;
+}
+
+    .indicator.indicator--loading {
+        background-size: 200%;
+        background-image: linear-gradient(to right,transparent 0,transparent 50%,#7ae 50%,#7ae 100%);
+        animation: loading 1.2s infinite;
+        opacity: 1;
+    }
+
+@media screen and (min-width:42em) {
+    .app-title {
+        font-size: 270%;
+        margin-top: 1.7em;
+    }
+
+    .todo-status {
+        margin: 1.25em 0;
+    }
+}
