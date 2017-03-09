@@ -1,4 +1,4 @@
-﻿/// <reference path="/Scripts/jquery-1.12.4.js"/>
+﻿/// <reference path="/js/jquery-1.8.0.min.js"/>
 jQuery(function ($) {
     "use strict";
     var AppStorage = {
@@ -431,7 +431,7 @@ jQuery(function ($) {
 
     viewElements.todoForm.on("submit", function () {
         // alert(1);
-        var inputValue = $(this).find("[data-role=formInput]").val();
+        var inputValue = $.trim($(this).find("[data-role=formInput]").val());
         if (inputValue) {
             performTransformations([
                 {
@@ -525,7 +525,7 @@ jQuery(function ($) {
             });
         }
     }).on("blur", "[data-role=todoInput]", function (e) {
-        var todoId = +$(this).parents("[data-todo-id]").attr("data-todo-id"), inputValue = $(this).val();
+        var todoId = +$(this).parents("[data-todo-id]").attr("data-todo-id"), inputValue = $.trim($(this).val());
         if ($(this).data("canceled")) {
             return;
         }
