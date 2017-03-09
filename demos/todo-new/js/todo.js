@@ -15,6 +15,7 @@ jQuery(function ($) {
         todoList: null,
         count: null,
         doneCount: 0,
+        remainCount: 0,
         allDone: false
     }, AppEvents = (function () {
         var topics = {};
@@ -218,7 +219,7 @@ jQuery(function ($) {
         return function (updates) {
             /// <summary>Update model and computed properties.</summary>
             /// <param name="updates" type="Array"/>
-            var count, doneCount, ret = {
+            var count, doneCount, remainCount, ret = {
                 action: "update",
                 type: "counter"
             }, should = false, prevList = list, retUpdates;
@@ -296,15 +297,21 @@ jQuery(function ($) {
             doneCount = $.grep(list, function (item) {
                 return item.done;
             }).length;
+            remainCount = count - doneCount;
             retUpdates.push({
                 type: "allDone",
                 action: "update",
-                value: count > 0 && (doneCount === count)
+                value: count > 0 && (remainCount === 0)
             });
             if (count !== AppModel.count) {
                 AppModel.count = count;
                 should = true;
                 ret.count = count;
+            }
+            if (remainCount !== AppModel.remainCount) {
+                AppModel.remainCount = remainCount;
+                should = true;
+                ret.remainCount = remainCount;
             }
             if (doneCount !== AppModel.doneCount) {
                 AppModel.doneCount = doneCount;
@@ -320,7 +327,9 @@ jQuery(function ($) {
         clearCompleted: $("#clearCompleted"),
         linkArea: $("#hashLinks"),
         allMarker: $("#markAll"),
-        indicator: $("#indicator")
+        indicator: $("#indicator"),
+        todoStatusText: $("#todoStatusText"),
+        todoStatusArea: $("#todoStatus")
     }, viewActionMaps = (function () {
         var makeTodoElement = function (itemValue) {
             var item = viewElements.todoItemTemplate.clone();
@@ -395,9 +404,13 @@ jQuery(function ($) {
             }, counter: {
                 update: function (update) {
                     if ("doneCount" in update) {
-                        viewElements.clearCompleted.text("Clear " + update.doneCount + " completed")[update.doneCount ? "show" : "hide"]();
+                        viewElements.clearCompleted[update.doneCount ? "show" : "hide"]();
+                    }
+                    if ("remainCount" in update) {
+                        viewElements.todoStatusText.text(update.remainCount + (update.remainCount === 1 ? " item left." : " items left."));
                     }
                     if ("count" in update) {
+                        viewElements.todoStatusArea[update.count ? "show" : "hide"]();
                         viewElements.allMarker.parent("label")[update.count ? "show" : "hide"]();
                     }
                 }

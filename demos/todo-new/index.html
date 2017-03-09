@@ -20,9 +20,10 @@
             </form>
             <ul class="todo-list" id="listArea"></ul>
         </div>
-        <p class="todo-status">
-            <a href="#" id="clearCompleted" class="todo-status__link todo-status__clearLink"></a>
-            <span id="hashLinks">
+        <p class="todo-status" id="todoStatus">
+            <span id="todoStatusText" class="todo-status__text">0 items left</span>
+            <a href="#" id="clearCompleted" class="todo-status__link todo-status__clearLink">Clear completed</a>
+            <span id="hashLinks" class="todo-status__linkArea">
                 <a href="#!/" data-hash-link="all" class="todo-status__link">All</a>&ensp;&middot;&ensp;<a href="#!/completed" data-hash-link="completed" class="todo-status__link">Completed</a>&ensp;&middot;&ensp;<a href="#!/remaining" data-hash-link="remaining" class="todo-status__link">Remaining</a>
             </span>
         </p>
