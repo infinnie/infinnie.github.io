@@ -1,20 +1,100 @@
-﻿/// <reference path="/js/jquery-1.8.0.min.js"/>
+﻿/// <reference path="jquery-1.12.4.js"/>
 jQuery(function ($) {
     "use strict";
-    var AppStorage = {
-        read: function () {
+    var AppStorage = (function () {
+        var read = function () {
             /// <returns type="Array"/>
             console.log("Reading from localStorage.");
             return JSON.parse(localStorage.getItem("todoList-New") || "null") || [];
-        },
-        write: function (newList) {
+        }, write = function (newList) {
             console.log("Writing to localStorage.");
             localStorage.setItem("todoList-New", JSON.stringify(newList));
-        }
-    }, AppModel = {
+        }, writeOne = function (update) {
+            var d = $.Deferred();
+            pendingList.push(d);
+            if (!curTimeout) {
+                curTimeout = setTimeout(writeUpdates, 0);
+            }
+            switch (update.action) {
+                case "create":
+                    creations.push(update.value);
+                    break;
+                case "update":
+                    updates[update.id] = $.extend({}, updates[update.id] || {}, update.value);
+                    break;
+                case "destroy":
+                    deletions[update.id] = true;
+                    break;
+            }
+            return d.promise();
+        }, writeUpdates = function () {
+            var resolveList = pendingList.slice(0);
+            curTimeout = 0;
+            curList = $.map($.grep(curList, function (todo, index) {
+                return !(todo.id in deletions);
+            }), function (todo, index) {
+                if (todo.id in updates) {
+                    return $.extend({}, todo, updates[todo.id]);
+                }
+                return todo;
+            }).concat(creations);
+            write(curList);
+            creations = [];
+            updates = {};
+            deletions = {};
+            pendingList = [];
+            setTimeout(function () {
+                $.each(resolveList, function (i, d) {
+                    /// <param name="d" type="$.Deferred"/>
+                    d.resolve();
+                });
+            }, 0);
+        }, curList = null, creations = [], updates = {}, deletions = {}, curTimeout = 0, pendingList = [];
+        return {
+            read: function () {
+                /// <returns type="Array"/>
+                curList = read();
+                return curList;
+            }, create: function (value) {
+                return writeOne({ action: "create", value: value });
+            }, update: function (id, value) {
+                return writeOne({ action: "update", id: id, value: value });
+            }, destroy: function (id) {
+                return writeOne({ action: "destroy", id: id });
+            }, markAll: function (done) {
+                var d = $.Deferred(), ret = [];
+                curList = $.map(curList, function (todo) {
+                    if (todo.done !== done) {
+                        ret.push(todo.id);
+                        return $.extend({}, todo, { done: done });
+                    }
+                    return todo;
+                });
+                write(curList);
+                setTimeout(function () {
+                    d.resolve(ret);
+                }, 0);
+                return d.promise();
+            }, clearCompleted: function () {
+                var d = $.Deferred(), ret = [];
+                curList = $.grep(curList, function (todo) {
+                    if (todo.done) {
+                        ret.push(todo.id);
+                        return false;
+                    }
+                    return true;
+                });
+                write(curList);
+                setTimeout(function () {
+                    d.resolve(ret);
+                }, 0);
+                return d.promise();
+            }
+        };
+    })(), AppModel = {
         todoList: null,
         count: null,
-        doneCount: 0,
+        doneCount: null,
         remainCount: 0,
         allDone: false
     }, AppEvents = (function () {
@@ -56,154 +136,105 @@ jQuery(function ($) {
             return ret;
         };
     })(), storageActionMap = {
-        precreate: function (list, item) {
+        precreate: function (item, storage) {
             /// <summary>returns the transformed item and list.</summary>
             AppEvents.trigger("beforesave");
             if (item.type !== "todo") {
-                return { list: list, item: item };
+                return item;
             }
             var val = item.value,
                 obj = { id: +new Date() };
             $.extend(obj, val);
-            return {
-                list: [obj].concat(list),
-                item: {
+            return storage.create(obj).then(function () {
+                return {
                     action: "create",
                     value: obj,
                     id: obj.id,
                     type: "todo"
-                }
-            };
-        }, preupdate: function (list, item) {
+                };
+            });
+        }, preupdate: function (item, storage) {
             AppEvents.trigger("beforesave");
             if (item.type !== "todo") {
-                return { list: list, item: item };
+                return item;
             }
-            var id = item.id,
-                retList = $.map(list, function (element, index) {
-                    if (id !== element.id) { return element; }
-                    return $.extend({}, element, item.value);
-                });
-            return {
-                list: retList,
-                item: {
+            return storage.update(item.id, item.value).then(function () {
+                return {
                     action: "update",
                     value: item.value,
-                    id: id,
+                    id: item.id,
                     type: "todo"
-                }
-            };
-        }, predestroy: function (list, item) {
+                };
+            });
+        }, predestroy: function (item, storage) {
             /// <summary>returns the transformed item and list.</summary>
             AppEvents.trigger("beforesave");
             if (item.type !== "todo") {
-                return { list: list, item: item };
+                return item;
             }
-            var id = item.id,
-                retList = $.grep(list, function (element) {
-                    return id !== element.id;
-                });
-            return {
-                list: retList,
-                item: {
+            return storage.destroy(item.id).then(function () {
+                return {
                     action: "destroy",
-                    type: "todo",
-                    id: id
-                }
-            };
-        }, initiate: function (list, item) {
-            /// <param name="list" type="Array">The todo list. Initiated from storage.</param>
+                    id: item.id,
+                    type: "todo"
+                };
+            });
+        }, initiate: function (item, storage) {
             if (item.type !== "todoList") {
-                return { list: list, item: item };
+                return item;
             }
             return {
-                list: null,
-                item: {
-                    action: "fill",
-                    type: "todoList",
-                    value: list
-                }
-            }
-        }, clearcompleted: function (list, item) {
+                action: "fill",
+                type: "todoList",
+                value: storage.read()
+            };
+        }, clearcompleted: function (item, storage) {
             AppEvents.trigger("beforesave");
             if (item.type !== "todoList") {
-                return { list: list, item: item };
+                return item;
             }
-            var ret = [], retList = $.grep(list, function (element) {
-                if (element.done) {
-                    ret.push({
+            return storage.clearCompleted().then(function (idList) {
+                return $.map(idList, function (id) {
+                    return {
+                        type: "todo",
                         action: "destroy",
-                        type: "todo",
-                        id: element.id
-                    });
-                    return false;
-                }
-                return true;
+                        id: id
+                    };
+                });
             });
-            return {
-                list: retList,
-                item: ret
-            };
-        }, markall: function (list, item) {
+        }, markall: function (item, storage) {
             AppEvents.trigger("beforesave");
             if (item.type !== "todoList") {
-                return { list: list, item: item };
+                return item;
             }
-            var ret = [], retList = $.map(list, function (element) {
-                var doneObj = { done: item.value };
-                if (element.done !== item.value) {
-                    ret.push({
-                        action: "update",
+            return storage.markAll(item.value).then(function (idList) {
+                return $.map(idList, function (id) {
+                    return {
                         type: "todo",
-                        id: element.id,
-                        value: doneObj
-                    });
-                    return $.extend({}, element, doneObj);
-                }
-                return element;
+                        action: "update",
+                        id: id,
+                        value: { done: item.value }
+                    }
+                });
             });
-            return {
-                list: retList,
-                item: ret
-            };
         }
-    }, storageTransformation = (function () {
-        var list = null;
+    }, storageTransformation = (function (storage) {
         return function (updates) {
             /// <param name="updates" type="Array"/>
-            var should = false,
-                transformed = [].concat.apply([], $.map(updates, function (item, i) {
-                    /// <summary>Updates the list and returns the item per iteration.</summary>
-                    /// <param name="val" type="Object"/>
-                    // Do something
-                    var temp;
-                    if (!item) {
-                        return [];
-                    }
-                    if (item.action in storageActionMap) {
-                        list = list || AppStorage.read();
-                        temp = storageActionMap[item.action](list, item);
-                        if (temp.list) {
-                            list = temp.list;
-                            should = true;
-                        }
-                        return temp.item || [];
-                    }
-                    return item;
-                })), d = $.Deferred();
-            if (should) {
-                AppStorage.write(list);
-            }
-            setTimeout(function () {
-                d.resolve(should ? transformed.concat({
-                    type: "todoList",
-                    action: "update",
-                    value: list
-                }) : transformed);
-            }, 1);
-            return d.promise();
+            return $.when.apply($, $.map(updates, function (update) {
+                if (!update) {
+                    return [];
+                }
+                if (update.action in storageActionMap) {
+                    return storageActionMap[update.action](update, storage) || [];
+                }
+                return update;
+            })).then(function () {
+                AppEvents.trigger("save");
+                return [].concat.apply([], arguments);
+            });
         };
-    })(), getHashSub = function (hash) {
+    })(AppStorage), getHashSub = function (hash) {
         return hash.replace(/^#(?:!\/)?/, "");
     }, hashTest = function (done) {
         /// <param name="done" type="Boolean"/>
@@ -219,80 +250,92 @@ jQuery(function ($) {
         return function (updates) {
             /// <summary>Update model and computed properties.</summary>
             /// <param name="updates" type="Array"/>
-            var count, doneCount, remainCount, ret = {
-                action: "update",
-                type: "counter"
-            }, should = false, prevList = list, retUpdates;
+            var count, doneCount, remainCount,
+                ret = {
+                    action: "update",
+                    type: "counter"
+                }, should = false, hasHashUpdate = false, retUpdates = [],
+                creations = [], updateList = {}, deletions = {};
             $.each(updates, function (index, item) {
-                if (/^(?:fill|update)$/.test(item.action) && item.type === "todoList") {
+                if (item.action === "fill" && item.type === "todoList") {
                     list = item.value;
-                    if (item.action === "update") {
-                        AppEvents.trigger("save");
-                    }
                     return false;
                 }
             });
-            retUpdates = [].concat.apply([], $.map(updates, function (update) {
-                var todoItem, prevItem;
+            $.each(updates, function (index, update) {
                 if (update.type === "todo") {
-                    if (update.id) {
-                        todoItem = $.grep(list, function (todo, i) {
-                            return todo.id === update.id;
-                        })[0];
-                    }
                     switch (update.action) {
-                        case "cancel":
-                            return {
-                                type: "todo",
-                                action: "update",
-                                id: update.id,
-                                value: {
-                                    editing: false,
-                                    content: todoItem && todoItem.content
-                                }
-                            };
                         case "create":
-                            if (!hashTest(update.value.done)) {
-                                return [];
-                            }
-                            break; // never fall through.
+                            creations.push(update);
+                            return;
                         case "update":
-                            if (todoItem && !hashTest(todoItem.done)) {
-                                return {
-                                    type: "todo",
-                                    action: "viewremove",
-                                    id: update.id
-                                };
+                            if (updateList[update.id]) {
+                                updateList[update.id].value = $.extend({}, updateList[update.id].value || {}, update.value);
+                            } else {
+                                updateList[update.id] = $.extend({}, update);
                             }
-                            if (("done" in update.value) && hashTest(update.value.done)) {
-                                prevItem = $.grep(prevList, function (todo, i) {
-                                    return todo.id === update.id;
-                                })[0];
-                                if (!hashTest(prevItem.done)) {
-                                    return {
-                                        type: "todo",
-                                        action: "viewinsert",
-                                        value: todoItem,
-                                        id: update.id
-                                    };
-                                }
-                            }
+                            return;
+                        case "destroy":
+                            deletions[update.id] = update;
+                            return;
                     }
                 }
-
+                retUpdates.push(update);
                 if (update.action === "update" && update.type === "hash") {
-                    return [update, {
-                        type: "todoList",
-                        action: "viewfill",
-                        value: $.grep(list, function (item, index) {
-                            return hashTest(item.done);
-                        })
-                    }];
+                    hasHashUpdate = true;
                 }
+            });
+            list = [].concat.apply([], $.map(list, function (todo) {
+                var curUpdate, ret;
+                if (todo.id in deletions) {
+                    if (hashTest(todo.done)) {
+                        retUpdates.push(deletions[todo.id]);
+                    }
+                    return [];
+                }
+                if (todo.id in updateList) {
+                    curUpdate = updateList[todo.id];
+                    ret = $.extend({}, todo, curUpdate.value);
+                    if (hashTest(todo.done)) {
+                        if (!("done" in curUpdate.value) || hashTest(curUpdate.value.done)) {
+                            retUpdates.push(curUpdate);
+                        } else {
+                            retUpdates.push({
+                                type: "todo",
+                                action: "viewremove",
+                                id: todo.id
+                            });
+                        }
+                    } else {
+                        if (("done" in curUpdate.value) && hashTest(curUpdate.value.done)) {
+                            retUpdates.push({
+                                type: "todo",
+                                action: "viewinsert",
+                                value: ret,
+                                id: todo.id
+                            });
+                        }
+                    }
+                    return ret;
+                }
+                return todo;
+            }).concat($.map(creations, function (created) {
+                var todo = created.value;
+                if (hashTest(todo.done)) {
+                    retUpdates.push(created);
+                }
+                return todo;
+            })));
 
-                return update;
-            }));
-            AppModel.todoList = list;
+            if (hasHashUpdate) {
+                retUpdates.push({
+                    type: "todoList",
+                    action: "viewfill",
+                    value: $.grep(list, function (item, index) {
+                        return hashTest(item.done);
+                    })
+                });
+            }
             count = list.length;
             doneCount = $.grep(list, function (item) {
                 return item.done;
@@ -404,7 +447,7 @@ jQuery(function ($) {
             }, counter: {
                 update: function (update) {
                     if ("doneCount" in update) {
-                        viewElements.clearCompleted[update.doneCount ? "show" : "hide"]();
+                        viewElements.clearCompleted[update.doneCount ? "removeClass" : "addClass"]("todo-status__clearLink--hidden");
                     }
                     if ("remainCount" in update) {
                         viewElements.todoStatusText.text(update.remainCount + (update.remainCount === 1 ? " item left." : " items left."));
