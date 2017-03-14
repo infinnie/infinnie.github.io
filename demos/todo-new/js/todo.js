@@ -1,4 +1,4 @@
-﻿/// <reference path="jquery-1.12.4.js"/>
+﻿/// <reference path="/js/jquery-1.8.0.min.js"/>
 jQuery(function ($) {
     "use strict";
     var AppStorage = (function () {
@@ -255,7 +255,7 @@ jQuery(function ($) {
                     action: "update",
                     type: "counter"
                 }, should = false, hasHashUpdate = false, retUpdates = [],
-                creations = [], updateList = {}, deletions = {};
+                creations = [], updateList = {}, deletions = {}, cancelList = {};
             $.each(updates, function (index, item) {
                 if (item.action === "fill" && item.type === "todoList") {
                     list = item.value;
@@ -278,6 +278,8 @@ jQuery(function ($) {
                         case "destroy":
                             deletions[update.id] = update;
                             return;
+                        case "cancel":
+                            cancelList[update.id] = true;
                     }
                 }
                 retUpdates.push(update);
@@ -317,6 +319,17 @@ jQuery(function ($) {
                         }
                     }
                     return ret;
+                }
+                if (todo.id in cancelList) {
+                    retUpdates.push({
+                        type: "todo",
+                        action: "update",
+                        value: {
+                            editing: false,
+                            content: todo.content
+                        },
+                        id: todo.id
+                    });
                 }
                 return todo;
             }).concat($.map(creations, function (created) {
