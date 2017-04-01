@@ -63,9 +63,14 @@
     font-style: italic;
 }
 
+    .article-content blockquote i, .article-content blockquote em {
+        font-style: normal;
+    }
+
 .article-content .pull-quote {
     font-size: 120%;
     font-weight: 300;
+    line-height: 1.4;
     border-left: 0;
     padding: 0;
     margin: 1.6em 0;
@@ -127,10 +132,14 @@ p.begins-with-ldquo {
             font-size: 150%;
         }
 
-    .article-content h2 {
-        font-size: 180%;
-        margin-bottom: 0;
+    .article-content {
+        line-height: 1.55;
     }
+
+        .article-content h2 {
+            font-size: 180%;
+            margin-bottom: 0;
+        }
 
     .figure-inset-left, .figure-outset-left {
         width: 50%;
@@ -149,6 +158,7 @@ p.begins-with-ldquo {
     .article-content .pull-quote {
         font-weight: 100;
         font-size: 160%;
+        line-height: 1.28;
         margin: 1.25em -4.75em;
     }
 

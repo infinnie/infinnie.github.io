@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Never, ever use system-ui as the value of font-family</title>
+    <link rel="stylesheet" href="/css/blog/main.css" />
+    <link rel="stylesheet" href="/css/blog/article.css" />
+    <link rel="stylesheet" href="/css/blog/zoom.css" />
+</head>
+<body>
+    <div class="image-overlay"></div>
+    <div class="page-content">
+        <div class="header">
+            <div class="container">
+                <a href="#" id="menuBtn" class="menu-btn"></a>
+                <h1 class="page-title"><a href="/">Not ready yet</a></h1>
+                <ul class="menu-list" id="menuList">
+                    <li class="current-item"><a href="/">Home</a></li>
+                    <li><a href="/ui-demo/">Old version</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="content" id="bodyContent">
+            <div class="container">
+                <div class="content-main">
+                    <div class="title-box">
+                        <h1>Never, ever use system-ui as the value of font-family</h1>
+                        <h2>Here&rsquo;s why.</h2>
+                    </div>
+                    <div class="article-content">
+                        <p>An acquaintance of mine recently complained in a QQ group that the text in GitHub has recently become &ldquo;exceptionally bold.&rdquo; Then he or she hit <kbd>F12</kbd>, deleted the value <code>system-ui</code> from the <code>font-family</code> property in the Chrome developer tools, and found that all had suddenly gone fine.</p>
+                        <blockquote class="pull-quote">How come?</blockquote>
+                        <p>It turns out that the value of <code>system-ui</code> in fact not only depends on the version of the current OS, <strong><em>but the language of the OS as well.</em></strong></p>
+                        <p><code>system-ui</code> has recently been provided by Chrome as the means to access what is currently used by the OS as the UI font family. It could be good to <a href="https://www.smashingmagazine.com/2015/11/using-system-ui-fonts-practical-guide/">use the OS font to provide the user with a native look and feel</a>, but on Windows, the font family used for UI changes with the language it is in, as well as the theme used.</p>
+                        <p>For example, on Windows 8.1/Windows 10 in Simplified Chinese, the <code>system-ui</code> font family evaluates to Microsoft YaHei UI, which, it turns out, not only lacks many font weights that Segoe UI has (say semibold), but letters and numbers are larger and a little bolder to match the Chinese text than what could have been designed.</p>
+                        <p>However things might turn <em>even worse</em>. On Windows Vista/Windows 7 and corresponding Windows Server versions, with the Windows Classic theme turned on, one might see the good decades-old Tahoma/SimSun/PMingLiU&hellip; for <code>system-ui</code> to evaluate to (tested on Windows Server 2008 R2 in Simplified Chinese).</p>
+                        <p>Let alone Windows XP. Sigh.</p>
+                        <blockquote>Bottom line: never, ever use <code>system-ui</code> as the value of the <code>font-family</code> CSS property or part of it. At least never use it before any reference to <code>Segoe UI</code>.</blockquote>
+                    </div>
+                </div>
+            </div>
+            <div class="footer">
+                <div class="container">
+                    Find me elsewhere: <a href="https://github.com/infinnie">GitHub</a>
+                    &middot; <a href="http://weibo.com/sky14way">Sina Weibo</a>
+                    &middot; <a href="https://plus.google.com/+JingqiXie">Google+</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/js/jquery-1.8.0.min.js"></script>
+    <script src="/js/blog/header.js"></script>
+    <script src="/js/blog/image.js"></script>
+    <script>
+        jQuery(function ($) {
+            $("[data-zoom=true]").zoomable();
+        });
+    </script>
+
+</body>
+</html>

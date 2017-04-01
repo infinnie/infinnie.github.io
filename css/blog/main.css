@@ -92,7 +92,7 @@ img {
     height: auto;
 }
 
-pre, code {
+pre, code, kbd {
     font-family: Consolas,"Source Code Pro",Menlo,"Courier New",monospace;
     background: #f3f3f3;
     -webkit-font-feature-settings: "onum" 1;
@@ -108,6 +108,11 @@ pre {
     padding: 1em 1.25em;
     line-height: 1.5;
     overflow-x: auto;
+}
+
+kbd {
+    padding: 0 .25em;
+    background: #eee;
 }
 
 .long-word {
