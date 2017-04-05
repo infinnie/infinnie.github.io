@@ -1,5 +1,5 @@
 ﻿.title-box {
-    margin: 1.5em 0 0;
+    margin: 1em 0 0;
 }
 
     .title-box h1, .title-box h2 {
@@ -57,8 +57,8 @@
 }
 
 .article-content blockquote {
-    margin: 1.5em 0;
-    padding-left: 1em;
+    margin: 1.5em 0 1.5em -1em;
+    padding-left: .8em;
     border-left: .2em solid #69c;
     font-style: italic;
 }
@@ -120,6 +120,7 @@ p.begins-with-ldquo {
 
 @media screen and (min-width:40em) {
     .title-box {
+        margin-top: 1.5em;
         margin-bottom: .5em;
     }
 
@@ -151,6 +152,7 @@ p.begins-with-ldquo {
 @media screen and (min-width:50em) {
     .article-content blockquote {
         margin-left: -1.2em;
+        padding-left: 1em;
     }
 }
 
