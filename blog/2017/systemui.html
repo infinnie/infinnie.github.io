@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="x-ua-compatible" content="ie=edge" />
     <meta name="viewport" content="width=device-width" />
-    <title>Never, ever use system-ui as the value of font-family</title>
+    <title>Never, ever use system-ui as the value of font-family &mdash; Not ready yet</title>
     <link rel="stylesheet" href="/css/blog/main.css" />
     <link rel="stylesheet" href="/css/blog/article.css" />
     <link rel="stylesheet" href="/css/blog/zoom.css" />
@@ -30,7 +30,7 @@
                         <h2>Here&rsquo;s why.</h2>
                     </div>
                     <div class="article-content">
-                        <p>An acquaintance of mine recently complained in a QQ group that the text in GitHub has recently become &ldquo;exceptionally bold.&rdquo; Then he or she hit <kbd>F12</kbd>, deleted the value <code>system-ui</code> from the <code>font-family</code> property in the Chrome developer tools, and found that all had suddenly gone fine.</p>
+                        <p><span class="drop-cap">An</span> acquaintance of mine recently complained in a QQ group that the text in GitHub has recently become &ldquo;exceptionally bold.&rdquo; Then he or she hit <kbd>F12</kbd>, deleted the value <code>system-ui</code> from the <code>font-family</code> property in the Chrome developer tools, and found that all had suddenly gone fine.</p>
                         <blockquote class="pull-quote">How come?</blockquote>
                         <p>It turns out that the value of <code>system-ui</code> in fact not only depends on the version of the current OS, <strong><em>but the language of the OS as well.</em></strong></p>
                         <p><code>system-ui</code> has recently been provided by Chrome as the means to access what is currently used by the OS as the UI font family. It could be good to <a href="https://www.smashingmagazine.com/2015/11/using-system-ui-fonts-practical-guide/">use the OS font to provide the user with a native look and feel</a>, but on Windows, the font family used for UI changes with the language it is in, as well as the theme used.</p>
@@ -47,6 +47,7 @@
                     </div>
                     <div class="article-content">
                         <p>Update: GitHub has since removed <code>system-ui</code> from the <code>font-family</code> CSS property. Well&mdash;not because of this post.</p>
+                        <p>Apr 10 update: Bootstrap has also removed <code>system-ui</code> from the font-family stack as of <a href="https://github.com/twbs/bootstrap/issues/22377">this pull request</a>.</p>
                     </div>
                 </div>
             </div>
