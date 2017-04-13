@@ -194,7 +194,7 @@ kbd {
     }
 
 .menu-list {
-    margin: 0 0 0 -1em;
+    margin: 0 0 0 -1.25em;
     padding: 0;
     list-style: none;
     line-height: 2.5;
@@ -206,7 +206,7 @@ kbd {
     }
 
     .menu-list a {
-        padding: 0 .45em 0 1em;
+        padding: 0 .45em 0 1.25em;
         transition: border .3s, padding-left .3s;
         display: block;
         border-left: 0 solid #fff;
@@ -214,8 +214,8 @@ kbd {
     }
 
         .menu-list a:hover, .menu-list a:focus, .menu-list .current-item a {
-            border-left-width: .4em;
-            padding-left: .6em;
+            border-left-width: .25em;
+            padding-left: 1em;
         }
 
 .content {
