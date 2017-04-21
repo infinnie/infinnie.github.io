@@ -25,11 +25,12 @@ $(function () {
     "use strict";
     function zoomOut(that) {
         /// <param name="that" type="HTMLElement"/>
-        var img = $(that).find("img"), cur = current;
+        var img = $(that).find("img"), cur = current, data = img.data("original") || {};
         if (current !== null) {
             current = null;
             $(body).removeClass("zoomed");
-            img.css("WebkitTransform","translatez(0)").css("transform", "translateZ(0)");
+
+            img.css("WebkitTransform", data.unprefixed).css("transform", data.unprefixed);
             setTimeout(function () {
                 if (img) {
                     img.remove();
@@ -37,7 +38,7 @@ $(function () {
                 if (cur !== null) {
                     $(cur).removeClass("zoom-hidden");
                 }
-            }, 450);
+            }, 350);
         }
     }
     var body, zoomOverlay,
@@ -51,31 +52,50 @@ $(function () {
             body = body || document.body;
             zoomOverlay = zoomOverlay || $("<div>").addClass("zoom-overlay").appendTo(body).append($("<div>").addClass("zoom-overlay-bg"));
             var src = this.src, bcr = this.getBoundingClientRect(), that = this,
-                width = $(this).data("size")[0], height = $(this).data("size")[1], img = new Image();
-            e.preventDefault();
-            e.stopPropagation();
-            // Zoom image in
+                width = $(this).data("size")[0], height = $(this).data("size")[1], img = new Image(),
+                imgWidth = bcr.right - bcr.left, imgHeight = bcr.bottom - bcr.top,
+                zoomedWidth, zoomedHeight, zoomedTop, zoomedLeft, unzoomedScale, unzoomedTx, unzoomedTy, originalTransform = { ms: "", unprefixed: "" };
+
             if (current != null) { return; }
             current = this;
+            e.preventDefault();
+            e.stopPropagation();
+
+            if (width < maxZoomWidth && height < maxZoomHeight) {
+                zoomedWidth = width;
+                zoomedHeight = height;
+            } else {
+                if (width / height > maxZoomWidth / maxZoomHeight) {
+                    zoomedWidth = maxZoomWidth;
+                    zoomedHeight = imgHeight * maxZoomWidth / imgWidth;
+                } else {
+                    zoomedWidth = imgWidth * maxZoomHeight / imgHeight;
+                    zoomedHeight = maxZoomHeight;
+                }
+            }
+            zoomedLeft = pageXOffset + (innerWidth - zoomedWidth) / 2;
+            zoomedTop = pageYOffset + (innerHeight - zoomedHeight) / 2;
+            unzoomedScale = (bcr.right - bcr.left) / zoomedWidth;
+            unzoomedTy = bcr.top + zoomedHeight * unzoomedScale / 2 - innerHeight / 2;
+            unzoomedTx = bcr.left + zoomedWidth * unzoomedScale / 2 - innerWidth / 2;
+
+            originalTransform.ms = "translate(" + unzoomedTx + "px," + unzoomedTy + "px) scale(" + unzoomedScale + ")";
+            originalTransform.unprefixed = "translate3D(" + unzoomedTx + "px," + unzoomedTy + "px,0) scale(" + unzoomedScale + ")";
+            // Zoom image in
+
             $(body).addClass("zoomed");
             img.src = src;
-            img.style.cssText = "top:" + (pageYOffset + bcr.top) + "px;left:" + (pageXOffset + bcr.left) + "px;height:" +
-                (bcr.bottom - bcr.top) + "px;width:" + (bcr.right - bcr.left) + "px";
+            img.style.cssText = "top:" + zoomedTop + "px;left:" + zoomedLeft + "px;height:" +
+                zoomedHeight + "px;width:" + zoomedWidth + "px";
+            img.style.msTransform = originalTransform.ms;
+            img.style.transform = originalTransform.unprefixed;
             zoomOverlay.append(img);
             setTimeout(function () {
-                $(that).addClass("zoom-hidden");
+                $(img).css("msTransform", "").css("WebkitTransform", "translatez(0)").css("transform", "translateZ(0)").data("original", originalTransform);
             }, 50);
             setTimeout(function () {
-                var tx = (innerWidth - bcr.right - bcr.left) / 2, ty = (innerHeight - bcr.bottom - bcr.top) / 2, scale,
-                    imgWidth = bcr.right - bcr.left, imgHeight = bcr.bottom - bcr.top;
-                if (width < maxZoomWidth && height < maxZoomHeight) {
-                    scale = width / imgWidth;
-                } else {
-                    scale = width / height > maxZoomWidth / maxZoomHeight ? maxZoomWidth / imgWidth : maxZoomHeight / imgHeight;
-                }
-                img.style.msTransform = "translate(" + tx + "px," + ty + "px) scale(" + scale + ")";
-                img.style.transform = img.style.WebkitTransform = "translate3D(" + tx + "px," + ty + "px,0) scale(" + scale + ")";
-            }, 50);
+                $(that).addClass("zoom-hidden");
+            }, 70);
         }).addClass("zoomable");
         return this;
     };
