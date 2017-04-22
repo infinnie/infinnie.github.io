@@ -131,6 +131,7 @@ p.begins-with-ldquo {
     font-size: 80%;
     color: #666;
     text-align: center;
+    line-height: 1.5;
 }
 
 @media screen and (min-width:40em) {
