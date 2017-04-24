@@ -88,6 +88,7 @@ $(function () {
             img.style.cssText = "top:" + zoomedTop + "px;left:" + zoomedLeft + "px;height:" +
                 zoomedHeight + "px;width:" + zoomedWidth + "px";
             img.style.msTransform = originalTransform.ms;
+            img.style.WebkitTransform = originalTransform.unprefixed;
             img.style.transform = originalTransform.unprefixed;
             zoomOverlay.append(img);
             setTimeout(function () {
