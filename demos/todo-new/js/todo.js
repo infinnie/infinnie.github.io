@@ -418,7 +418,7 @@ jQuery(function ($) {
                     if (justOlder) {
                         $(justOlder).before(el);
                     } else {
-                        viewElements.listArea.prepend(el);
+                        viewElements.listArea.append(el);
                     }
                 }, destroy: function (update) {
                     var el = viewElements.listArea.find("[data-todo-id=" + update.id + "]").addClass("todo-item--removing");
