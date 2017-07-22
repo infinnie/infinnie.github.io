@@ -357,7 +357,6 @@ a {
 .todo-item__input {
     display: block;
     padding: .5em .8em;
-    border: 0;
     height: 100%;
     margin: -.5em -.8em;
     width: 100%;
