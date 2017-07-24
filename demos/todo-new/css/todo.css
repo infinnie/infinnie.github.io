@@ -219,16 +219,16 @@ a {
 }
 
     .todo-form__input:-ms-input-placeholder {
-        color: #aaa;
+        color: #bbb;
     }
 
     .todo-form__input::-moz-placeholder {
-        color: #aaa;
+        color: #bbb;
         opacity: 1;
     }
 
     .todo-form__input::-webkit-input-placeholder {
-        color: #aaa;
+        color: #bbb;
     }
 
 .todo-form__btnArea {
@@ -320,7 +320,7 @@ a {
 
 .todo-item--done .todo-item__text {
     text-decoration: line-through;
-    color: #aaa;
+    color: #bbb;
 }
 
 .todo-item__clear {
@@ -331,7 +331,7 @@ a {
     line-height: 2em;
     height: 2.5em;
     width: 2.5em;
-    color: #bbb;
+    color: #c8c8c8;
     transition: .5s;
 }
 
@@ -426,8 +426,10 @@ a {
 
 @media screen and (min-width:42em) {
     .app-title {
-        font-size: 270%;
-        margin-top: 1.7em;
+        font-size: 300%;
+        margin-top: 1.5em;
+        letter-spacing: -.02rem;
+        margin-bottom: .45em;
     }
 
     .todo-status {
