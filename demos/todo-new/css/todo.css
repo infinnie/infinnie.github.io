@@ -190,6 +190,7 @@ a {
     background: #fff;
     padding: 0 4.8em 0 2.5em;
     position: relative;
+    min-width: 0;
 }
 
     .todo-form:after {

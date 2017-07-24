@@ -4,11 +4,26 @@ jQuery(function ($) {
     var AppStorage = (function () {
         var read = function () {
             /// <returns type="Array"/>
+            var d = $.Deferred(), ret;
             console.log("Reading from localStorage.");
-            return JSON.parse(localStorage.getItem("todoList-New") || "null") || [];
+            try {
+                ret = JSON.parse(localStorage.getItem("todoList-New") || "null") || [];
+            } catch (e) {
+                console.log("An error occurred while reading from localStorage.");
+                ret = [];
+            }
+            setTimeout(function () {
+                d.resolve(ret);
+            }, 0);
+
+            return d.promise();
         }, write = function (newList) {
             console.log("Writing to localStorage.");
-            localStorage.setItem("todoList-New", JSON.stringify(newList));
+            try {
+                localStorage.setItem("todoList-New", JSON.stringify(newList));
+            } catch (e) {
+                console.log("An error occurred while writing to localStorage.");
+            }
         }, writeOne = function (update) {
             var d = $.Deferred();
             pendingList.push(d);
@@ -52,9 +67,11 @@ jQuery(function ($) {
         }, curList = null, creations = [], updates = {}, deletions = {}, curTimeout = 0, pendingList = [];
         return {
             read: function () {
-                /// <returns type="Array"/>
-                curList = read();
-                return curList;
+                return read().then(function (list) {
+                    /// <param name="list" type="Array"/>
+                    curList = list;
+                    return list;
+                });
             }, create: function (value) {
                 return writeOne({ action: "create", value: value });
             }, update: function (id, value) {
@@ -183,11 +200,14 @@ jQuery(function ($) {
             if (item.type !== "todoList") {
                 return item;
             }
-            return {
-                action: "fill",
-                type: "todoList",
-                value: storage.read()
-            };
+            return storage.read().then(function (list) {
+                //alert(JSON.stringify(list));
+                return {
+                    action: "fill",
+                    type: "todoList",
+                    value: list
+                }
+            });
         }, clearcompleted: function (item, storage) {
             AppEvents.trigger("beforesave");
             if (item.type !== "todoList") {
@@ -628,7 +648,9 @@ jQuery(function ($) {
             type: "todoList",
             action: "initiate"
         }
-    ]);
+    ]).then(function () {
+        $(window).trigger("hashchange");
+    });
 
     AppEvents.on("beforesave", function () {
         viewElements.indicator.addClass("indicator--loading");
@@ -645,5 +667,5 @@ jQuery(function ($) {
                 action: "update"
             }
         ]);
-    }).trigger("hashchange");
+    });
 });
