@@ -270,6 +270,10 @@ body {
     border-radius: 6px;
 }
 
+.periodic-letter-deco--left {
+    margin-left: 0;
+}
+
 .periodic-atomic-num {
     font-weight: 300;
     font-size: 63%;
